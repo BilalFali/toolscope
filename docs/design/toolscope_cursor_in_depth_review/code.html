@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cursor In-Depth Review: The Benchmark for Agentic Code Editors | ToolScope</title>
+<!-- Google Fonts: Inter & Newsreader -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config directly from Design System -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-tertiary-fixed": "#410000",
+            "on-secondary-container": "#00734d",
+            "surface": "#fbf8fe",
+            "tertiary-fixed-dim": "#ffb4a8",
+            "surface-bright": "#fbf8fe",
+            "on-primary-fixed": "#001159",
+            "on-error": "#ffffff",
+            "primary-fixed": "#dee1ff",
+            "secondary-container": "#98f6c5",
+            "inverse-on-surface": "#f3f0f5",
+            "surface-tint": "#3b53c6",
+            "primary-container": "#2d46b9",
+            "primary-fixed-dim": "#bac3ff",
+            "surface-container": "#f0edf2",
+            "on-secondary": "#ffffff",
+            "on-surface-variant": "#444653",
+            "surface-container-low": "#f6f2f8",
+            "on-secondary-fixed-variant": "#005236",
+            "on-primary": "#ffffff",
+            "primary": "#092ba2",
+            "surface-variant": "#e4e1e7",
+            "on-tertiary-fixed-variant": "#930303",
+            "error-container": "#ffdad6",
+            "tertiary": "#7d0001",
+            "on-tertiary-container": "#ffb3a7",
+            "on-surface": "#1b1b1f",
+            "inverse-primary": "#bac3ff",
+            "on-background": "#1b1b1f",
+            "outline": "#757685",
+            "error": "#ba1a1a",
+            "surface-container-high": "#eae7ed",
+            "surface-container-highest": "#e4e1e7",
+            "outline-variant": "#c5c5d6",
+            "tertiary-fixed": "#ffdad5",
+            "on-primary-container": "#b9c2ff",
+            "surface-container-lowest": "#ffffff",
+            "secondary": "#006c48",
+            "on-primary-fixed-variant": "#1e39ad",
+            "inverse-surface": "#303034",
+            "surface-dim": "#dcd9de",
+            "on-error-container": "#93000a",
+            "secondary-fixed-dim": "#7cd9aa",
+            "secondary-fixed": "#98f6c5",
+            "on-secondary-fixed": "#002113",
+            "on-tertiary": "#ffffff",
+            "tertiary-container": "#a4160e",
+            "background": "#fbf8fe"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "margin": "2rem",
+            "space-md": "1rem",
+            "gutter-mobile": "1rem",
+            "space-lg": "1.5rem",
+            "gutter": "1.5rem",
+            "margin-mobile": "1rem",
+            "space-xl": "2.5rem",
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem"
+          },
+          "fontFamily": {
+            "label-sm": ["Inter"],
+            "headline-lg": ["Newsreader"],
+            "display-hero": ["Newsreader"],
+            "label-md": ["Inter"],
+            "body-sm": ["Inter"],
+            "data-tabular": ["Inter"],
+            "body-lg": ["Newsreader"],
+            "headline-sm": ["Inter"],
+            "display-hero-mobile": ["Newsreader"],
+            "headline-md": ["Newsreader"],
+            "body-md": ["Inter"],
+            "headline-lg-mobile": ["Newsreader"]
+          },
+          "fontSize": {
+            "label-sm": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.04em", "fontWeight": "600" }],
+            "headline-lg": ["2.25rem", { "lineHeight": "2.75rem", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "display-hero": ["3.5rem", { "lineHeight": "4rem", "letterSpacing": "-0.025em", "fontWeight": "500" }],
+            "label-md": ["0.875rem", { "lineHeight": "1.25rem", "letterSpacing": "0.01em", "fontWeight": "500" }],
+            "body-sm": ["0.875rem", { "lineHeight": "1.375rem", "fontWeight": "400" }],
+            "data-tabular": ["0.875rem", { "lineHeight": "1.25rem", "fontWeight": "500" }],
+            "body-lg": ["1.25rem", { "lineHeight": "2rem", "fontWeight": "400" }],
+            "headline-sm": ["1.125rem", { "lineHeight": "1.5rem", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "display-hero-mobile": ["2.25rem", { "lineHeight": "2.75rem", "letterSpacing": "-0.02em", "fontWeight": "500" }],
+            "headline-md": ["1.5rem", { "lineHeight": "2rem", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-md": ["1rem", { "lineHeight": "1.625rem", "fontWeight": "400" }],
+            "headline-lg-mobile": ["1.75rem", { "lineHeight": "2.25rem", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .tnum { font-feature-settings: "tnum" 1; }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface antialiased selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Top Lab Verification Notice Bar -->
+<aside class="w-full bg-surface-container-high border-b border-outline-variant/60 text-on-surface-variant font-label-sm text-label-sm py-1.5 px-gutter">
+<div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1.5 text-secondary font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+          Lab Verification Cycle 2025.2
+        </span>
+<span class="text-outline-variant">•</span>
+<span>Audited Disclosure</span>
+<span class="text-outline-variant">•</span>
+<span class="font-medium text-on-surface">100% Independent Empirical Testing</span>
+</div>
+<div class="hidden sm:flex items-center gap-4 text-outline">
+<span>No Sponsored Rankings</span>
+<a class="underline hover:text-primary transition-colors" href="#audit-info">Audit Methodology Docs</a>
+</div>
+</div>
+</aside>
+<!-- Top Navigation Bar (Shared Component Source: TopNavBar) -->
+<header class="bg-surface/90 backdrop-blur-md text-primary docked full-width top-0 sticky z-50 border-b border-outline-variant/60 transition-all duration-200 ease-in-out">
+<div class="w-full max-w-7xl mx-auto px-gutter flex items-center justify-between h-16">
+<!-- Brand Logo -->
+<div class="flex items-center gap-8">
+<a class="text-headline-md font-headline-md font-bold tracking-tight text-on-surface flex items-center gap-2" href="#">
+<span>ToolScope</span>
+<span class="bg-primary/10 text-primary text-[10px] font-label-sm px-1.5 py-0.5 rounded tracking-wide border border-primary/20">LABS</span>
+</a>
+<!-- Desktop Navigation Links (Context: AI Tools is Active) -->
+<nav aria-label="Main Navigation" class="hidden lg:flex items-center gap-6 text-label-md font-label-md">
+<a class="text-primary border-b-2 border-primary pb-1 font-semibold transition-colors duration-150" href="#">AI Tools</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors pb-1" href="#">Developer Software</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors pb-1" href="#">General Software</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors pb-1" href="#">Comparisons</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors pb-1" href="#">About &amp; Standards</a>
+</nav>
+</div>
+<!-- Trailing Controls: Search Bar & Secondary Actions -->
+<div class="flex items-center gap-3">
+<!-- Search Quick Bar -->
+<div class="relative hidden sm:flex items-center">
+<span class="absolute left-3 text-outline flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-[18px]">search</span>
+</span>
+<input class="pl-9 pr-12 py-1.5 bg-surface-container-low border border-outline-variant/70 rounded-lg text-body-sm font-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary w-56 lg:w-64 transition-all" placeholder="Search verified lab reviews..." type="text"/>
+<kbd class="absolute right-2.5 px-1.5 py-0.5 text-[10px] font-label-sm font-semibold text-outline bg-surface-container rounded border border-outline-variant/80">⌘K</kbd>
+</div>
+<!-- Trailing Language Selector -->
+<div class="text-label-sm font-label-sm text-on-surface-variant px-2.5 py-1.5 border border-outline-variant/70 rounded-lg bg-surface-container-low flex items-center gap-1.5">
+<span class="text-on-surface font-semibold">EN</span>
+<span class="text-outline-variant">/</span>
+<span class="text-outline hover:text-on-surface cursor-pointer">AR</span>
+</div>
+<button aria-label="Search" class="sm:hidden p-2 text-on-surface-variant hover:text-on-surface">
+<span class="material-symbols-outlined">search</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Editorial Main Canvas Container -->
+<main class="w-full max-w-7xl mx-auto px-gutter pt-8 pb-space-xl">
+<!-- Article Header & Metadata Section -->
+<section class="max-w-4xl mx-auto mb-10">
+<!-- Breadcrumbs -->
+<nav aria-label="Breadcrumb" class="flex items-center gap-2 text-label-sm font-label-sm text-outline mb-4 flex-wrap">
+<a class="hover:text-primary transition-colors" href="#">Home</a>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">AI Tools</a>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">Coding Assistants &amp; IDEs</a>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+<span class="text-on-surface font-medium">Cursor Review</span>
+</nav>
+<!-- Meta Badges Strip -->
+<div class="flex flex-wrap items-center gap-2 sm:gap-3 mb-5">
+<span class="bg-primary-container text-on-primary font-label-sm text-[11px] px-2.5 py-1 rounded-sm uppercase tracking-wider font-semibold">
+          In-Depth Lab Review • AI Tools
+        </span>
+<span class="bg-surface-container text-on-surface-variant font-label-sm text-[11px] px-2.5 py-1 rounded-sm border border-outline-variant/60 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-secondary">verified</span>
+          Audited Version: <strong class="text-on-surface font-semibold">v0.45.8</strong>
+</span>
+<span class="bg-surface-container text-on-surface-variant font-label-sm text-[11px] px-2.5 py-1 rounded-sm border border-outline-variant/60 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">timer</span>
+          140 Lab Hours logged across TS/Python repos
+        </span>
+<span class="text-outline text-label-sm font-label-sm ml-auto">
+          Updated Feb 24, 2025
+        </span>
+</div>
+<!-- Main Editorial Headline -->
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-4 leading-tight tracking-tight">
+        Cursor In-Depth Review: The Benchmark for Agentic Code Editors
+      </h1>
+<!-- Subtitle -->
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-6 leading-relaxed">
+        We put Cursor through 140 hours of multi-file TypeScript refactors and Python agent runs. Here is where the indexing delivers, where latency spikes, and what engineering teams need to know before standardizing.
+      </p>
+<!-- Byline & Editorial Trust Bar -->
+<div class="flex flex-wrap items-center justify-between gap-4 py-3.5 border-y border-outline-variant/60">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-high border border-outline-variant/80 flex items-center justify-center text-primary font-headline-sm font-bold">
+            EV
+          </div>
+<div>
+<div class="font-label-md text-label-md font-semibold text-on-surface flex items-center gap-1.5">
+<span>Reviewed by Elena Vance</span>
+<span class="text-secondary material-symbols-outlined text-[16px]" title="Staff Verified Reviewer">verified</span>
+</div>
+<div class="font-body-sm text-body-sm text-outline">Lead Systems &amp; AI Editor • Methodology audited by Dr. Marcus Sterling</div>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button class="inline-flex items-center gap-1.5 text-label-sm font-label-sm text-on-surface-variant hover:text-primary px-3 py-1.5 border border-outline-variant/70 rounded bg-surface-container-lowest transition-colors">
+<span class="material-symbols-outlined text-[16px]">share</span>
+            Share
+          </button>
+<button class="inline-flex items-center gap-1.5 text-label-sm font-label-sm text-on-surface-variant hover:text-primary px-3 py-1.5 border border-outline-variant/70 rounded bg-surface-container-lowest transition-colors">
+<span class="material-symbols-outlined text-[16px]">bookmark_border</span>
+            Save
+          </button>
+</div>
+</div>
+<!-- Editorial Disclosure Chip -->
+<div class="mt-3 text-label-sm font-label-sm text-outline flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-outline">shield</span>
+<span>Transparent Affiliate Disclosure: ToolScope never accepts paid rankings or vendor-supplied benchmark results.</span>
+</div>
+</section>
+<!-- Executive Summary & Hero Verdict Card -->
+<section class="max-w-4xl mx-auto mb-14">
+<div class="bg-surface-container-lowest border border-outline-variant/80 rounded-xl p-6 sm:p-8 relative">
+<div class="flex flex-col md:flex-row md:items-start justify-between gap-6 pb-6 border-b border-outline-variant/60">
+<div class="space-y-2">
+<div class="inline-flex items-center gap-2 bg-secondary-container/30 text-on-secondary-container px-3 py-1 rounded text-label-sm font-label-sm font-bold uppercase tracking-wider">
+<span class="material-symbols-outlined text-[16px]">military_tech</span>
+              Editor’s Choice: Best AI Coding Environment 2025
+            </div>
+<h2 class="text-headline-md font-headline-md text-on-surface font-bold">
+              Verdict: An Indispensable Force Multiplier with Governance Caveats
+            </h2>
+<p class="text-body-md font-body-md text-on-surface-variant">
+              Cursor remains the undisputed gold standard for codebase-wide reasoning and contextual agentic edits. While index cold starts on massive multi-repo architectures consume noticeable CPU and memory, its semantic retrieval precision outperforms vanilla Copilot by an order of magnitude.
+            </p>
+</div>
+<!-- Overall Score Badge -->
+<div class="flex-shrink-0 flex flex-col items-center justify-center p-4 rounded-xl bg-surface-container-low border border-outline-variant/80 min-w-[140px] text-center">
+<span class="text-label-sm font-label-sm text-outline uppercase tracking-wider">Overall Score</span>
+<div class="font-headline-lg text-[2.75rem] leading-none font-bold text-primary my-1 tnum">8.9</div>
+<span class="text-label-sm font-label-sm text-secondary font-semibold">Exceptional</span>
+<span class="text-[11px] font-body-sm text-outline mt-1">Percentile: Top 2%</span>
+</div>
+</div>
+<!-- Metric Pillar Scores -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-4 py-6 border-b border-outline-variant/60">
+<div class="p-3 bg-surface-container-low rounded-lg border border-outline-variant/50">
+<span class="text-label-sm font-label-sm text-outline block">Multi-file Indexing</span>
+<div class="text-headline-sm font-headline-sm font-bold text-on-surface mt-0.5 tnum">9.4 <span class="text-xs text-outline font-normal">/ 10</span></div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full mt-2 overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 94%"></div>
+</div>
+</div>
+<div class="p-3 bg-surface-container-low rounded-lg border border-outline-variant/50">
+<span class="text-label-sm font-label-sm text-outline block">Latency &amp; Speed</span>
+<div class="text-headline-sm font-headline-sm font-bold text-on-surface mt-0.5 tnum">8.2 <span class="text-xs text-outline font-normal">/ 10</span></div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full mt-2 overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 82%"></div>
+</div>
+</div>
+<div class="p-3 bg-surface-container-low rounded-lg border border-outline-variant/50">
+<span class="text-label-sm font-label-sm text-outline block">Context Efficiency</span>
+<div class="text-headline-sm font-headline-sm font-bold text-on-surface mt-0.5 tnum">8.8 <span class="text-xs text-outline font-normal">/ 10</span></div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full mt-2 overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 88%"></div>
+</div>
+</div>
+<div class="p-3 bg-surface-container-low rounded-lg border border-outline-variant/50">
+<span class="text-label-sm font-label-sm text-outline block">Team Governance</span>
+<div class="text-headline-sm font-headline-sm font-bold text-on-surface mt-0.5 tnum">8.1 <span class="text-xs text-outline font-normal">/ 10</span></div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full mt-2 overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 81%"></div>
+</div>
+</div>
+</div>
+<!-- Best For / Not Ideal For -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-6">
+<div class="p-4 rounded-lg bg-[#EBF7F2] border border-[#BCE4D3]">
+<h3 class="text-label-md font-label-md font-bold text-secondary flex items-center gap-1.5 mb-2.5">
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+              Best For
+            </h3>
+<ul class="text-body-sm font-body-sm text-on-surface space-y-2">
+<li class="flex items-start gap-2">
+<span class="text-secondary font-bold">•</span>
+<span>Full-stack engineers handling complex, interconnected legacy codebases.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="text-secondary font-bold">•</span>
+<span>Engineers requiring rapid multi-file diff reviews with atomic rollbacks.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="text-secondary font-bold">•</span>
+<span>Teams wanting custom Anthropic Claude 3.5 Sonnet / 3.7 Sonnet API key routing.</span>
+</li>
+</ul>
+</div>
+<div class="p-4 rounded-lg bg-[#F5F4F0] border border-[#E5E5E0]">
+<h3 class="text-label-md font-label-md font-bold text-outline flex items-center gap-1.5 mb-2.5">
+<span class="material-symbols-outlined text-[18px]">cancel</span>
+              Not Ideal For
+            </h3>
+<ul class="text-body-sm font-body-sm text-on-surface space-y-2">
+<li class="flex items-start gap-2">
+<span class="text-error font-bold">•</span>
+<span>Air-gapped enterprise environments requiring strict on-premise compute.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="text-error font-bold">•</span>
+<span>Workspaces under zero-remote-index policies without signed legal exemptions.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="text-error font-bold">•</span>
+<span>Memory-constrained machines (8GB RAM laptops struggle with local vector sync).</span>
+</li>
+</ul>
+</div>
+</div>
+<!-- Action Bar -->
+<div class="mt-6 pt-5 border-t border-outline-variant/60 flex flex-wrap items-center justify-between gap-4">
+<div class="text-label-sm font-label-sm text-outline">
+            Tested on: Cursor v0.45.8 • macOS Sonoma (M3 Max 64GB) &amp; Ubuntu 24.04 LTS
+          </div>
+<div class="flex items-center gap-3">
+<a class="px-4 py-2 text-label-md font-label-md text-on-surface bg-surface-container-high hover:bg-surface-container-highest rounded border border-outline-variant/70 transition-colors" href="#benchmarks">
+              Jump to Benchmarks
+            </a>
+<a class="px-5 py-2 text-label-md font-label-md text-on-primary bg-primary-container hover:bg-primary rounded transition-all duration-150 inline-flex items-center gap-1.5 shadow-sm" href="https://cursor.com" rel="noopener noreferrer" target="_blank">
+<span>Visit Provider</span>
+<span class="material-symbols-outlined text-[16px]">open_in_new</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Main Dual-Column Content Grid (TOC Sidebar + Editorial Body) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- Sticky Table of Contents Sidebar (3 Columns on Desktop) -->
+<aside class="hidden lg:block lg:col-span-4 sticky top-24 space-y-6">
+<div class="bg-surface-container-lowest border border-outline-variant/80 rounded-xl p-5">
+<div class="flex items-center justify-between pb-3 border-b border-outline-variant/60 mb-3">
+<h3 class="text-label-sm font-label-sm font-bold uppercase tracking-wider text-outline flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]">menu_book</span>
+              Table of Contents
+            </h3>
+<span class="text-[11px] font-label-sm text-secondary font-semibold">8 Sections</span>
+</div>
+<nav aria-label="Review Sections" class="space-y-1 text-label-md font-label-md">
+<a class="block py-1.5 px-2.5 rounded text-on-surface hover:bg-surface-container-low hover:text-primary transition-colors" href="#methodology">
+              1. Testing Rig &amp; Environment
+            </a>
+<a class="block py-1.5 px-2.5 rounded text-on-surface hover:bg-surface-container-low hover:text-primary transition-colors" href="#architecture">
+              2. Indexing Architecture &amp; Retrieval
+            </a>
+<a class="block py-1.5 px-2.5 rounded text-on-surface hover:bg-surface-container-low hover:text-primary transition-colors" href="#benchmarks">
+              3. Multi-file Refactor Benchmarks
+            </a>
+<a class="block py-1.5 px-2.5 rounded text-on-surface hover:bg-surface-container-low hover:text-primary transition-colors" href="#latency-costs">
+              4. Latency &amp; Token Consumption
+            </a>
+<a class="block py-1.5 px-2.5 rounded text-on-surface hover:bg-surface-container-low hover:text-primary transition-colors" href="#enterprise-security">
+              5. Security, Privacy &amp; Compliance
+            </a>
+<a class="block py-1.5 px-2.5 rounded text-on-surface hover:bg-surface-container-low hover:text-primary transition-colors" href="#pricing-audit">
+              6. Pricing &amp; License Tier Audits
+            </a>
+<a class="block py-1.5 px-2.5 rounded text-on-surface hover:bg-surface-container-low hover:text-primary transition-colors" href="#alternatives">
+              7. Alternatives &amp; Head-to-Head
+            </a>
+<a class="block py-1.5 px-2.5 rounded text-on-surface hover:bg-surface-container-low hover:text-primary transition-colors" href="#final-verdict">
+              8. Final Lab Verdict &amp; Scorecard
+            </a>
+</nav>
+<!-- Sidebar Actions -->
+<div class="mt-5 pt-4 border-t border-outline-variant/60 space-y-2">
+<a class="w-full text-center block py-2 px-3 text-label-sm font-label-sm font-semibold rounded bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors" href="#pricing-audit">
+              Jump to Pricing Reality Check
+            </a>
+<button class="w-full flex items-center justify-center gap-1.5 py-2 px-3 text-label-sm font-label-sm font-semibold rounded border border-outline-variant text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-[16px]">picture_as_pdf</span>
+              Download Benchmark PDF (14 pages)
+            </button>
+</div>
+</div>
+<!-- Quick Spec Card in Sidebar -->
+<div class="bg-surface-container-low border border-outline-variant/80 rounded-xl p-5">
+<h4 class="text-label-sm font-label-sm font-bold uppercase tracking-wider text-outline mb-3">
+            Cursor Quick Specs
+          </h4>
+<dl class="text-body-sm font-body-sm space-y-2.5">
+<div class="flex justify-between pb-1.5 border-b border-outline-variant/40">
+<dt class="text-outline">Base Platform</dt>
+<dd class="font-medium text-on-surface">VS Code Fork (1.93)</dd>
+</div>
+<div class="flex justify-between pb-1.5 border-b border-outline-variant/40">
+<dt class="text-outline">Primary Model</dt>
+<dd class="font-medium text-on-surface">Claude 3.5 Sonnet</dd>
+</div>
+<div class="flex justify-between pb-1.5 border-b border-outline-variant/40">
+<dt class="text-outline">Local Shadow Workspace</dt>
+<dd class="font-medium text-secondary">Yes (Automated)</dd>
+</div>
+<div class="flex justify-between pb-1.5 border-b border-outline-variant/40">
+<dt class="text-outline">BYOK (Custom API Key)</dt>
+<dd class="font-medium text-on-surface">Supported (Anthropic/OpenAI)</dd>
+</div>
+<div class="flex justify-between">
+<dt class="text-outline">Telemetry Opt-Out</dt>
+<dd class="font-medium text-secondary">Privacy Mode (SOC2)</dd>
+</div>
+</dl>
+</div>
+</aside>
+<!-- Main Editorial Body Column (8 Columns on Desktop) -->
+<article class="lg:col-span-8 max-w-[740px] space-y-12">
+<!-- Section 1: Methodology -->
+<section class="scroll-mt-24" id="methodology">
+<div class="flex items-center gap-2 mb-3">
+<span class="text-label-sm font-label-sm font-bold text-primary tracking-widest uppercase">01 / Methodology</span>
+<span class="h-px bg-outline-variant/60 flex-1"></span>
+</div>
+<h2 class="text-headline-md font-headline-md font-bold text-on-surface mb-4">
+            Practical Testing Methodology &amp; Lab Environment
+          </h2>
+<p class="font-body-md text-body-md text-on-surface mb-4 leading-relaxed">
+            Too many software evaluations rely on toy "build a snake game in 10 seconds" demos. At ToolScope, our evaluation framework exposes AI tooling to high-friction production environments where legacy debt, nested dependency trees, and strict compiler boundaries stress test prompt fidelity and hallucination rates.
+          </p>
+<!-- Methodology Spec Box -->
+<div class="p-5 bg-surface-container-lowest border border-outline-variant/80 rounded-lg my-6">
+<h3 class="text-label-md font-label-md font-bold text-on-surface mb-3 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">science</span>
+              Standardized Test Repositories (140 Hours Logged)
+            </h3>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-body-sm font-body-sm">
+<div class="p-3 bg-surface-container-low rounded border border-outline-variant/60">
+<strong class="block text-on-surface font-semibold mb-1">Repo A: Next.js 14 Monorepo (Turbo)</strong>
+<p class="text-on-surface-variant text-[13px] leading-normal">
+                  45,200 lines of TypeScript, Tailwind CSS, Prisma ORM, and complex server component hydration. Evaluated on full authentication refactors and schema migrations.
+                </p>
+</div>
+<div class="p-3 bg-surface-container-low rounded border border-outline-variant/60">
+<strong class="block text-on-surface font-semibold mb-1">Repo B: Distributed FastAPI Engine</strong>
+<p class="text-on-surface-variant text-[13px] leading-normal">
+                  12,800 lines of asynchronous Python, Pydantic v2 schemas, Redis task queues, and Docker orchestration. Evaluated on query optimization and zero-downtime task pipelines.
+                </p>
+</div>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+            All tests were benchmarked on two baseline hardware profiles: an Apple M3 Max (16-core CPU, 40-core GPU, 64GB Unified Memory) on macOS 14.6, and a Dell XPS 15 (Intel Core i9-13900H, 32GB RAM, RTX 4070) running Ubuntu 24.04 LTS. Both environments were tested over a symmetric 1Gbps fiber connection to rule out external transit latency.
+          </p>
+</section>
+<!-- Section 2: Indexing Architecture -->
+<section class="scroll-mt-24" id="architecture">
+<div class="flex items-center gap-2 mb-3">
+<span class="text-label-sm font-label-sm font-bold text-primary tracking-widest uppercase">02 / System Architecture</span>
+<span class="h-px bg-outline-variant/60 flex-1"></span>
+</div>
+<h2 class="text-headline-md font-headline-md font-bold text-on-surface mb-4">
+            Indexing Architecture &amp; Deep Code Analysis
+          </h2>
+<p class="font-body-md text-body-md text-on-surface mb-4 leading-relaxed">
+            Cursor is not simply an extension running in the VS Code background; it is a dedicated fork of Visual Studio Code. This architectural fork enables Cursor to run a persistent shadow workspace, hooking deeply into language server protocol (LSP) events, git status diffs, and AST parser updates before keystrokes even reach the main process.
+          </p>
+<!-- Interactive / Visual Code Terminal Simulation -->
+<div class="my-6 rounded-lg overflow-hidden border border-outline-variant/80 bg-inverse-surface text-inverse-on-surface text-xs font-mono">
+<div class="bg-[#242428] px-4 py-2 border-b border-outline-variant/20 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-error/70 inline-block"></span>
+<span class="w-3 h-3 rounded-full bg-secondary-container inline-block"></span>
+<span class="w-3 h-3 rounded-full bg-secondary inline-block"></span>
+<span class="ml-2 text-outline-variant text-[11px]">cursor-indexing-daemon.log (Monorepo A)</span>
+</div>
+<span class="text-[10px] text-outline-variant bg-[#1a1a1d] px-2 py-0.5 rounded">tnum: 1,420 files indexed</span>
+</div>
+<div class="p-4 space-y-1.5 overflow-x-auto text-[12px] leading-5 text-inverse-on-surface">
+<p class="text-outline-variant"><span class="text-secondary">[INDEXER::INIT]</span> Spawning 8 worker threads for AST parsing (Tree-sitter)...</p>
+<p><span class="text-secondary">[EMBEDDINGS]</span> Generating vector chunks: 45,210 LOC -&gt; 3,180 chunk tokens.</p>
+<p><span class="text-secondary">[MERKLE_TREE]</span> Computing incremental branch hash (git: feature/auth-v2)...</p>
+<p class="text-primary-fixed"><span class="text-primary-fixed-dim">[AGENTIC_DISPATCH]</span> Query: "Refactor session store from cookies to Redis JWT with sliding expiry"</p>
+<p><span class="text-secondary-fixed-dim">[CONTEXT_RECALL]</span> Retrieved 14 relevant files (Confidence: 0.962). Token footprint: 28,450 tokens.</p>
+<p class="text-[#98F6C5]"><span class="text-secondary">[DIFF_STREAM]</span> Applied multi-file spec changes across 6 files in 4.12s. Zero lint errors.</p>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+            The core difference between Cursor and conventional extension-based assistants (like standard GitHub Copilot or Cody) lies in its continuous remote-local hybrid indexing. When you invoke <code class="bg-surface-container px-1.5 py-0.5 rounded text-sm text-primary font-mono font-medium">@codebase</code>, Cursor synthesizes vector distance embeddings with direct symbol references from TypeScript’s compiler host, preventing the standard "context starvation" that plagues generic LLM chat windows.
+          </p>
+</section>
+<!-- Section 3: Multi-file Refactor Benchmarks Table -->
+<section class="scroll-mt-24" id="benchmarks">
+<div class="flex items-center gap-2 mb-3">
+<span class="text-label-sm font-label-sm font-bold text-primary tracking-widest uppercase">03 / Lab Benchmarks</span>
+<span class="h-px bg-outline-variant/60 flex-1"></span>
+</div>
+<h2 class="text-headline-md font-headline-md font-bold text-on-surface mb-2">
+            Multi-file Refactor Benchmarks &amp; Head-to-Head
+          </h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">
+            We performed 40 standardized multi-file refactoring runs across three leading AI-integrated coding environments under identical repository conditions.
+          </p>
+<!-- Spec / Benchmark Table -->
+<div class="border border-outline-variant/80 rounded-xl overflow-hidden bg-surface-container-lowest my-6">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-high border-b border-outline-variant/80 text-label-sm font-label-sm uppercase tracking-wider text-on-surface">
+<th class="py-3 px-4">Evaluation Metric</th>
+<th class="py-3 px-4 bg-primary/5 text-primary border-x border-outline-variant/60">Cursor (v0.45.8)</th>
+<th class="py-3 px-4">GitHub Copilot</th>
+<th class="py-3 px-4">Windsurf (Codeium)</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/60 text-body-sm font-body-sm">
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-3 px-4 font-medium text-on-surface">
+                      50-File Refactoring Accuracy
+                      <span class="block text-[11px] text-outline font-normal">Syntactic validity without compiler faults</span>
+</td>
+<td class="py-3 px-4 bg-primary/5 font-bold text-primary border-x border-outline-variant/60 tnum">
+                      91.4% <span class="text-[11px] text-secondary font-normal">(Top Score)</span>
+</td>
+<td class="py-3 px-4 text-on-surface-variant tnum">68.2%</td>
+<td class="py-3 px-4 text-on-surface-variant tnum">84.0%</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors bg-surface-container-low/40">
+<td class="py-3 px-4 font-medium text-on-surface">
+                      Cold Index Speed (45k LOC)
+                      <span class="block text-[11px] text-outline font-normal">Initial workspace vector sync time</span>
+</td>
+<td class="py-3 px-4 bg-primary/5 font-semibold text-on-surface border-x border-outline-variant/60 tnum">
+                      42 seconds
+                    </td>
+<td class="py-3 px-4 text-on-surface-variant tnum">N/A (Remote only)</td>
+<td class="py-3 px-4 text-on-surface-variant tnum">38 seconds</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-3 px-4 font-medium text-on-surface">
+                      Multi-file Diff Rollback
+                      <span class="block text-[11px] text-outline font-normal">One-click atomic restoration reliability</span>
+</td>
+<td class="py-3 px-4 bg-primary/5 font-bold text-secondary border-x border-outline-variant/60">
+                      100% Reliable
+                    </td>
+<td class="py-3 px-4 text-error font-medium">Fragmented</td>
+<td class="py-3 px-4 text-secondary font-medium">95% Reliable</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors bg-surface-container-low/40">
+<td class="py-3 px-4 font-medium text-on-surface">
+                      Active Editor RAM Footprint
+                      <span class="block text-[11px] text-outline font-normal">Idle memory consumption after indexing</span>
+</td>
+<td class="py-3 px-4 bg-primary/5 text-on-surface border-x border-outline-variant/60 tnum">
+                      1.84 GB
+                    </td>
+<td class="py-3 px-4 text-secondary font-semibold tnum">0.92 GB</td>
+<td class="py-3 px-4 text-on-surface-variant tnum">1.45 GB</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-3 px-4 font-medium text-on-surface">
+                      Context Window Management
+                      <span class="block text-[11px] text-outline font-normal">Relevance ranking over 30+ files</span>
+</td>
+<td class="py-3 px-4 bg-primary/5 font-bold text-primary border-x border-outline-variant/60">
+                      Superior (Custom RAG)
+                    </td>
+<td class="py-3 px-4 text-outline">Basic Snippet Match</td>
+<td class="py-3 px-4 text-on-surface">Advanced (Cascade)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-3 bg-surface-container-high/60 border-t border-outline-variant/60 text-label-sm font-label-sm text-outline flex items-center justify-between">
+<span>Data source: ToolScope Benchmark Lab Run ID #CS-2025-02</span>
+<span>All models benchmarked with Claude 3.5 Sonnet endpoints</span>
+</div>
+</div>
+</section>
+<!-- Section 4: Latency & Cost Reality Check -->
+<section class="scroll-mt-24" id="latency-costs">
+<div class="flex items-center gap-2 mb-3">
+<span class="text-label-sm font-label-sm font-bold text-primary tracking-widest uppercase">04 / Performance &amp; Tokens</span>
+<span class="h-px bg-outline-variant/60 flex-1"></span>
+</div>
+<h2 class="text-headline-md font-headline-md font-bold text-on-surface mb-4">
+            Latency &amp; Token Consumption Realities
+          </h2>
+<p class="font-body-md text-body-md text-on-surface mb-4 leading-relaxed">
+            While Cursor’s "Composer" multi-file agent delivers astonishing results, it is extraordinarily token-hungry. During our standardized session refactoring task, a single agentic loop consumed <strong class="text-on-surface font-semibold">142,000 prompt tokens</strong> and <strong class="text-on-surface font-semibold">6,800 completion tokens</strong> across 4 sequential thinking steps.
+          </p>
+<!-- Editorial Callout Card -->
+<div class="p-4 rounded-lg bg-surface-container-low border-l-4 border-primary text-body-sm font-body-sm my-5">
+<div class="font-label-md font-bold text-on-surface mb-1 flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[18px]">info</span>
+              The "Fast Request" Quota Throttle
+            </div>
+<p class="text-on-surface-variant leading-relaxed">
+              Cursor Pro tiers include 500 "fast" requests per month. In heavy professional refactoring environments, an engineer doing 30 complex Composer edits per day will burn through this allocation in approximately 16 working days. Once throttled to "slow queue", peak-hour latency can rise from 2.4 seconds to upwards of 18 seconds per prompt.
+            </p>
+</div>
+</section>
+<!-- Section 5: Pricing & License Tier Audits -->
+<section class="scroll-mt-24" id="pricing-audit">
+<div class="flex items-center gap-2 mb-3">
+<span class="text-label-sm font-label-sm font-bold text-primary tracking-widest uppercase">05 / Financial Analysis</span>
+<span class="h-px bg-outline-variant/60 flex-1"></span>
+</div>
+<h2 class="text-headline-md font-headline-md font-bold text-on-surface mb-2">
+            Pricing Table &amp; License Tier Audits
+          </h2>
+<div class="flex items-center gap-3 text-label-sm font-label-sm text-outline mb-6">
+<span>Pricing Audit Date: Feb 2025</span>
+<span>•</span>
+<span class="text-secondary font-medium">Independent Verified Tiers</span>
+</div>
+<!-- Pricing Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-6">
+<!-- Hobby Tier -->
+<div class="bg-surface-container-lowest border border-outline-variant/80 rounded-xl p-5 flex flex-col justify-between">
+<div>
+<span class="text-label-sm font-label-sm text-outline uppercase tracking-wider font-semibold">Hobby</span>
+<div class="mt-2 mb-3">
+<span class="text-headline-lg font-headline-lg font-bold text-on-surface">$0</span>
+<span class="text-outline text-label-sm">/ forever</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mb-4">
+                  For casual hobbyists evaluating editor mechanics without team codebases.
+                </p>
+<ul class="text-body-sm font-body-sm space-y-2 text-on-surface border-t border-outline-variant/40 pt-4">
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[16px]">check</span>
+<span>2,000 completions</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[16px]">check</span>
+<span>50 slow requests</span>
+</li>
+<li class="flex items-center gap-2 text-outline">
+<span class="material-symbols-outlined text-outline-variant text-[16px]">close</span>
+<span>No Composer Agent</span>
+</li>
+</ul>
+</div>
+<button class="mt-6 w-full py-2 px-3 text-label-md font-label-md rounded border border-outline-variant font-medium text-on-surface hover:bg-surface-container-low transition-colors">
+                Free Download
+              </button>
+</div>
+<!-- Pro Tier (Editor's Choice) -->
+<div class="bg-surface-container-lowest border-2 border-primary rounded-xl p-5 flex flex-col justify-between relative shadow-sm">
+<span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-on-primary text-[10px] font-label-sm font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full">
+                Most Popular
+              </span>
+<div>
+<span class="text-label-sm font-label-sm text-primary uppercase tracking-wider font-bold">Pro</span>
+<div class="mt-2 mb-3">
+<span class="text-headline-lg font-headline-lg font-bold text-on-surface">$20</span>
+<span class="text-outline text-label-sm">/ month</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mb-4">
+                  The recommended baseline for professional software engineers and contractors.
+                </p>
+<ul class="text-body-sm font-body-sm space-y-2 text-on-surface border-t border-outline-variant/40 pt-4">
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[16px]">check</span>
+<span><strong>500 fast requests</strong> / mo</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[16px]">check</span>
+<span>Unlimited slow requests</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[16px]">check</span>
+<span>Full Composer &amp; @codebase</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[16px]">check</span>
+<span>BYOK API Key option</span>
+</li>
+</ul>
+</div>
+<button class="mt-6 w-full py-2 px-3 text-label-md font-label-md rounded bg-primary-container text-on-primary hover:bg-primary font-semibold transition-colors">
+                Choose Pro
+              </button>
+</div>
+<!-- Business Tier -->
+<div class="bg-surface-container-lowest border border-outline-variant/80 rounded-xl p-5 flex flex-col justify-between">
+<div>
+<span class="text-label-sm font-label-sm text-outline uppercase tracking-wider font-semibold">Business</span>
+<div class="mt-2 mb-3">
+<span class="text-headline-lg font-headline-lg font-bold text-on-surface">$40</span>
+<span class="text-outline text-label-sm">/ user / mo</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mb-4">
+                  For engineering organizations needing centralized billing and zero-data retention.
+                </p>
+<ul class="text-body-sm font-body-sm space-y-2 text-on-surface border-t border-outline-variant/40 pt-4">
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[16px]">check</span>
+<span>Enforced Privacy Mode</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[16px]">check</span>
+<span>Centralized admin controls</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[16px]">check</span>
+<span>Usage-based pooled billing</span>
+</li>
+</ul>
+</div>
+<button class="mt-6 w-full py-2 px-3 text-label-md font-label-md rounded border border-outline-variant font-medium text-on-surface hover:bg-surface-container-low transition-colors">
+                Contact Sales
+              </button>
+</div>
+</div>
+</section>
+<!-- Section 6: Key Strengths vs Limitations Matrix -->
+<section class="scroll-mt-24">
+<h2 class="text-headline-md font-headline-md font-bold text-on-surface mb-6">
+            Key Strengths vs Limitations Breakdown
+          </h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Strengths -->
+<div class="bg-surface-container-lowest border border-outline-variant/80 rounded-xl p-5">
+<h3 class="text-label-md font-label-md font-bold text-secondary flex items-center gap-2 pb-3 border-b border-outline-variant/60">
+<span class="material-symbols-outlined text-secondary">thumb_up</span>
+                Empirically Verified Strengths
+              </h3>
+<div class="space-y-4 pt-4 text-body-sm font-body-sm">
+<div>
+<strong class="text-on-surface block font-semibold">Sub-second Inline Autocomplete</strong>
+<p class="text-on-surface-variant mt-0.5">Custom speculative decoding models predict cursor hops and multi-line syntax completions with negligible friction.</p>
+</div>
+<div>
+<strong class="text-on-surface block font-semibold">Flawless Git Merge &amp; Diff Visualizer</strong>
+<p class="text-on-surface-variant mt-0.5">Allows accepting or rejecting granular file hunks across the entire project directly from the Composer panel.</p>
+</div>
+<div>
+<strong class="text-on-surface block font-semibold">Zero Vendor Lock-in (VS Code Ecosystem)</strong>
+<p class="text-on-surface-variant mt-0.5">Direct 1:1 compatibility with all existing VS Code extensions, themes, keybindings, and settings profiles.</p>
+</div>
+</div>
+</div>
+<!-- Limitations -->
+<div class="bg-surface-container-lowest border border-outline-variant/80 rounded-xl p-5">
+<h3 class="text-label-md font-label-md font-bold text-error flex items-center gap-2 pb-3 border-b border-outline-variant/60">
+<span class="material-symbols-outlined text-error">thumb_down</span>
+                Empirically Documented Limitations
+              </h3>
+<div class="space-y-4 pt-4 text-body-sm font-body-sm">
+<div>
+<strong class="text-on-surface block font-semibold">Elevated Battery &amp; Memory Consumption</strong>
+<p class="text-on-surface-variant mt-0.5">Local vector index watchers and shadow workspace synchronization drain laptop battery ~25% faster than vanilla VS Code.</p>
+</div>
+<div>
+<strong class="text-on-surface block font-semibold">Occasional Hallucinations in Deep ASTs</strong>
+<p class="text-on-surface-variant mt-0.5">When refactoring repositories exceeding 100k LOC, symbol recall can occasionally confuse identically named interfaces.</p>
+</div>
+<div>
+<strong class="text-on-surface block font-semibold">Pricing Step-Up Friction</strong>
+<p class="text-on-surface-variant mt-0.5">Exceeding 500 fast requests pushes users to slow queues unless they provide custom OpenAI or Anthropic API credentials.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 7: Alternatives & Head-to-Head -->
+<section class="scroll-mt-24" id="alternatives">
+<div class="flex items-center gap-2 mb-3">
+<span class="text-label-sm font-label-sm font-bold text-primary tracking-widest uppercase">06 / Alternatives</span>
+<span class="h-px bg-outline-variant/60 flex-1"></span>
+</div>
+<h2 class="text-headline-md font-headline-md font-bold text-on-surface mb-4">
+            Alternatives &amp; Head-to-Head Evaluation
+          </h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">
+            If Cursor’s standalone editor model or subscription terms do not match your team’s compliance requirements, our lab tested four direct market competitors:
+          </p>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<!-- Alt 1: Windsurf -->
+<div class="p-4 bg-surface-container-lowest border border-outline-variant/80 rounded-lg hover:border-primary/50 transition-colors">
+<div class="flex justify-between items-start mb-2">
+<div>
+<h4 class="font-label-md font-bold text-on-surface">Windsurf (Codeium)</h4>
+<span class="text-[12px] text-outline">Standalone IDE Alternative</span>
+</div>
+<span class="text-label-sm font-bold text-primary bg-primary-fixed px-2 py-0.5 rounded tnum">8.6 / 10</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant">
+                Strongest direct rival. Features "Cascade Flows" that provide slightly better multi-step tool-use guidance, though multi-file git diff rollback is less refined.
+              </p>
+</div>
+<!-- Alt 2: GitHub Copilot Workspace -->
+<div class="p-4 bg-surface-container-lowest border border-outline-variant/80 rounded-lg hover:border-primary/50 transition-colors">
+<div class="flex justify-between items-start mb-2">
+<div>
+<h4 class="font-label-md font-bold text-on-surface">GitHub Copilot</h4>
+<span class="text-[12px] text-outline">Extension Ecosystem</span>
+</div>
+<span class="text-label-sm font-bold text-on-surface bg-surface-container px-2 py-0.5 rounded tnum">7.8 / 10</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant">
+                Superior enterprise compliance and native GitHub PR review integration, but severely lags in full codebase-wide semantic understanding and multi-file code editing.
+              </p>
+</div>
+<!-- Alt 3: Aider CLI -->
+<div class="p-4 bg-surface-container-lowest border border-outline-variant/80 rounded-lg hover:border-primary/50 transition-colors">
+<div class="flex justify-between items-start mb-2">
+<div>
+<h4 class="font-label-md font-bold text-on-surface">Aider CLI</h4>
+<span class="text-[12px] text-outline">Terminal-Based Git Agent</span>
+</div>
+<span class="text-label-sm font-bold text-on-surface bg-surface-container px-2 py-0.5 rounded tnum">8.4 / 10</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant">
+                The best zero-GUI terminal tool. Exceptional git commit tracking and atomic file management, but lacks the fluid IDE visual feedback loop non-terminal users expect.
+              </p>
+</div>
+<!-- Alt 4: Claude 3.7 CLI -->
+<div class="p-4 bg-surface-container-lowest border border-outline-variant/80 rounded-lg hover:border-primary/50 transition-colors">
+<div class="flex justify-between items-start mb-2">
+<div>
+<h4 class="font-label-md font-bold text-on-surface">Claude CLI / Workbench</h4>
+<span class="text-[12px] text-outline">Raw Reasoning Model</span>
+</div>
+<span class="text-label-sm font-bold text-on-surface bg-surface-container px-2 py-0.5 rounded tnum">8.0 / 10</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant">
+                Unmatched pure conceptual coding reasoning, but lacks the automatic AST workspace caching and editor-level autocomplete ergonomics that make Cursor seamless.
+              </p>
+</div>
+</div>
+</section>
+<!-- Section 8: Final Lab Verdict & Scorecard -->
+<section class="scroll-mt-24 pt-4 border-t border-outline-variant/60" id="final-verdict">
+<div class="flex items-center gap-2 mb-3">
+<span class="text-label-sm font-label-sm font-bold text-primary tracking-widest uppercase">07 / Conclusion</span>
+<span class="h-px bg-outline-variant/60 flex-1"></span>
+</div>
+<h2 class="text-headline-md font-headline-md font-bold text-on-surface mb-4">
+            Final Lab Verdict: Should You Switch?
+          </h2>
+<p class="font-body-md text-body-md text-on-surface mb-4 leading-relaxed">
+            For individual developers, contractors, and forward-leaning engineering pods, <strong class="text-on-surface font-semibold">Cursor represents the single highest ROI tooling upgrade available in 2025</strong>. Its indexed codebase query system (<code class="bg-surface-container px-1.5 py-0.5 rounded text-sm text-primary font-mono font-medium">@codebase</code>) genuinely changes how engineers navigate foreign legacy systems, shrinking multi-day orientation cycles into afternoon sessions.
+          </p>
+<p class="font-body-md text-body-md text-on-surface mb-6 leading-relaxed">
+            Enterprise procurement teams with strict air-gapped security frameworks will encounter friction with remote index transit, though Cursor’s SOC2 Type II compliance and verified Zero Data Retention agreements provide adequate reassurance for the majority of commercial codebases.
+          </p>
+<!-- Final Scorecard Summary Box -->
+<div class="p-6 bg-surface-container-low border border-outline-variant/80 rounded-xl flex flex-col sm:flex-row items-center justify-between gap-6">
+<div>
+<div class="text-label-sm font-label-sm text-secondary font-bold uppercase tracking-wider">Lab Approved • Editor's Choice</div>
+<h3 class="text-headline-sm font-headline-sm font-bold text-on-surface mt-1">Cursor v0.45.8</h3>
+<p class="text-body-sm font-body-sm text-outline mt-0.5">Tested across 140 Hours on TypeScript &amp; Python Production Stacks.</p>
+</div>
+<div class="flex items-center gap-4">
+<div class="text-right">
+<span class="block text-headline-md font-headline-md font-bold text-primary tnum">8.9 / 10</span>
+<span class="text-[11px] font-label-sm text-outline uppercase">Overall Lab Rating</span>
+</div>
+<a class="px-5 py-2.5 text-label-md font-label-md text-on-primary bg-primary-container hover:bg-primary rounded font-semibold transition-colors inline-flex items-center gap-1.5 shadow-sm" href="https://cursor.com" rel="noopener noreferrer" target="_blank">
+<span>Try Cursor Free</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</section>
+</article>
+</div>
+</main>
+<!-- Footer (Shared Component Source: Footer) -->
+<footer class="bg-surface-container-low text-primary full-width border-t border-outline-variant/60 transition-colors duration-150 ease-in-out mt-20">
+<div class="w-full max-w-7xl mx-auto px-gutter py-space-xl flex flex-col gap-space-lg">
+<div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 pb-6 border-b border-outline-variant/50">
+<div>
+<a class="text-headline-md font-headline-md font-bold text-on-surface" href="#">ToolScope</a>
+<p class="text-body-sm font-body-sm text-on-surface-variant max-w-md mt-1">
+            © 2025 ToolScope Media Inc. Rigorously researched, independent technology journalism.
+          </p>
+</div>
+<!-- Editorial Standards Link Cluster -->
+<div class="flex flex-wrap items-center gap-x-6 gap-y-2 text-label-sm font-label-sm">
+<a class="text-primary font-medium hover:underline underline-offset-4" href="#">Testing Methodology</a>
+<a class="text-on-surface-variant hover:text-on-surface hover:underline underline-offset-4 transition-colors" href="#">Editorial Standards</a>
+<a class="text-on-surface-variant hover:text-on-surface hover:underline underline-offset-4 transition-colors" href="#">Affiliate Disclosure</a>
+<a class="text-on-surface-variant hover:text-on-surface hover:underline underline-offset-4 transition-colors" href="#">Ethics Statement</a>
+<a class="text-on-surface-variant hover:text-on-surface hover:underline underline-offset-4 transition-colors" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-on-surface hover:underline underline-offset-4 transition-colors" href="#">Terms of Service</a>
+</div>
+</div>
+<div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-body-sm font-body-sm text-outline text-xs">
+<p>ToolScope benchmarks are conducted under isolated lab environments. No manufacturer influence or sponsored scoring permitted.</p>
+<p class="tnum">Editorial Audit Hash: #LAB-VERIFY-2025.2-CURS</p>
+</div>
+</div>
+</footer>
+</body></html>

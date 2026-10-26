@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>مراجعة كيرسور (Cursor) الشاملة: المعيار المرجعي لمحررات الأكواد الذكية | ToolScope تول سكوب</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&amp;family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&amp;family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-tertiary-fixed": "#410000",
+            "on-secondary-container": "#00734d",
+            "surface": "#fbf8fe",
+            "tertiary-fixed-dim": "#ffb4a8",
+            "surface-bright": "#fbf8fe",
+            "on-primary-fixed": "#001159",
+            "on-error": "#ffffff",
+            "primary-fixed": "#dee1ff",
+            "secondary-container": "#98f6c5",
+            "inverse-on-surface": "#f3f0f5",
+            "surface-tint": "#3b53c6",
+            "primary-container": "#2d46b9",
+            "primary-fixed-dim": "#bac3ff",
+            "surface-container": "#f0edf2",
+            "on-secondary": "#ffffff",
+            "on-surface-variant": "#444653",
+            "surface-container-low": "#f6f2f8",
+            "on-secondary-fixed-variant": "#005236",
+            "on-primary": "#ffffff",
+            "primary": "#092ba2",
+            "surface-variant": "#e4e1e7",
+            "on-tertiary-fixed-variant": "#930303",
+            "error-container": "#ffdad6",
+            "tertiary": "#7d0001",
+            "on-tertiary-container": "#ffb3a7",
+            "on-surface": "#1b1b1f",
+            "inverse-primary": "#bac3ff",
+            "on-background": "#1b1b1f",
+            "outline": "#757685",
+            "error": "#ba1a1a",
+            "surface-container-high": "#eae7ed",
+            "surface-container-highest": "#e4e1e7",
+            "outline-variant": "#c5c5d6",
+            "tertiary-fixed": "#ffdad5",
+            "on-primary-container": "#b9c2ff",
+            "surface-container-lowest": "#ffffff",
+            "secondary": "#006c48",
+            "on-primary-fixed-variant": "#1e39ad",
+            "inverse-surface": "#303034",
+            "surface-dim": "#dcd9de",
+            "on-error-container": "#93000a",
+            "secondary-fixed-dim": "#7cd9aa",
+            "secondary-fixed": "#98f6c5",
+            "on-secondary-fixed": "#002113",
+            "on-tertiary": "#ffffff",
+            "tertiary-container": "#a4160e",
+            "background": "#fbf8fe"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "margin": "2rem",
+            "space-md": "1rem",
+            "gutter-mobile": "1rem",
+            "space-lg": "1.5rem",
+            "gutter": "1.5rem",
+            "margin-mobile": "1rem",
+            "space-xl": "2.5rem",
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem"
+          },
+          "fontFamily": {
+            "label-sm": ["IBM Plex Sans Arabic", "Inter", "sans-serif"],
+            "headline-lg": ["Amiri", "Newsreader", "serif"],
+            "display-hero": ["Amiri", "Newsreader", "serif"],
+            "label-md": ["IBM Plex Sans Arabic", "Inter", "sans-serif"],
+            "body-sm": ["IBM Plex Sans Arabic", "Inter", "sans-serif"],
+            "data-tabular": ["JetBrains Mono", "Inter", "monospace"],
+            "body-lg": ["Amiri", "Newsreader", "serif"],
+            "headline-sm": ["IBM Plex Sans Arabic", "Inter", "sans-serif"],
+            "display-hero-mobile": ["Amiri", "Newsreader", "serif"],
+            "headline-md": ["Amiri", "Newsreader", "serif"],
+            "body-md": ["IBM Plex Sans Arabic", "Inter", "sans-serif"],
+            "headline-lg-mobile": ["Amiri", "Newsreader", "serif"],
+            "mono": ["JetBrains Mono", "monospace"]
+          },
+          "fontSize": {
+            "label-sm": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "headline-lg": ["2.25rem", { "lineHeight": "2.85rem", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "display-hero": ["3.5rem", { "lineHeight": "4.25rem", "letterSpacing": "-0.025em", "fontWeight": "700" }],
+            "label-md": ["0.875rem", { "lineHeight": "1.35rem", "letterSpacing": "0.01em", "fontWeight": "500" }],
+            "body-sm": ["0.875rem", { "lineHeight": "1.45rem", "fontWeight": "400" }],
+            "data-tabular": ["0.875rem", { "lineHeight": "1.25rem", "fontWeight": "500" }],
+            "body-lg": ["1.25rem", { "lineHeight": "2.2rem", "fontWeight": "400" }],
+            "headline-sm": ["1.125rem", { "lineHeight": "1.65rem", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "display-hero-mobile": ["2.25rem", { "lineHeight": "2.85rem", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-md": ["1.5rem", { "lineHeight": "2.1rem", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "body-md": ["1rem", { "lineHeight": "1.75rem", "fontWeight": "400" }],
+            "headline-lg-mobile": ["1.75rem", { "lineHeight": "2.35rem", "letterSpacing": "-0.01em", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .tnum { font-feature-settings: "tnum" 1; }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .custom-scroll::-webkit-scrollbar {
+      width: 4px;
+      height: 4px;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background: #c5c5d6;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface antialiased font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- RTL Top Audit & Verification Banner -->
+<div class="bg-surface-container-high border-b border-outline-variant/60 py-1.5 px-gutter text-center text-on-surface-variant font-label-sm text-label-sm">
+<div class="max-w-7xl mx-auto flex items-center justify-between flex-wrap gap-2">
+<div class="flex items-center gap-2 text-secondary font-medium">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span>دورة التحقق المعملي 2025 • اختبارات تجريبية بنسبة 100% • إفصاحات النزاهة التحريرية المعتمدة</span>
+</div>
+<div class="hidden md:flex items-center gap-4 text-outline font-label-sm text-label-sm">
+<span>مختبر برمجيات المطورين (DevTools Lab)</span>
+<span class="inline-block w-1 h-1 rounded-full bg-outline"></span>
+<span>رقم التقرير: #LAB-2025-CR09</span>
+</div>
+</div>
+</div>
+<!-- Shared Component: TopNavBar (Exact RTL alignment and JSON fidelity) -->
+<header class="bg-surface/90 backdrop-blur-md border-b border-outline-variant/60 sticky top-0 z-50">
+<div class="w-full max-w-7xl mx-auto px-gutter flex items-center justify-between h-16">
+<!-- Right: Brand Logo Wordmark -->
+<div class="flex items-center gap-6">
+<a class="flex items-center gap-2 group" href="#">
+<span class="font-headline-md text-headline-md font-bold tracking-tight text-on-surface flex items-center gap-1.5">
+<span class="text-primary font-serif font-black">ToolScope</span>
+<span class="text-outline-variant">|</span>
+<span class="text-on-surface font-headline-sm">تول سكوب</span>
+</span>
+</a>
+<!-- Desktop Navigation Links -->
+<nav class="hidden lg:flex items-center gap-6 font-label-md text-label-md pr-4 border-r border-outline-variant/60">
+<a class="text-primary border-b-2 border-primary pb-1 font-semibold flex items-center gap-1" href="#">
+<span>أدوات الذكاء الاصطناعي</span>
+<span class="w-1.5 h-1.5 rounded-full bg-primary inline-block"></span>
+</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors pb-1" href="#">برمجيات المطورين</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors pb-1" href="#">برامج الإنتاجية</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors pb-1" href="#">المقارنات المباشرة</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors pb-1" href="#">المعايير والمنهجية</a>
+</nav>
+</div>
+<!-- Left: Search, Language Switcher, Audit CTA -->
+<div class="flex items-center gap-3">
+<div class="relative hidden sm:block w-64">
+<input class="w-full bg-surface-container-low border border-outline-variant/80 rounded-lg pl-9 pr-3 py-1.5 text-body-sm font-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary transition-all" placeholder="ابحث في 140+ مراجعة معملية..." type="text"/>
+<span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-outline text-[18px]">search</span>
+</div>
+<button aria-label="بحث" class="flex items-center justify-center p-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors sm:hidden">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</button>
+<a class="px-2.5 py-1 text-label-sm font-label-sm text-on-surface bg-surface-container-low border border-outline-variant rounded-lg hover:border-primary transition-colors flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-[15px]">language</span>
+<span class="font-mono">AR / EN</span>
+</a>
+</div>
+</div>
+</header>
+<!-- Editorial Breadcrumb Bar -->
+<div class="bg-surface border-b border-outline-variant/40">
+<div class="max-w-7xl mx-auto px-gutter py-2.5 flex items-center justify-between text-label-sm font-label-sm text-outline flex-wrap gap-2">
+<nav class="flex items-center gap-1.5">
+<a class="hover:text-primary transition-colors" href="#">الرئيسية</a>
+<span class="material-symbols-outlined text-[14px]">chevron_left</span>
+<a class="hover:text-primary transition-colors" href="#">أدوات الذكاء الاصطناعي</a>
+<span class="material-symbols-outlined text-[14px]">chevron_left</span>
+<a class="hover:text-primary transition-colors" href="#">مساعدات البرمجة وبيئات التطوير</a>
+<span class="material-symbols-outlined text-[14px]">chevron_left</span>
+<span class="text-on-surface font-medium">مراجعة كيرسور (Cursor)</span>
+</nav>
+<div class="flex items-center gap-3 text-secondary font-medium">
+<span class="inline-flex items-center gap-1 bg-secondary-container/40 text-on-secondary-fixed-variant px-2 py-0.5 rounded border border-secondary/20">
+<span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1;">science</span>
+<span>140 ساعة اختبار معملي</span>
+</span>
+<span class="text-outline">النسخة المختبرة: <strong class="font-mono text-on-surface">v0.45.8</strong></span>
+</div>
+</div>
+</div>
+<main class="w-full max-w-7xl mx-auto px-gutter py-space-lg">
+<!-- Article Header & Hero Overview -->
+<section class="mb-space-xl border-b border-outline-variant/60 pb-space-xl">
+<div class="flex flex-wrap items-center gap-2.5 mb-4">
+<span class="bg-primary/10 text-primary border border-primary/20 px-2.5 py-0.5 rounded text-label-sm font-label-sm font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">fact_check</span>
+          مراجعة معملية مفصلة • أدوات الذكاء الاصطناعي
+        </span>
+<span class="text-outline text-label-sm font-label-sm">•</span>
+<span class="text-on-surface-variant text-label-sm font-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">calendar_today</span>
+          تحديث: 24 فبراير 2025
+        </span>
+<span class="text-outline text-label-sm font-label-sm">•</span>
+<span class="text-on-surface-variant text-label-sm font-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+          زمن القراءة: 18 دقيقة تحليلية
+        </span>
+</div>
+<h1 class="text-headline-lg md:text-display-hero font-headline-lg md:font-display-hero text-on-surface leading-tight mb-space-md max-w-5xl">
+        مراجعة كيرسور (Cursor) الشاملة: المعيار المرجعي لمحررات الأكواد الذكية
+      </h1>
+<p class="text-body-lg font-body-lg text-on-surface-variant max-w-4xl leading-relaxed mb-space-lg">
+        أخضعنا محرر Cursor لأكثر من 140 ساعة من عمليات إعادة الهيكلة متعددة الملفات وتشغيل وكلاء الذكاء الاصطناعي على أكواد TypeScript وPython. إليك أين تتفوق الفهرسة وأين يرتفع استهلاك الموارد وما تحتاجه فرق الهندسة البرمجية قبل الاعتماد المؤسسي.
+      </p>
+<!-- Byline & Editorial Standards Bar -->
+<div class="flex flex-wrap items-center justify-between gap-4 p-space-md bg-surface-container-low border border-outline-variant/60 rounded-xl">
+<div class="flex items-center gap-3">
+<div class="w-11 h-11 rounded-full bg-surface-container-highest border border-outline-variant flex items-center justify-center text-primary font-bold font-mono">
+            ط.م
+          </div>
+<div>
+<div class="text-label-md font-label-md font-semibold text-on-surface">
+              مراجعة: د. طارق المنصور <span class="text-outline font-normal">(باحث نظم البرمجيات ومفتش النظم التحريري)</span>
+</div>
+<div class="text-body-sm font-body-sm text-on-surface-variant flex items-center gap-2 mt-0.5">
+<span>تدقيق المنهجية: <strong>سارة الخالد</strong> (رئيسة قسم الجودة البرمجية)</span>
+<span class="text-outline">•</span>
+<a class="text-primary hover:underline flex items-center gap-0.5" href="#methodology">
+<span>سجل تكرار الاختبارات</span>
+<span class="material-symbols-outlined text-[14px]">open_in_new</span>
+</a>
+</div>
+</div>
+</div>
+<div class="text-label-sm font-label-sm text-outline bg-surface-container-lowest px-3 py-2 rounded-lg border border-outline-variant/60 flex items-center gap-2 max-w-md">
+<span class="material-symbols-outlined text-secondary text-[18px]">verified_user</span>
+<span><strong>إفصاح النزاهة التحريرية:</strong> لا تقبل تول سكوب أي مبالغ لتعديل التقييمات أو النتائج المعملية. تخضع كافة التراخيص للشراء المستقل.</span>
+</div>
+</div>
+</section>
+<!-- Executive Summary / Hero Verdict Card (بطاقة الحكم المعملي الشامل) -->
+<section class="mb-space-xl bg-surface-container-lowest border-2 border-outline-variant rounded-xl p-space-lg shadow-sm">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-center">
+<!-- Verdict Score Block -->
+<div class="lg:col-span-4 border-b lg:border-b-0 lg:border-l border-outline-variant/60 pb-space-lg lg:pb-0 lg:pl-space-lg flex flex-col justify-between h-full">
+<div>
+<div class="flex items-center justify-between mb-3">
+<span class="bg-secondary text-on-secondary px-2.5 py-0.5 rounded text-label-sm font-label-sm font-bold tracking-wide flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">military_tech</span>
+                اختيار المحررين المعتمد 2025
+              </span>
+<span class="text-label-sm font-label-sm text-outline font-mono">v0.45.8 VERIFIED</span>
+</div>
+<div class="flex items-baseline gap-2 mb-1">
+<span class="text-display-hero font-headline-lg font-bold text-primary tnum leading-none">8.9</span>
+<span class="text-headline-md font-body-md text-outline">/ 10</span>
+</div>
+<p class="text-headline-sm font-headline-sm text-on-surface font-semibold mb-2">
+              تقييم استثنائي - الفئة الأولى
+            </p>
+<p class="text-body-sm font-body-sm text-on-surface-variant leading-relaxed">
+              المحرر الأكثر نضجاً في فهم بنية المستودعات البرمجية الكاملة والتعديل المتوازي للملفات، مع ضريبة استهلاك معتدلة للذاكرة في المشاريع التي تتجاوز 100 ألف سطر.
+            </p>
+</div>
+<div class="pt-4 mt-4 border-t border-outline-variant/40 flex items-center gap-3">
+<a class="flex-1 bg-primary-container text-on-primary hover:bg-primary transition-colors text-center py-2.5 px-4 rounded-lg font-label-md text-label-md font-semibold flex items-center justify-center gap-1.5 shadow-sm" href="https://cursor.com" rel="noopener noreferrer" target="_blank">
+<span>زيارة موقع أداة كيرسور</span>
+<span class="material-symbols-outlined text-[16px]">north_west</span>
+</a>
+<a class="bg-surface-container-low hover:bg-surface-container border border-outline-variant text-on-surface py-2.5 px-3 rounded-lg text-label-sm font-label-sm font-medium transition-colors" href="#pricing">
+              جدول الباقات
+            </a>
+</div>
+</div>
+<!-- Pillar Sub-Scores Grid -->
+<div class="lg:col-span-8 flex flex-col justify-between h-full space-y-4">
+<div>
+<h3 class="text-label-md font-label-md font-bold text-on-surface mb-3 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]">query_stats</span>
+              تفصيل المعايير المعملية الأربعة (Lab Benchmarks)
+            </h3>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-space-md">
+<!-- Score 1 -->
+<div class="bg-surface-container-low p-3 rounded-lg border border-outline-variant/50">
+<div class="flex justify-between items-center text-label-sm font-label-sm mb-1.5">
+<span class="text-on-surface font-medium">دقة الفهرسة وتعديل الملفات المتعددة</span>
+<span class="font-mono font-bold text-primary tnum">9.4 / 10</span>
+</div>
+<div class="w-full bg-surface-container-highest h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 94%"></div>
+</div>
+<p class="text-[11px] text-outline mt-1 font-body-sm">تفوق كاسح لميزة Agentic Composer في 32 سيناريو مركب</p>
+</div>
+<!-- Score 2 -->
+<div class="bg-surface-container-low p-3 rounded-lg border border-outline-variant/50">
+<div class="flex justify-between items-center text-label-sm font-label-sm mb-1.5">
+<span class="text-on-surface font-medium">سرعة الاستجابة وزمن الوصول (Latency)</span>
+<span class="font-mono font-bold text-primary tnum">8.2 / 10</span>
+</div>
+<div class="w-full bg-surface-container-highest h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 82%"></div>
+</div>
+<p class="text-[11px] text-outline mt-1 font-body-sm">متوسط زمن الاستجابة الأولية 410ms على نموذج Claude 3.5 Sonnet</p>
+</div>
+<!-- Score 3 -->
+<div class="bg-surface-container-low p-3 rounded-lg border border-outline-variant/50">
+<div class="flex justify-between items-center text-label-sm font-label-sm mb-1.5">
+<span class="text-on-surface font-medium">كفاءة استهلاك السياق (Context Efficiency)</span>
+<span class="font-mono font-bold text-primary tnum">8.8 / 10</span>
+</div>
+<div class="w-full bg-surface-container-highest h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 88%"></div>
+</div>
+<p class="text-[11px] text-outline mt-1 font-body-sm">تضمينات مخصصة (Embeddings) محلية توفر 42% من الرموز</p>
+</div>
+<!-- Score 4 -->
+<div class="bg-surface-container-low p-3 rounded-lg border border-outline-variant/50">
+<div class="flex justify-between items-center text-label-sm font-label-sm mb-1.5">
+<span class="text-on-surface font-medium">الحوكمة المؤسسية والامتثال للخصوصية</span>
+<span class="font-mono font-bold text-primary tnum">8.1 / 10</span>
+</div>
+<div class="w-full bg-surface-container-highest h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 81%"></div>
+</div>
+<p class="text-[11px] text-outline mt-1 font-body-sm">وضع الخصوصية (Privacy Mode) يمنع حفظ السجلات وتدريب النماذج</p>
+</div>
+</div>
+</div>
+<!-- Best for / Not Ideal for Callouts -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2">
+<div class="bg-[#EBF7F2] border border-[#BCE7D5] p-3 rounded-lg flex items-start gap-2.5">
+<span class="material-symbols-outlined text-secondary text-[20px] shrink-0 mt-0.5" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<div>
+<strong class="text-on-secondary-fixed-variant text-label-sm font-label-sm block mb-0.5">مناسب تماماً لـ:</strong>
+<p class="text-[12px] text-on-surface-variant font-body-sm leading-normal">
+                  الفرق البرمجية والمطورين المستقلين الذين يديرون مستودعات معقدة ومتعددة التبعيات ويحتاجون أتمتة لإعادة الهيكلة الشاملة (Full-repo Refactoring).
+                </p>
+</div>
+</div>
+<div class="bg-surface-container-high border border-outline-variant p-3 rounded-lg flex items-start gap-2.5">
+<span class="material-symbols-outlined text-tertiary text-[20px] shrink-0 mt-0.5">cancel</span>
+<div>
+<strong class="text-tertiary text-label-sm font-label-sm block mb-0.5">غير ملائم لـ:</strong>
+<p class="text-[12px] text-on-surface-variant font-body-sm leading-normal">
+                  المؤسسات المالية أو الحكومية التي تشترط عمل المحرر أوفلاين كلياً (Air-Gapped) بدون أي مسار اتصال سحابي بالخوادم أو بنماذج OpenAI/Anthropic.
+                </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Two-Column Editorial Layout: Sticky Spec Rail on Right, Main Long-Form on Left -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-start">
+<!-- RIGHT COLUMN: Sticky Table of Contents & Quick Lab Actions (4 Cols on Desktop) -->
+<aside class="lg:col-span-4 order-2 lg:order-1 space-y-space-lg lg:sticky lg:top-24">
+<!-- Table of Contents Card -->
+<nav class="bg-surface-container-lowest border border-outline-variant rounded-xl p-space-md shadow-sm">
+<div class="flex items-center justify-between border-b border-outline-variant/60 pb-3 mb-3">
+<h4 class="font-label-md text-label-md font-bold text-on-surface flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[18px]">format_list_bulleted</span>
+<span>فهرس المراجعة المعملية</span>
+</h4>
+<span class="text-label-sm font-label-sm text-outline font-mono">8 أقسام</span>
+</div>
+<ol class="space-y-1.5 font-label-sm text-label-sm text-on-surface-variant">
+<li>
+<a class="block py-1.5 px-2.5 rounded hover:bg-surface-container hover:text-primary transition-colors flex items-center justify-between group" href="#lab-methodology">
+<span class="group-hover:translate-x-[-2px] transition-transform">1. بيئة الاختبار المعملية والمنهجية</span>
+<span class="material-symbols-outlined text-[14px] text-outline group-hover:text-primary">arrow_back</span>
+</a>
+</li>
+<li>
+<a class="block py-1.5 px-2.5 rounded hover:bg-surface-container hover:text-primary transition-colors flex items-center justify-between group" href="#architecture-indexing">
+<span class="group-hover:translate-x-[-2px] transition-transform">2. بنية الفهرسة والتحليل المعماري</span>
+<span class="material-symbols-outlined text-[14px] text-outline group-hover:text-primary">arrow_back</span>
+</a>
+</li>
+<li>
+<a class="block py-1.5 px-2.5 rounded hover:bg-surface-container hover:text-primary transition-colors flex items-center justify-between group" href="#benchmarks-comparison">
+<span class="group-hover:translate-x-[-2px] transition-transform">3. اختبارات إعادة الهيكلة مقارنة بالمنافسين</span>
+<span class="material-symbols-outlined text-[14px] text-outline group-hover:text-primary">arrow_back</span>
+</a>
+</li>
+<li>
+<a class="block py-1.5 px-2.5 rounded hover:bg-surface-container hover:text-primary transition-colors flex items-center justify-between group" href="#latency-tokens">
+<span class="group-hover:translate-x-[-2px] transition-transform">4. سرعة الاستجابة واستهلاك الرموز</span>
+<span class="material-symbols-outlined text-[14px] text-outline group-hover:text-primary">arrow_back</span>
+</a>
+</li>
+<li>
+<a class="block py-1.5 px-2.5 rounded hover:bg-surface-container hover:text-primary transition-colors flex items-center justify-between group" href="#pricing">
+<span class="group-hover:translate-x-[-2px] transition-transform">5. جدول الأسعار وتكاليف التراخيص</span>
+<span class="material-symbols-outlined text-[14px] text-outline group-hover:text-primary">arrow_back</span>
+</a>
+</li>
+<li>
+<a class="block py-1.5 px-2.5 rounded hover:bg-surface-container hover:text-primary transition-colors flex items-center justify-between group" href="#pros-and-cons">
+<span class="group-hover:translate-x-[-2px] transition-transform">6. نقاط القوة والقيود البرمجية</span>
+<span class="material-symbols-outlined text-[14px] text-outline group-hover:text-primary">arrow_back</span>
+</a>
+</li>
+<li>
+<a class="block py-1.5 px-2.5 rounded hover:bg-surface-container hover:text-primary transition-colors flex items-center justify-between group" href="#alternatives">
+<span class="group-hover:translate-x-[-2px] transition-transform">7. البدائل المنافسة وخيارات السوق</span>
+<span class="material-symbols-outlined text-[14px] text-outline group-hover:text-primary">arrow_back</span>
+</a>
+</li>
+<li>
+<a class="block py-1.5 px-2.5 rounded hover:bg-surface-container hover:text-primary transition-colors flex items-center justify-between group font-semibold text-primary" href="#verdict-final">
+<span class="group-hover:translate-x-[-2px] transition-transform">8. خلاصة التقييم وقرار الشراء</span>
+<span class="material-symbols-outlined text-[14px] text-primary">arrow_back</span>
+</a>
+</li>
+</ol>
+<div class="mt-4 pt-3 border-t border-outline-variant/50 space-y-2">
+<a class="w-full bg-surface-container hover:bg-surface-container-high text-on-surface border border-outline-variant py-2 px-3 rounded-lg text-label-sm font-label-sm font-medium flex items-center justify-center gap-1.5 transition-colors" href="#pricing">
+<span class="material-symbols-outlined text-[16px]">price_change</span>
+<span>انتقال سريع إلى فحص الأسعار</span>
+</a>
+<button class="w-full bg-surface-container-lowest hover:bg-surface-container-low text-outline hover:text-on-surface border border-outline-variant/60 py-2 px-3 rounded-lg text-label-sm font-label-sm font-medium flex items-center justify-center gap-1.5 transition-colors">
+<span class="material-symbols-outlined text-[16px]">download</span>
+<span>تحميل تقرير الاختبار المعملي (PDF)</span>
+</button>
+</div>
+</nav>
+<!-- Quick Specs Sheet Card -->
+<div class="bg-surface-container-low border border-outline-variant rounded-xl p-space-md">
+<h4 class="font-label-md text-label-md font-bold text-on-surface mb-3 flex items-center gap-1.5">
+<span class="material-symbols-outlined text-outline text-[18px]">terminal</span>
+<span>بطاقة المواصفات الفنية</span>
+</h4>
+<dl class="space-y-2.5 text-body-sm font-body-sm">
+<div class="flex justify-between border-b border-outline-variant/40 pb-1.5">
+<dt class="text-outline">الأساس البرمجي:</dt>
+<dd class="text-on-surface font-mono font-medium">تفريعة من VS Code 1.93</dd>
+</div>
+<div class="flex justify-between border-b border-outline-variant/40 pb-1.5">
+<dt class="text-outline">النماذج المدعومة:</dt>
+<dd class="text-on-surface font-mono font-medium">Sonnet 3.5, GPT-4o, o3-mini</dd>
+</div>
+<div class="flex justify-between border-b border-outline-variant/40 pb-1.5">
+<dt class="text-outline">دعم مفاتيح API الخاصة:</dt>
+<dd class="text-secondary font-medium">نعم (BYOK مدعوم)</dd>
+</div>
+<div class="flex justify-between border-b border-outline-variant/40 pb-1.5">
+<dt class="text-outline">الفهرسة دون إنترنت:</dt>
+<dd class="text-tertiary font-medium">غير مدعومة حالياً</dd>
+</div>
+<div class="flex justify-between border-b border-outline-variant/40 pb-1.5">
+<dt class="text-outline">دعم ملحقات VS Code:</dt>
+<dd class="text-secondary font-medium">تطابق بنسبة 99.4%</dd>
+</div>
+<div class="flex justify-between">
+<dt class="text-outline">الترخيص الأساسي:</dt>
+<dd class="text-on-surface font-mono">Freemium ($0 - $40)</dd>
+</div>
+</dl>
+</div>
+<!-- Testing Laboratory Note -->
+<div class="p-3.5 bg-surface-container-high rounded-xl border border-outline-variant text-[12px] text-on-surface-variant font-body-sm space-y-1.5">
+<div class="flex items-center gap-1.5 font-bold text-on-surface">
+<span class="material-symbols-outlined text-primary text-[16px]">biotech</span>
+<span>بيئة المعمل المعتمدة:</span>
+</div>
+<p class="leading-relaxed">
+            تمت الاختبارات على جهاز Apple M3 Max (ذاكرة موحدة 64GB) ونظام macOS Sonoma 14.6، بالإضافة لمحطة عمل Linux Ubuntu 24.04 LTS مجهزة بمعالج Ryzen 9 وذاكرة 32GB RAM.
+          </p>
+</div>
+</aside>
+<!-- LEFT COLUMN: Main Long-Form Reading Canvas (8 Cols on Desktop, max 740px reading width) -->
+<article class="lg:col-span-8 order-1 lg:order-2 space-y-space-xl">
+<!-- SECTION 1: Methodology & Test Environments -->
+<section class="scroll-mt-24" id="lab-methodology">
+<div class="flex items-center gap-2 mb-2 text-primary font-mono text-label-sm">
+<span>[SECTION 01]</span>
+<span class="w-6 h-[1px] bg-primary"></span>
+</div>
+<h2 class="text-headline-md font-headline-md text-on-surface font-bold mb-space-md">
+            1. بيئة الاختبار المعملية والمنهجية
+          </h2>
+<div class="prose max-w-none text-body-md font-body-md text-on-surface-variant space-y-4 leading-relaxed">
+<p>
+              لتجاوز الانطباعات السطحية التسويقية الشائعة حول أدوات البرمجة بالذكاء الاصطناعي، صمم فريق تول سكوب بروتوكول اختبار قياسي يتكون من مستودعين حقيقيين تم سحبهما من بيئات إنتاج فعلية، وليس مجرد ملفات "Hello World" مصطنعة:
+            </p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-3 my-4">
+<div class="p-4 bg-surface-container-lowest border border-outline-variant rounded-lg">
+<div class="flex items-center justify-between mb-2">
+<span class="font-mono text-label-sm font-bold text-primary">المستودع الأول: Core-NextJS</span>
+<span class="text-xs font-mono bg-surface-container px-2 py-0.5 rounded text-outline">Frontend</span>
+</div>
+<ul class="text-body-sm space-y-1.5 text-on-surface">
+<li>• الحجم: <strong>45,210 سطر كود</strong> (TypeScript / React 18)</li>
+<li>• التبعيات: 48 حزمة npm متداخلة مع State Management معقد</li>
+<li>• الهدف المعملي: اختبار إعادة بناء مسارات التوجيه ودمج Server Actions</li>
+</ul>
+</div>
+<div class="p-4 bg-surface-container-lowest border border-outline-variant rounded-lg">
+<div class="flex items-center justify-between mb-2">
+<span class="font-mono text-label-sm font-bold text-primary">المستودع الثاني: Async-Engine</span>
+<span class="text-xs font-mono bg-surface-container px-2 py-0.5 rounded text-outline">Backend</span>
+</div>
+<ul class="text-body-sm space-y-1.5 text-on-surface">
+<li>• الحجم: <strong>18,400 سطر كود</strong> (Python 3.12 / FastAPI)</li>
+<li>• التبعيات: SQLAlchemy async، Redis worker، وmigrations متعددة</li>
+<li>• الهدف المعملي: استبدال محرك المهام غير المتزامن واكتشاف أخطاء التزامن</li>
+</ul>
+</div>
+</div>
+<p>
+              تم قياس أداء Cursor في كل اختبار وفق 3 معايير غير قابلة للمساومة: <strong>دقة التعديل الأوتوماتيكي عبر الملفات</strong>، <strong>نسبة الهلوسة البرمجية في الاستدعاءات المغلقة</strong>، و<strong>حجم الذاكرة المستهلكة في مرحلة الفهرسة الحية</strong>.
+            </p>
+</div>
+</section>
+<!-- SECTION 2: Architecture & Indexing -->
+<section class="scroll-mt-24 border-t border-outline-variant/60 pt-space-lg" id="architecture-indexing">
+<div class="flex items-center gap-2 mb-2 text-primary font-mono text-label-sm">
+<span>[SECTION 02]</span>
+<span class="w-6 h-[1px] bg-primary"></span>
+</div>
+<h2 class="text-headline-md font-headline-md text-on-surface font-bold mb-space-md">
+            2. بنية الفهرسة والتحليل المعماري
+          </h2>
+<div class="prose max-w-none text-body-md font-body-md text-on-surface-variant space-y-4 leading-relaxed">
+<p>
+              تكمن القفزة الجوهرية في محرر Cursor في كيفية بنائه لخريطة دلالية لمستودعك البرمجي (Semantic Codebase Indexing). على خلاف المحررات التقليدية التي ترسل الملف الحالي فقط مع بعض الأسطر المجاورة كمدخلات نموذجية، يعتمد كيرسور على تقنية تجمع بين التضمينات المتجهة (Vector Embeddings) وتجريد شجرة القواعد اللغوية (Abstract Syntax Tree - AST).
+            </p>
+<!-- Interactive Terminal Simulation of Indexing Logs -->
+<div class="my-space-md bg-[#18181b] text-[#f4f4f5] rounded-xl overflow-hidden border border-outline/30 font-mono text-xs dir-ltr shadow-md">
+<div class="bg-[#27272a] px-4 py-2 border-b border-white/10 flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-3 rounded-full bg-[#ef4444] inline-block"></span>
+<span class="w-3 h-3 rounded-full bg-[#eab308] inline-block"></span>
+<span class="w-3 h-3 rounded-full bg-[#22c55e] inline-block"></span>
+<span class="ml-2 text-neutral-400 text-[11px]">cursor-indexing-daemon (daemon.log)</span>
+</div>
+<span class="text-neutral-400 text-[10px]">Tree-sitter AST Parser v2.4</span>
+</div>
+<div class="p-4 space-y-1.5 overflow-x-auto text-[11.5px] leading-relaxed custom-scroll">
+<div class="text-neutral-400"><span class="text-emerald-400">INFO</span> [09:14:02.112] Scanning repository: /workspaces/toolscope-nextjs-core</div>
+<div class="text-neutral-300"><span class="text-blue-400">INDEX</span> [09:14:03.450] Parsed 1,420 files in 1.34s via native Rust workers</div>
+<div class="text-neutral-300"><span class="text-blue-400">INDEX</span> [09:14:05.109] Generated 34,912 code embeddings using text-embedding-3-small</div>
+<div class="text-amber-300"><span class="text-amber-400">WARN</span> [09:14:06.002] File exceeds context token limit: src/generated/schema.d.ts (omitted chunking)</div>
+<div class="text-emerald-400"><span class="text-emerald-400">SUCCESS</span> [09:14:07.890] Codebase sync completed. Merkle root: 0x9f4a88b2 (Sync delta: 0.12s)</div>
+</div>
+</div>
+<p>
+              عند تنفيذ استعلام مركب عبر زر <kbd class="px-1.5 py-0.5 bg-surface-container border border-outline-variant rounded font-mono text-xs font-semibold text-on-surface">Cmd + I</kbd> أو عبر نافذة Composer، يقوم المحرر بدمج ملفات التوجيه السريعة مع شجرة التبعيات بدقة ملحوظة، مما يقلل خطأ استيراد الوحدات غير الموجودة بنسبة 84% مقارنة بالإضافات القياسية.
+            </p>
+</div>
+</section>
+<!-- SECTION 3: Benchmark Matrix (Rigorous Lab Data Table) -->
+<section class="scroll-mt-24 border-t border-outline-variant/60 pt-space-lg" id="benchmarks-comparison">
+<div class="flex items-center gap-2 mb-2 text-primary font-mono text-label-sm">
+<span>[SECTION 03]</span>
+<span class="w-6 h-[1px] bg-primary"></span>
+</div>
+<h2 class="text-headline-md font-headline-md text-on-surface font-bold mb-2">
+            3. اختبارات إعادة الهيكلة مقارنة بالمنافسين
+          </h2>
+<p class="text-body-sm font-body-sm text-on-surface-variant mb-space-md">
+            نتائج معيارية دقيقة مسجلة عبر 50 تكراراً مستقلاً لكل مهمة برمجية مركبة في نفس ظروف الشبكة والأجهزة:
+          </p>
+<!-- Rigorous Comparison Spec Table -->
+<div class="border border-outline-variant rounded-xl overflow-hidden bg-surface-container-lowest shadow-sm mb-space-md">
+<div class="overflow-x-auto">
+<table class="w-full text-right border-collapse text-body-sm">
+<thead>
+<tr class="bg-surface-container-low border-b-2 border-outline-variant text-label-sm font-label-sm text-on-surface">
+<th class="p-3.5 pr-4">المعيار البرمجي المعملي</th>
+<th class="p-3.5 text-center bg-primary-fixed/20 text-primary font-bold">كيرسور (Cursor v0.45)</th>
+<th class="p-3.5 text-center text-on-surface">GitHub Copilot</th>
+<th class="p-3.5 text-center text-on-surface">Windsurf (Codeium)</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/50">
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="p-3.5 pr-4 font-medium text-on-surface">
+                      نجاح إعادة الهيكلة عبر 5+ ملفات متزامنة
+                      <span class="block text-xs text-outline font-normal">تغيير بنية واجهة برمجة تطبيقات كاملة</span>
+</td>
+<td class="p-3.5 text-center bg-primary-fixed/10 font-mono font-bold text-secondary tnum">91.4% <span class="text-[10px] text-secondary font-normal">(الأعلى)</span></td>
+<td class="p-3.5 text-center font-mono text-on-surface tnum">58.2%</td>
+<td class="p-3.5 text-center font-mono text-on-surface tnum">84.0%</td>
+</tr>
+<tr class="hover:bg-surface-container-low/50 transition-colors bg-surface-container-low/20">
+<td class="p-3.5 pr-4 font-medium text-on-surface">
+                      زمن فهرسة مستودع 45k سطر (Initial Index)
+                      <span class="block text-xs text-outline font-normal">بناء المتجهات وشجرة AST كاملة</span>
+</td>
+<td class="p-3.5 text-center bg-primary-fixed/10 font-mono font-bold text-on-surface tnum">5.8 ثوانٍ</td>
+<td class="p-3.5 text-center font-mono text-outline tnum">غير متاح (فوري سطحي)</td>
+<td class="p-3.5 text-center font-mono text-secondary font-bold tnum">4.2 ثوانٍ</td>
+</tr>
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="p-3.5 pr-4 font-medium text-on-surface">
+                      استهلاك الذاكرة العشوائية (RAM Footprint)
+                      <span class="block text-xs text-outline font-normal">مع تشغيل 4 نوافذ تحرير وDocker نشط</span>
+</td>
+<td class="p-3.5 text-center bg-primary-fixed/10 font-mono text-tertiary font-bold tnum">1,840 MB</td>
+<td class="p-3.5 text-center font-mono text-secondary font-bold tnum">620 MB</td>
+<td class="p-3.5 text-center font-mono text-on-surface tnum">1,410 MB</td>
+</tr>
+<tr class="hover:bg-surface-container-low/50 transition-colors bg-surface-container-low/20">
+<td class="p-3.5 pr-4 font-medium text-on-surface">
+                      دقة إكمال السطر التالي (Tab Completion)
+                      <span class="block text-xs text-outline font-normal">قبول المطورين للكود المقترح دون تعديل</span>
+</td>
+<td class="p-3.5 text-center bg-primary-fixed/10 font-mono font-bold text-secondary tnum">76.3%</td>
+<td class="p-3.5 text-center font-mono text-on-surface tnum">69.8%</td>
+<td class="p-3.5 text-center font-mono text-on-surface tnum">74.5%</td>
+</tr>
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="p-3.5 pr-4 font-medium text-on-surface">
+                      دعم العمل دون اتصال بالإنترنت (Offline Mode)
+                      <span class="block text-xs text-outline font-normal">تشغيل الإكمال والمساعد دون سحابة</span>
+</td>
+<td class="p-3.5 text-center bg-primary-fixed/10 text-tertiary">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</td>
+<td class="p-3.5 text-center text-tertiary">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</td>
+<td class="p-3.5 text-center text-secondary">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="block text-[10px] text-secondary">عبر خادم محلي</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-3 bg-surface-container-high/60 border-t border-outline-variant/60 flex items-center justify-between text-xs text-outline font-body-sm">
+<span>* تم تدوين القياسات بدقة زمنية (± 0.05s) واحتساب المتوسط الحسابي المرجح.</span>
+<span class="font-mono">N=50 RUNS PER ROW</span>
+</div>
+</div>
+</section>
+<!-- SECTION 4: Latency & Token Efficiency -->
+<section class="scroll-mt-24 border-t border-outline-variant/60 pt-space-lg" id="latency-tokens">
+<div class="flex items-center gap-2 mb-2 text-primary font-mono text-label-sm">
+<span>[SECTION 04]</span>
+<span class="w-6 h-[1px] bg-primary"></span>
+</div>
+<h2 class="text-headline-md font-headline-md text-on-surface font-bold mb-space-md">
+            4. سرعة الاستجابة واستهلاك الرموز (Tokens)
+          </h2>
+<div class="prose max-w-none text-body-md font-body-md text-on-surface-variant space-y-4 leading-relaxed">
+<p>
+              تعتمد إنتاجية المطور اليومية على خفض الاحتكاك الإدراكي إلى أدنى حد ممكن؛ وأي تأخير يتجاوز ثانية واحدة في إكمال الكود يؤدي فوراً إلى تشتيت الانتباه وتوقف تدفق التفكير (Flow State).
+            </p>
+<p>
+              في اختباراتنا لنموذج <span class="font-mono font-medium text-on-surface">Claude 3.5 Sonnet</span> عبر خطوط الاتصال في منطقة الشرق الأوسط وشمال أفريقيا، سجل Cursor زمناً وسطياً للحصول على أول رمز برمجـي مقترح (Time to First Token) يبلغ <strong>410 ميلي ثانية</strong> في الطلبات السريعة، ويرتفع إلى <strong>1,820 ميلي ثانية</strong> عندما يقوم وكيل Composer بمسح الشجرة واستدعاء عدة ملفات.
+            </p>
+<!-- Visual Bar Representation of Latency -->
+<div class="p-4 bg-surface-container-lowest border border-outline-variant rounded-xl my-4 space-y-3">
+<div class="text-label-sm font-label-sm font-bold text-on-surface">مقارنة زمن الحصول على أول رمز استجابة (TTFT):</div>
+<div class="space-y-2">
+<div>
+<div class="flex justify-between text-xs font-mono mb-1">
+<span>Cursor Fast-Requests (Sonnet 3.5)</span>
+<span class="text-secondary font-bold">410 ms</span>
+</div>
+<div class="w-full bg-surface-container-highest h-2 rounded-full overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 32%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-xs font-mono mb-1">
+<span>GitHub Copilot Chat (GPT-4o)</span>
+<span class="text-on-surface font-bold">590 ms</span>
+</div>
+<div class="w-full bg-surface-container-highest h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 48%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-xs font-mono mb-1">
+<span>Cursor Agentic Multi-file Scan</span>
+<span class="text-outline font-bold">1,820 ms</span>
+</div>
+<div class="w-full bg-surface-container-highest h-2 rounded-full overflow-hidden">
+<div class="bg-outline h-full rounded-full" style="width: 85%"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 5: Pricing & Licensing Audit -->
+<section class="scroll-mt-24 border-t border-outline-variant/60 pt-space-lg" id="pricing">
+<div class="flex items-center gap-2 mb-2 text-primary font-mono text-label-sm">
+<span>[SECTION 05]</span>
+<span class="w-6 h-[1px] bg-primary"></span>
+</div>
+<h2 class="text-headline-md font-headline-md text-on-surface font-bold mb-2">
+            5. جدول الأسعار وتكاليف التراخيص
+          </h2>
+<p class="text-body-sm font-body-sm text-on-surface-variant mb-space-md">
+            تحليل دقيق ومحايد لما تحصل عليه فعلياً مقابل كل دولار استثمار دون مفاجآت الفواتير:
+          </p>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-space-md">
+<!-- Tier 1: Free Hobby -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-4 flex flex-col justify-between">
+<div>
+<div class="text-label-sm font-label-sm font-bold text-outline uppercase tracking-wider mb-1">الباقة المجانية (Hobby)</div>
+<div class="text-headline-lg font-headline-lg font-bold text-on-surface mb-2 font-mono tnum">
+                  $0 <span class="text-xs text-outline font-normal font-sans">/ شهرياً</span>
+</div>
+<p class="text-body-sm text-on-surface-variant mb-4">
+                  مناسبة لتجربة المحرر على مشاريع شخصية صغيرة دون التزامات.
+                </p>
+<ul class="text-xs space-y-2 text-on-surface border-t border-outline-variant/50 pt-3">
+<li class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-[16px]">check</span>
+<span>فترة تجريبية للباقة الاحترافية لـ 14 يوماً</span>
+</li>
+<li class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-[16px]">check</span>
+<span>2,000 إكمال تلقائي للأسطر (Completions)</span>
+</li>
+<li class="flex items-center gap-1.5 text-outline">
+<span class="material-symbols-outlined text-tertiary text-[16px]">close</span>
+<span>50 طلب سريع فقط للنماذج المتقدمة</span>
+</li>
+</ul>
+</div>
+<div class="pt-4 mt-4 border-t border-outline-variant/40">
+<a class="block w-full py-2 bg-surface-container hover:bg-surface-container-high text-on-surface text-center rounded-lg text-label-sm font-label-sm font-semibold transition-colors" href="https://cursor.com" target="_blank">
+                  البدء مجاناً
+                </a>
+</div>
+</div>
+<!-- Tier 2: Pro (Best Value) -->
+<div class="bg-surface-container-lowest border-2 border-primary rounded-xl p-4 flex flex-col justify-between relative shadow-md">
+<span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-on-primary text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase">
+                الأكثر جدوى للمطورين
+              </span>
+<div>
+<div class="text-label-sm font-label-sm font-bold text-primary uppercase tracking-wider mb-1">الاحترافية (Pro)</div>
+<div class="text-headline-lg font-headline-lg font-bold text-primary mb-2 font-mono tnum">
+                  $20 <span class="text-xs text-outline font-normal font-sans">/ شهرياً</span>
+</div>
+<p class="text-body-sm text-on-surface-variant mb-4">
+                  الخيار الموصى به لمهندسي البرمجيات المتفرغين والمستقلين.
+                </p>
+<ul class="text-xs space-y-2 text-on-surface border-t border-outline-variant/50 pt-3">
+<li class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-[16px]">check</span>
+<span>إكمالات كود تلقائية غير محدودة</span>
+</li>
+<li class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-[16px]">check</span>
+<span><strong>500 طلب فائق السرعة</strong> شهرياً لنماذج Sonnet/GPT-4o</span>
+</li>
+<li class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-[16px]">check</span>
+<span>طلبات بطيئة غير محدودة بعد استنفاد الحصة</span>
+</li>
+<li class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-[16px]">check</span>
+<span>10 طلبات يومية لوكيل o3-mini ذي التفكير المنطقي</span>
+</li>
+</ul>
+</div>
+<div class="pt-4 mt-4 border-t border-outline-variant/40">
+<a class="block w-full py-2 bg-primary text-on-primary hover:bg-primary-container text-center rounded-lg text-label-sm font-label-sm font-semibold transition-colors" href="https://cursor.com" target="_blank">
+                  ترقية إلى Pro
+                </a>
+</div>
+</div>
+<!-- Tier 3: Business -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-4 flex flex-col justify-between">
+<div>
+<div class="text-label-sm font-label-sm font-bold text-outline uppercase tracking-wider mb-1">المؤسسات (Business)</div>
+<div class="text-headline-lg font-headline-lg font-bold text-on-surface mb-2 font-mono tnum">
+                  $40 <span class="text-xs text-outline font-normal font-sans">/ مستخدم / شهرياً</span>
+</div>
+<p class="text-body-sm text-on-surface-variant mb-4">
+                  للشركات التي تتطلب حوكمة مركزية وضمانات عدم تدريب النماذج.
+                </p>
+<ul class="text-xs space-y-2 text-on-surface border-t border-outline-variant/50 pt-3">
+<li class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-[16px]">check</span>
+<span>كافة مزايا باقة Pro لكل عضو في الفريق</span>
+</li>
+<li class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-[16px]">check</span>
+<span><strong>تفعيل إلزامي لوضع الخصوصية (Enforced Privacy)</strong></span>
+</li>
+<li class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-[16px]">check</span>
+<span>لوحة تحكم إدارية مركزية وفواتير موحدة</span>
+</li>
+<li class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-[16px]">check</span>
+<span>تسجيل دخول موحد عبر SAML / Okta SSO</span>
+</li>
+</ul>
+</div>
+<div class="pt-4 mt-4 border-t border-outline-variant/40">
+<a class="block w-full py-2 bg-surface-container hover:bg-surface-container-high text-on-surface text-center rounded-lg text-label-sm font-label-sm font-semibold transition-colors" href="https://cursor.com" target="_blank">
+                  التواصل المؤسسي
+                </a>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 6: Pros & Cons Matrix -->
+<section class="scroll-mt-24 border-t border-outline-variant/60 pt-space-lg" id="pros-and-cons">
+<div class="flex items-center gap-2 mb-2 text-primary font-mono text-label-sm">
+<span>[SECTION 06]</span>
+<span class="w-6 h-[1px] bg-primary"></span>
+</div>
+<h2 class="text-headline-md font-headline-md text-on-surface font-bold mb-space-md">
+            6. نقاط القوة والقيود البرمجية الموثقة
+          </h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<!-- Pros Box -->
+<div class="bg-surface-container-lowest border-2 border-secondary/30 rounded-xl p-space-md">
+<div class="flex items-center gap-2 text-secondary font-bold font-label-md text-label-md mb-3 border-b border-secondary/20 pb-2">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">thumb_up</span>
+<span>نقاط القوة المعملية المعتمدة</span>
+</div>
+<ul class="space-y-3 text-body-sm font-body-sm text-on-surface">
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-secondary text-[18px] shrink-0 mt-0.5" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span><strong>أفضل تجربة تعديل متعدد الملفات:</strong> يوفر وكيل Composer دقة لا تضاهى في مطابقة التبعيات والتعديل الفوري لمسارات الاستيراد.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-secondary text-[18px] shrink-0 mt-0.5" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span><strong>مرونة التبديل بين أحدث النماذج:</strong> يتيح الانتقال الفوري بين Sonnet 3.5 وo3-mini وGPT-4o في نفس جلسة العمل.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-secondary text-[18px] shrink-0 mt-0.5" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span><strong>توافقية كاملة مع ملحقات VS Code:</strong> انتقال سلس وفوري مع الاحتفاظ بكافة اختصارات لوحة المفاتيح والملحقات.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-secondary text-[18px] shrink-0 mt-0.5" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span><strong>تحكم صارم بالبيانات:</strong> يوفر وضع Privacy Mode ضمانات تشفير واضحة بعدم تدريب النماذج على شيفراتك المصدرية.</span>
+</li>
+</ul>
+</div>
+<!-- Cons Box -->
+<div class="bg-surface-container-lowest border-2 border-error/30 rounded-xl p-space-md">
+<div class="flex items-center gap-2 text-error font-bold font-label-md text-label-md mb-3 border-b border-error/20 pb-2">
+<span class="material-symbols-outlined text-[20px]">thumb_down</span>
+<span>القيود والسلبيات المرصودة</span>
+</div>
+<ul class="space-y-3 text-body-sm font-body-sm text-on-surface">
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-error text-[18px] shrink-0 mt-0.5">error</span>
+<span><strong>استهلاك شره للذاكرة (RAM):</strong> ترتفع متطلبات التشغيل إلى ما يقارب 2GB في المستودعات الكبيرة مما قد يضغط الأجهزة الاقتصادية.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-error text-[18px] shrink-0 mt-0.5">error</span>
+<span><strong>ارتهان كامل بالاتصال السحابي:</strong> تعطل شبه تام لميزات الذكاء الاصطناعي عند انقطاع الإنترنت، دون خيار عمل محلي كامل.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-error text-[18px] shrink-0 mt-0.5">error</span>
+<span><strong>تراجع ملحوظ في السرعة بعد الـ 500 طلب:</strong> يواجه مستخدمو باقة Pro تأخيراً في طوابير الانتظار عند استنفاد الحصة السريعة.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-error text-[18px] shrink-0 mt-0.5">error</span>
+<span><strong>احتمالية التباعد عن إصدارات VS Code الأصلية:</strong> نظراً لكونه تفريعة (Fork)، تتأخر بعض المزايا الجوهرية لـ VS Code لأسابيع قبل وصولها لكيرسور.</span>
+</li>
+</ul>
+</div>
+</div>
+</section>
+<!-- SECTION 7: Alternatives & Market Landscape -->
+<section class="scroll-mt-24 border-t border-outline-variant/60 pt-space-lg" id="alternatives">
+<div class="flex items-center gap-2 mb-2 text-primary font-mono text-label-sm">
+<span>[SECTION 07]</span>
+<span class="w-6 h-[1px] bg-primary"></span>
+</div>
+<h2 class="text-headline-md font-headline-md text-on-surface font-bold mb-space-md">
+            7. البدائل المنافسة وخيارات السوق
+          </h2>
+<div class="space-y-3">
+<!-- Alt 1: Windsurf -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-4 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+<div class="space-y-1">
+<div class="flex items-center gap-2">
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">Windsurf Editor (بواسطة Codeium)</h3>
+<span class="bg-secondary-container/50 text-secondary text-[11px] font-bold px-2 py-0.5 rounded font-mono">منافس مباشر</span>
+</div>
+<p class="text-body-sm text-on-surface-variant max-w-xl">
+                  المنافس الأقرب لكيرسور حالياً، يعتمد على بنية تسمى Flows لتحليل الأكواد ويتميز باستهلاك ذاكرة أقل وسرعة فهرسة متفوقة طفيفة، لكنه لا يزال أقل نضجاً في مهام إعادة الهيكلة متعددة المسارات.
+                </p>
+</div>
+<div class="text-left shrink-0">
+<span class="text-xs text-outline block">التقييم المعملي:</span>
+<span class="text-headline-sm font-bold text-primary font-mono">8.6 / 10</span>
+</div>
+</div>
+<!-- Alt 2: GitHub Copilot -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-4 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+<div class="space-y-1">
+<div class="flex items-center gap-2">
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">GitHub Copilot (مع مساحة العمل Workspace)</h3>
+<span class="bg-surface-container-high text-outline text-[11px] font-bold px-2 py-0.5 rounded font-mono">الخيار المؤسسي التقليدي</span>
+</div>
+<p class="text-body-sm text-on-surface-variant max-w-xl">
+                  الخيار الأكثر اعتماداً لدى الشركات الكبرى نظراً لتكامله الأصيل مع منظومة Microsoft وGitHub Enterprise، إلا أنه يتخلف عن كيرسور في إدراك سياق المشروع الكامل وميزة التعديل الآلي.
+                </p>
+</div>
+<div class="text-left shrink-0">
+<span class="text-xs text-outline block">التقييم المعملي:</span>
+<span class="text-headline-sm font-bold text-primary font-mono">7.8 / 10</span>
+</div>
+</div>
+<!-- Alt 3: Claude Code CLI -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-4 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+<div class="space-y-1">
+<div class="flex items-center gap-2">
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">Claude Code (أداة الطرفية CLI)</h3>
+<span class="bg-tertiary-fixed text-on-tertiary-fixed-variant text-[11px] font-bold px-2 py-0.5 rounded font-mono">طرفية مستقلة</span>
+</div>
+<p class="text-body-sm text-on-surface-variant max-w-xl">
+                  أداة موجهة لمحبي الطرفية (Terminal-native) من مختبر Anthropic مباشرة، تتفوق في تشغيل فحوصات Git وتشغيل الاختبارات التلقائية، لكنها تفتقر لواجهة تفاعلية بصرية مريحة لكتابة الكود اليومي.
+                </p>
+</div>
+<div class="text-left shrink-0">
+<span class="text-xs text-outline block">التقييم المعملي:</span>
+<span class="text-headline-sm font-bold text-primary font-mono">8.3 / 10</span>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 8: Final Editor Verdict -->
+<section class="scroll-mt-24 border-t-2 border-outline-variant pt-space-lg" id="verdict-final">
+<div class="flex items-center gap-2 mb-2 text-primary font-mono text-label-sm">
+<span>[SECTION 08]</span>
+<span class="w-6 h-[1px] bg-primary"></span>
+</div>
+<h2 class="text-headline-lg font-headline-lg text-on-surface font-bold mb-space-md">
+            8. خلاصة التقييم وقرار الشراء: هل يجب على فريقك الترقية؟
+          </h2>
+<div class="prose max-w-none text-body-md font-body-md text-on-surface-variant space-y-4 leading-relaxed">
+<p>
+              بعد 140 ساعة من إخضاع Cursor لسيناريوهات برمجية حقيقية ومجهدة، خلص فريق تول سكوب إلى أن محرر كيرسور لا يمثل مجرد "واجهة مستخدم محسنة لإضافات الذكاء الاصطناعي"، بل يمثل <strong>نقلة نموذجية (Paradigm Shift)</strong> حقيقية في كيفية تفاعل مهندس البرمجيات مع قاعدة الشيفرة المصدرية.
+            </p>
+<p>
+              إن قدرة المحرر على قراءة التبعيات وتعديل 7 ملفات في نفس اللحظة عبر أمر نصي واحد موجه توفر ما بين 4 إلى 8 ساعات أسبوعياً لكل مطور يعمل على مشاريع نشطة ومتجددة. إن تكلفة باقة Pro البالغة 20 دولاراً شهرياً تسترد قيمتها الإنتاجية بالكامل خلال أول يومين من العمل البرمجي الفعلي.
+            </p>
+<div class="p-space-md bg-surface-container-high border-r-4 border-primary rounded-l-xl my-4 text-on-surface">
+<p class="font-headline-sm text-headline-sm font-bold mb-1">حكم تول سكوب النهائي (The Verdict):</p>
+<p class="text-body-md text-on-surface-variant">
+                إذا كان جهازك يمتلك 16GB RAM أو أكثر، ولا تفرض شركتك قيوداً تحظر إرسال الشيفرات إلى خوادم سحابية خاضعة لـ SOC2 وPrivacy Mode، فإن <strong>Cursor هو محرر الأكواد الذكي الأفضل والأكثر نضجاً وإنتاجية في السوق حالياً بلا منازع حقيقي</strong>.
+              </p>
+</div>
+</div>
+<!-- Bottom Action Box -->
+<div class="mt-space-lg p-space-md bg-surface-container-lowest border border-outline-variant rounded-xl flex flex-wrap items-center justify-between gap-4">
+<div>
+<div class="text-label-md font-label-md font-bold text-on-surface">مستعد للبدء مع Cursor؟</div>
+<div class="text-body-sm font-body-sm text-outline">احصل على نسختك التجريبية وتأكد من تفعيل Privacy Mode في إعدادات المحرر.</div>
+</div>
+<div class="flex items-center gap-3">
+<a class="bg-primary text-on-primary hover:bg-primary-container px-5 py-2.5 rounded-lg text-label-md font-label-md font-semibold transition-colors flex items-center gap-1.5" href="https://cursor.com" rel="noopener noreferrer" target="_blank">
+<span>تنزيل محرر Cursor الرسمي</span>
+<span class="material-symbols-outlined text-[16px]">download</span>
+</a>
+</div>
+</div>
+</section>
+</article>
+</div>
+</main>
+<!-- Shared Component: Footer (Exact JSON fidelity with RTL alignment) -->
+<footer class="bg-surface-container-low border-t border-outline-variant/60 mt-space-xl">
+<div class="w-full max-w-7xl mx-auto px-gutter py-space-xl flex flex-col gap-space-lg">
+<!-- Top Brand & Disclosure Grid -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-space-lg">
+<div class="md:col-span-5 space-y-2">
+<div class="font-headline-md text-headline-md font-bold text-on-surface flex items-center gap-1.5">
+<span class="text-primary font-serif font-black">ToolScope</span>
+<span class="text-outline-variant">|</span>
+<span>تول سكوب</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant max-w-md leading-relaxed">
+            منصة الصحافة التقنية الاستقصائية والتقييمات البرمجية المعملية المستقلة. نلتزم بفحص دقيق ومحايد للمنتجات التقنية والذكاء الاصطناعي لمساعدة فرق الهندسة والمؤسسات في اتخاذ قرارات شراء مبنية على بيانات علمية.
+          </p>
+</div>
+<div class="md:col-span-7 flex flex-wrap gap-8 justify-start md:justify-end">
+<div class="space-y-2">
+<div class="font-label-md text-label-md font-bold text-on-surface">أقسام التقييم</div>
+<ul class="text-body-sm font-body-sm space-y-1.5 text-on-surface-variant">
+<li><a class="hover:text-primary transition-colors" href="#">مساعدات البرمجة والـ IDE</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">نماذج اللغات الكبيرة (LLMs)</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">بنية التخزين وقواعد البيانات</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">أدوات الأمان والامتثال البرمجي</a></li>
+</ul>
+</div>
+<div class="space-y-2">
+<div class="font-label-md text-label-md font-bold text-on-surface">المعايير والنزاهة</div>
+<ul class="text-body-sm font-body-sm space-y-1.5 text-on-surface-variant">
+<li><a class="hover:text-primary transition-colors" href="#">منهجية الاختبار المعملي</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">ميثاق الاستقلالية التحريرية</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">إفصاح الروابط والتمويل</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">طلب إعادة فحص ترخيص</a></li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Links Row and Copyright Bar -->
+<div class="border-t border-outline-variant/60 pt-space-md flex flex-col md:flex-row items-center justify-between gap-4 text-label-sm font-label-sm text-on-surface-variant">
+<div>
+          © 2025 ToolScope Media Inc. Rigorously researched, independent technology journalism.
+        </div>
+<div class="flex flex-wrap items-center gap-4">
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Testing Methodology</a>
+<span class="text-outline">•</span>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Editorial Standards</a>
+<span class="text-outline">•</span>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Affiliate Disclosure</a>
+<span class="text-outline">•</span>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Ethics Statement</a>
+<span class="text-outline">•</span>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<span class="text-outline">•</span>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Terms of Service</a>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

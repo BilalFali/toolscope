@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ToolScope - Search: "code refactoring"</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Typography Fonts (Inter & Newsreader) -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-tertiary-fixed": "#410000",
+            "on-secondary-container": "#00734d",
+            "surface": "#fbf8fe",
+            "tertiary-fixed-dim": "#ffb4a8",
+            "surface-bright": "#fbf8fe",
+            "on-primary-fixed": "#001159",
+            "on-error": "#ffffff",
+            "primary-fixed": "#dee1ff",
+            "secondary-container": "#98f6c5",
+            "inverse-on-surface": "#f3f0f5",
+            "surface-tint": "#3b53c6",
+            "primary-container": "#2d46b9",
+            "primary-fixed-dim": "#bac3ff",
+            "surface-container": "#f0edf2",
+            "on-secondary": "#ffffff",
+            "on-surface-variant": "#444653",
+            "surface-container-low": "#f6f2f8",
+            "on-secondary-fixed-variant": "#005236",
+            "on-primary": "#ffffff",
+            "primary": "#092ba2",
+            "surface-variant": "#e4e1e7",
+            "on-tertiary-fixed-variant": "#930303",
+            "error-container": "#ffdad6",
+            "tertiary": "#7d0001",
+            "on-tertiary-container": "#ffb3a7",
+            "on-surface": "#1b1b1f",
+            "inverse-primary": "#bac3ff",
+            "on-background": "#1b1b1f",
+            "outline": "#757685",
+            "error": "#ba1a1a",
+            "surface-container-high": "#eae7ed",
+            "surface-container-highest": "#e4e1e7",
+            "outline-variant": "#c5c5d6",
+            "tertiary-fixed": "#ffdad5",
+            "on-primary-container": "#b9c2ff",
+            "surface-container-lowest": "#ffffff",
+            "secondary": "#006c48",
+            "on-primary-fixed-variant": "#1e39ad",
+            "inverse-surface": "#303034",
+            "surface-dim": "#dcd9de",
+            "on-error-container": "#93000a",
+            "secondary-fixed-dim": "#7cd9aa",
+            "secondary-fixed": "#98f6c5",
+            "on-secondary-fixed": "#002113",
+            "on-tertiary": "#ffffff",
+            "tertiary-container": "#a4160e",
+            "background": "#fbf8fe"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "margin": "2rem",
+            "space-md": "1rem",
+            "gutter-mobile": "1rem",
+            "space-lg": "1.5rem",
+            "gutter": "1.5rem",
+            "margin-mobile": "1rem",
+            "space-xl": "2.5rem",
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem"
+          },
+          "fontFamily": {
+            "label-sm": ["Inter"],
+            "headline-lg": ["Newsreader"],
+            "display-hero": ["Newsreader"],
+            "label-md": ["Inter"],
+            "body-sm": ["Inter"],
+            "data-tabular": ["Inter"],
+            "body-lg": ["Newsreader"],
+            "headline-sm": ["Inter"],
+            "display-hero-mobile": ["Newsreader"],
+            "headline-md": ["Newsreader"],
+            "body-md": ["Inter"],
+            "headline-lg-mobile": ["Newsreader"]
+          },
+          "fontSize": {
+            "label-sm": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.04em", "fontWeight": "600" }],
+            "headline-lg": ["2.25rem", { "lineHeight": "2.75rem", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "display-hero": ["3.5rem", { "lineHeight": "4rem", "letterSpacing": "-0.025em", "fontWeight": "500" }],
+            "label-md": ["0.875rem", { "lineHeight": "1.25rem", "letterSpacing": "0.01em", "fontWeight": "500" }],
+            "body-sm": ["0.875rem", { "lineHeight": "1.375rem", "fontWeight": "400" }],
+            "data-tabular": ["0.875rem", { "lineHeight": "1.25rem", "fontWeight": "500" }],
+            "body-lg": ["1.25rem", { "lineHeight": "2rem", "fontWeight": "400" }],
+            "headline-sm": ["1.125rem", { "lineHeight": "1.5rem", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "display-hero-mobile": ["2.25rem", { "lineHeight": "2.75rem", "letterSpacing": "-0.02em", "fontWeight": "500" }],
+            "headline-md": ["1.5rem", { "lineHeight": "2rem", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-md": ["1rem", { "lineHeight": "1.625rem", "fontWeight": "400" }],
+            "headline-lg-mobile": ["1.75rem", { "lineHeight": "2.25rem", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .tabular-nums {
+      font-feature-settings: "tnum";
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface antialiased min-h-screen flex flex-col font-body-md text-body-md">
+<!-- Top Verification & Disclosure Utility Notice Bar -->
+<aside class="w-full bg-surface-container-low border-b border-outline-variant/40 py-1.5 px-gutter text-center text-label-sm font-label-sm text-on-surface-variant">
+<div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+<div class="flex items-center gap-2">
+<span class="inline-block w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span>Independent, reader-supported technology lab. Zero paid placements, 100% empirical testing.</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="text-outline">Verified Cycle: Q1 2025</span>
+<a class="underline underline-offset-2 hover:text-primary transition-colors" href="#disclosure">Affiliate Disclosure</a>
+</div>
+</div>
+</aside>
+<!-- TopNavBar (Shared Component Anchor) -->
+<header class="bg-surface/90 dark:bg-surface-container/90 backdrop-blur-md border-b border-outline-variant/60 dark:border-outline-variant/30 docked full-width top-0 sticky z-50">
+<div class="w-full max-w-7xl mx-auto px-gutter flex items-center justify-between h-16">
+<!-- Brand Logo Anchor -->
+<div class="flex items-center gap-8">
+<a class="text-headline-md font-headline-md font-bold tracking-tight text-on-surface dark:text-inverse-on-surface flex items-center gap-2" href="/">
+<span>ToolScope</span>
+<span class="px-1.5 py-0.5 rounded text-label-sm font-label-sm bg-primary-container text-on-primary">LABS</span>
+</a>
+<!-- Navigation Links (Active mapping: User is actively searching, generic search context) -->
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-on-surface-variant dark:text-outline hover:text-on-surface dark:hover:text-inverse-on-surface transition-colors pb-1 text-label-md font-label-md" href="#">AI Tools</a>
+<a class="text-on-surface-variant dark:text-outline hover:text-on-surface dark:hover:text-inverse-on-surface transition-colors pb-1 text-label-md font-label-md" href="#">Developer Software</a>
+<a class="text-on-surface-variant dark:text-outline hover:text-on-surface dark:hover:text-inverse-on-surface transition-colors pb-1 text-label-md font-label-md" href="#">General Software</a>
+<a class="text-on-surface-variant dark:text-outline hover:text-on-surface dark:hover:text-inverse-on-surface transition-colors pb-1 text-label-md font-label-md" href="#">Comparisons</a>
+<a class="text-on-surface-variant dark:text-outline hover:text-on-surface dark:hover:text-inverse-on-surface transition-colors pb-1 text-label-md font-label-md" href="#">About &amp; Standards</a>
+</nav>
+</div>
+<!-- Trailing Action: Active Search Bar + Secondary Action -->
+<div class="flex items-center gap-4">
+<!-- Active Search Input Box -->
+<div class="relative flex items-center w-64 md:w-80">
+<span class="material-symbols-outlined absolute left-3 text-outline text-lg pointer-events-none" data-icon="search">search</span>
+<input class="w-full pl-9 pr-8 py-1.5 bg-surface-container-lowest border border-outline-variant text-body-sm font-body-sm rounded focus:outline-none focus:border-primary text-on-surface placeholder-outline shadow-sm" placeholder="Search benchmarks, reviews..." type="text" value="code refactoring"/>
+<button class="absolute right-2 text-outline hover:text-on-surface transition-colors p-0.5 rounded flex items-center justify-center" title="Clear query">
+<span class="material-symbols-outlined text-base" data-icon="close">close</span>
+</button>
+</div>
+<span class="text-label-sm font-label-sm text-outline hidden sm:inline-block border-l border-outline-variant pl-4">
+          EN / AR
+        </span>
+</div>
+</div>
+</header>
+<!-- Main Content Container -->
+<main class="w-full max-w-7xl mx-auto px-gutter py-space-lg flex-1">
+<!-- 2. Search Overview Header Section -->
+<section class="border-b border-outline-variant/60 pb-space-lg mb-space-lg">
+<!-- Breadcrumbs -->
+<nav class="flex items-center gap-2 text-label-sm font-label-sm text-outline mb-space-sm">
+<a class="hover:text-primary transition-colors" href="/">Home</a>
+<span class="material-symbols-outlined text-xs" data-icon="chevron_right">chevron_right</span>
+<span class="text-on-surface font-semibold">Search Results</span>
+</nav>
+<!-- Search Query & Meta Banner -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded p-space-lg shadow-sm">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-space-md">
+<div class="flex-1">
+<span class="text-label-sm font-label-sm text-outline tracking-wider uppercase">Evaluated Query</span>
+<div class="flex items-center gap-3 mt-1">
+<h1 class="font-headline-lg text-headline-lg text-on-surface italic">"code refactoring"</h1>
+<span class="px-2.5 py-1 rounded bg-secondary-container text-on-secondary-container text-label-sm font-label-sm font-semibold border border-secondary/20">
+                14 matches found
+              </span>
+</div>
+</div>
+<div class="flex flex-col sm:flex-row items-start sm:items-center gap-3 text-label-sm font-label-sm text-outline border-t sm:border-t-0 sm:border-l border-outline-variant/60 pt-3 sm:pt-0 sm:pl-4">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-base text-secondary" data-icon="timer">timer</span>
+<span class="tabular-nums">Evaluated in 24ms</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-base text-primary" data-icon="verified">verified</span>
+<span>Across 48 audited tools &amp; 32 comparisons</span>
+</div>
+</div>
+</div>
+<!-- Search Type Tabs -->
+<div class="flex items-center gap-2 overflow-x-auto border-t border-outline-variant/40 pt-space-md no-scrollbar">
+<button class="px-3.5 py-1.5 rounded text-label-md font-label-md bg-primary text-on-primary font-medium whitespace-nowrap shadow-xs">
+            All Results (14)
+          </button>
+<button class="px-3.5 py-1.5 rounded text-label-md font-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors whitespace-nowrap">
+            In-Depth Reviews (5)
+          </button>
+<button class="px-3.5 py-1.5 rounded text-label-md font-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors whitespace-nowrap">
+            Head-to-Head Comparisons (4)
+          </button>
+<button class="px-3.5 py-1.5 rounded text-label-md font-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors whitespace-nowrap">
+            Benchmark Datasets (3)
+          </button>
+<button class="px-3.5 py-1.5 rounded text-label-md font-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors whitespace-nowrap">
+            Methodology &amp; Guides (2)
+          </button>
+</div>
+</div>
+</section>
+<!-- 3. Two-Column Search Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+<!-- Left Sidebar: Faceted Filters (4 Cols Desktop) -->
+<aside class="lg:col-span-4 bg-surface-container-lowest border border-outline-variant rounded p-space-md shadow-xs space-y-space-md">
+<div class="flex items-center justify-between pb-3 border-b border-outline-variant/60">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-lg text-primary" data-icon="tune">tune</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Faceted Filters</h2>
+</div>
+<button class="text-label-sm font-label-sm text-primary hover:underline hover:text-primary-container transition-colors">
+            Clear all
+          </button>
+</div>
+<!-- Filter Group: Category -->
+<div class="space-y-2">
+<span class="text-label-sm font-label-sm text-on-surface font-semibold uppercase tracking-wider block">Category</span>
+<div class="space-y-1.5">
+<label class="flex items-center justify-between text-body-sm font-body-sm text-on-surface-variant hover:text-on-surface cursor-pointer select-none">
+<span class="flex items-center gap-2">
+<input checked="" class="rounded border-outline-variant text-primary focus:ring-0 w-4 h-4" type="checkbox"/>
+<span>AI Tools</span>
+</span>
+<span class="text-label-sm tabular-nums text-outline font-label-sm">10</span>
+</label>
+<label class="flex items-center justify-between text-body-sm font-body-sm text-on-surface-variant hover:text-on-surface cursor-pointer select-none">
+<span class="flex items-center gap-2">
+<input checked="" class="rounded border-outline-variant text-primary focus:ring-0 w-4 h-4" type="checkbox"/>
+<span>Developer Software</span>
+</span>
+<span class="text-label-sm tabular-nums text-outline font-label-sm">3</span>
+</label>
+<label class="flex items-center justify-between text-body-sm font-body-sm text-on-surface-variant hover:text-on-surface cursor-pointer select-none">
+<span class="flex items-center gap-2">
+<input class="rounded border-outline-variant text-primary focus:ring-0 w-4 h-4" type="checkbox"/>
+<span>General Software</span>
+</span>
+<span class="text-label-sm tabular-nums text-outline font-label-sm">1</span>
+</label>
+</div>
+</div>
+<hr class="border-outline-variant/40"/>
+<!-- Filter Group: Result Type -->
+<div class="space-y-2">
+<span class="text-label-sm font-label-sm text-on-surface font-semibold uppercase tracking-wider block">Result Type</span>
+<div class="space-y-1.5">
+<label class="flex items-center justify-between text-body-sm font-body-sm text-on-surface-variant hover:text-on-surface cursor-pointer select-none">
+<span class="flex items-center gap-2">
+<input checked="" class="rounded border-outline-variant text-primary focus:ring-0 w-4 h-4" type="checkbox"/>
+<span>In-Depth Lab Review</span>
+</span>
+<span class="text-label-sm tabular-nums text-outline font-label-sm">5</span>
+</label>
+<label class="flex items-center justify-between text-body-sm font-body-sm text-on-surface-variant hover:text-on-surface cursor-pointer select-none">
+<span class="flex items-center gap-2">
+<input checked="" class="rounded border-outline-variant text-primary focus:ring-0 w-4 h-4" type="checkbox"/>
+<span>Head-to-Head</span>
+</span>
+<span class="text-label-sm tabular-nums text-outline font-label-sm">4</span>
+</label>
+<label class="flex items-center justify-between text-body-sm font-body-sm text-on-surface-variant hover:text-on-surface cursor-pointer select-none">
+<span class="flex items-center gap-2">
+<input class="rounded border-outline-variant text-primary focus:ring-0 w-4 h-4" type="checkbox"/>
+<span>Raw Benchmark Data</span>
+</span>
+<span class="text-label-sm tabular-nums text-outline font-label-sm">3</span>
+</label>
+<label class="flex items-center justify-between text-body-sm font-body-sm text-on-surface-variant hover:text-on-surface cursor-pointer select-none">
+<span class="flex items-center gap-2">
+<input class="rounded border-outline-variant text-primary focus:ring-0 w-4 h-4" type="checkbox"/>
+<span>Pricing Audit</span>
+</span>
+<span class="text-label-sm tabular-nums text-outline font-label-sm">2</span>
+</label>
+</div>
+</div>
+<hr class="border-outline-variant/40"/>
+<!-- Filter Group: Tool Rating -->
+<div class="space-y-2">
+<span class="text-label-sm font-label-sm text-on-surface font-semibold uppercase tracking-wider block">Lab Composite Score</span>
+<div class="space-y-1.5">
+<label class="flex items-center justify-between text-body-sm font-body-sm text-on-surface-variant hover:text-on-surface cursor-pointer select-none">
+<span class="flex items-center gap-2">
+<input class="border-outline-variant text-primary focus:ring-0 w-4 h-4" name="score_filter" type="radio"/>
+<span class="font-medium text-secondary">9.0+ Exceptional</span>
+</span>
+<span class="text-label-sm tabular-nums text-outline font-label-sm">3</span>
+</label>
+<label class="flex items-center justify-between text-body-sm font-body-sm text-on-surface-variant hover:text-on-surface cursor-pointer select-none">
+<span class="flex items-center gap-2">
+<input checked="" class="border-outline-variant text-primary focus:ring-0 w-4 h-4" name="score_filter" type="radio"/>
+<span>8.0 - 8.9 Recommended</span>
+</span>
+<span class="text-label-sm tabular-nums text-outline font-label-sm">8</span>
+</label>
+<label class="flex items-center justify-between text-body-sm font-body-sm text-on-surface-variant hover:text-on-surface cursor-pointer select-none">
+<span class="flex items-center gap-2">
+<input class="border-outline-variant text-primary focus:ring-0 w-4 h-4" name="score_filter" type="radio"/>
+<span>7.0 - 7.9 Conditional</span>
+</span>
+<span class="text-label-sm tabular-nums text-outline font-label-sm">3</span>
+</label>
+</div>
+</div>
+<hr class="border-outline-variant/40"/>
+<!-- Filter Group: Pricing Model -->
+<div class="space-y-2">
+<span class="text-label-sm font-label-sm text-on-surface font-semibold uppercase tracking-wider block">Pricing Model</span>
+<div class="space-y-1.5">
+<label class="flex items-center gap-2 text-body-sm font-body-sm text-on-surface-variant hover:text-on-surface cursor-pointer select-none">
+<input class="rounded border-outline-variant text-primary focus:ring-0 w-4 h-4" type="checkbox"/>
+<span>Free / Open Source</span>
+</label>
+<label class="flex items-center gap-2 text-body-sm font-body-sm text-on-surface-variant hover:text-on-surface cursor-pointer select-none">
+<input checked="" class="rounded border-outline-variant text-primary focus:ring-0 w-4 h-4" type="checkbox"/>
+<span>Subscription SaaS</span>
+</label>
+<label class="flex items-center gap-2 text-body-sm font-body-sm text-on-surface-variant hover:text-on-surface cursor-pointer select-none">
+<input class="rounded border-outline-variant text-primary focus:ring-0 w-4 h-4" type="checkbox"/>
+<span>Usage / BYOK API</span>
+</label>
+</div>
+</div>
+<hr class="border-outline-variant/40"/>
+<!-- Filter Group: Verification Status -->
+<div class="space-y-2">
+<span class="text-label-sm font-label-sm text-on-surface font-semibold uppercase tracking-wider block">Audit Status</span>
+<div class="space-y-1.5">
+<label class="flex items-center justify-between text-body-sm font-body-sm text-on-surface-variant hover:text-on-surface cursor-pointer select-none">
+<span class="flex items-center gap-2">
+<input checked="" class="rounded border-outline-variant text-primary focus:ring-0 w-4 h-4" type="checkbox"/>
+<span>Verified in 2025 Lab Cycle</span>
+</span>
+<span class="text-label-sm tabular-nums text-outline font-label-sm">12</span>
+</label>
+<label class="flex items-center justify-between text-body-sm font-body-sm text-on-surface-variant hover:text-on-surface cursor-pointer select-none">
+<span class="flex items-center gap-2">
+<input class="rounded border-outline-variant text-primary focus:ring-0 w-4 h-4" type="checkbox"/>
+<span>Archived Evaluation</span>
+</span>
+<span class="text-label-sm tabular-nums text-outline font-label-sm">2</span>
+</label>
+</div>
+</div>
+<div class="pt-2">
+<div class="bg-surface-container-low p-3 rounded text-label-sm font-label-sm text-outline border border-outline-variant/50">
+<span class="font-semibold text-on-surface block mb-0.5">Need custom criteria?</span>
+            Every lab benchmark can be re-weighted via our empirical API exporter.
+          </div>
+</div>
+</aside>
+<!-- Right Main Results Feed (8 Cols Desktop) -->
+<section class="lg:col-span-8 space-y-space-md">
+<!-- Sorting and count header -->
+<div class="flex items-center justify-between pb-2 border-b border-outline-variant/40 text-label-sm font-label-sm text-outline">
+<span class="tabular-nums">Showing 1 - 6 of 14 results</span>
+<div class="flex items-center gap-2">
+<span>Sort by:</span>
+<select class="bg-surface-container-lowest border border-outline-variant rounded px-2 py-1 text-on-surface text-label-sm font-label-sm focus:outline-none focus:border-primary">
+<option>Relevance (Empirical Weight)</option>
+<option>Score: High to Low</option>
+<option>Latest Lab Test Date</option>
+<option>Testing Hours Logged</option>
+</select>
+</div>
+</div>
+<!-- Result 1 (Best Match - Flagship Lab Review) -->
+<article class="bg-surface-container-lowest border border-outline-variant rounded p-space-md hover:border-primary/50 transition-all shadow-xs relative">
+<div class="flex flex-wrap items-center justify-between gap-2 mb-space-xs">
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded text-label-sm font-label-sm bg-secondary-container text-on-secondary-container font-semibold border border-secondary/20 flex items-center gap-1">
+<span class="material-symbols-outlined text-xs" data-icon="star">star</span>
+                Editor's Choice
+              </span>
+<span class="text-label-sm font-label-sm uppercase tracking-wider text-outline">Lab Review</span>
+<span class="text-outline">•</span>
+<span class="text-label-sm font-label-sm text-outline tabular-nums">140 Lab Hours Logged</span>
+</div>
+<div class="flex items-center gap-1 text-label-sm font-label-sm tabular-nums bg-surface-container-low px-2 py-1 rounded border border-outline-variant/60 font-semibold text-on-surface">
+<span class="text-secondary font-bold">8.9</span>
+<span class="text-outline">/ 10</span>
+</div>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface hover:text-primary transition-colors mb-2">
+<a href="#">Cursor In-Depth Review: The Benchmark for Agentic Code Editors</a>
+</h3>
+<!-- Matching excerpt with highlight -->
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-space-sm">
+            ...subjected to multi-file TypeScript refactors and Python agent runs. Here is where the indexing delivers on <mark class="bg-secondary-container text-on-secondary-container px-1 py-0.5 rounded font-medium">complex refactoring tasks</mark>, executing symbol-aware renames, cross-module signature updates, and AST-validated structural moves with minimal context pollution...
+          </p>
+<div class="flex flex-wrap items-center justify-between gap-4 pt-3 border-t border-outline-variant/40 text-label-sm font-label-sm">
+<div class="flex items-center gap-3 text-outline">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="calendar_today">calendar_today</span>
+<span>Audited: Feb 24, 2025</span>
+</span>
+<span>•</span>
+<span class="text-on-secondary-container font-medium">Verified v0.45.8 Engine</span>
+</div>
+<div class="flex items-center gap-3">
+<a class="text-outline hover:text-on-surface transition-colors flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="compare_arrows">compare_arrows</span>
+                Compare Tool
+              </a>
+<a class="px-3 py-1.5 rounded bg-primary text-on-primary hover:bg-primary-container transition-colors font-medium flex items-center gap-1" href="#">
+                Read Full Lab Review
+                <span class="material-symbols-outlined text-xs" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+</article>
+<!-- Result 2 (Head-to-Head Comparison) -->
+<article class="bg-surface-container-lowest border border-outline-variant rounded p-space-md hover:border-primary/50 transition-all shadow-xs">
+<div class="flex flex-wrap items-center justify-between gap-2 mb-space-xs">
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded text-label-sm font-label-sm bg-surface-container text-on-surface-variant font-semibold border border-outline-variant/60">
+                Head-to-Head Benchmark
+              </span>
+<span class="text-outline">•</span>
+<span class="text-label-sm font-label-sm text-outline tabular-nums">90 Test Scenarios</span>
+</div>
+<div class="flex items-center gap-2 text-label-sm font-label-sm font-semibold tabular-nums">
+<span class="px-2 py-0.5 rounded bg-surface-container-low border border-outline-variant/60 text-secondary font-bold">Cursor 8.9</span>
+<span class="text-outline">vs</span>
+<span class="px-2 py-0.5 rounded bg-surface-container-low border border-outline-variant/60 text-on-surface">Windsurf 8.7</span>
+</div>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface hover:text-primary transition-colors mb-2">
+<a href="#">Cursor vs Windsurf (Codeium): The Definitive 2025 Head-to-Head Benchmark</a>
+</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-space-sm">
+            ...subjected both agentic IDEs to 90 identical <mark class="bg-secondary-container text-on-secondary-container px-1 py-0.5 rounded font-medium">refactoring tasks</mark> across TypeScript and Rust repositories. Multi-file refactor accuracy: 91.4% vs 84.0% when reconciling cross-crate breaking traits...
+          </p>
+<div class="flex flex-wrap items-center justify-between gap-4 pt-3 border-t border-outline-variant/40 text-label-sm font-label-sm">
+<div class="flex items-center gap-2 text-outline">
+<span class="material-symbols-outlined text-sm" data-icon="calendar_today">calendar_today</span>
+<span>Updated: Feb 22, 2025</span>
+<span>•</span>
+<span>Empirical Data Sheet Included</span>
+</div>
+<a class="text-primary hover:text-primary-container font-medium flex items-center gap-1" href="#">
+              View Detailed Metrics
+              <span class="material-symbols-outlined text-xs" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</article>
+<!-- Result 3 (CLI & Terminal Review) -->
+<article class="bg-surface-container-lowest border border-outline-variant rounded p-space-md hover:border-primary/50 transition-all shadow-xs">
+<div class="flex flex-wrap items-center justify-between gap-2 mb-space-xs">
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded text-label-sm font-label-sm bg-surface-container text-on-surface-variant font-semibold border border-outline-variant/60">
+                CLI &amp; Terminal Review
+              </span>
+<span class="text-outline">•</span>
+<span class="text-label-sm font-label-sm text-outline">Open Source</span>
+</div>
+<div class="flex items-center gap-1 text-label-sm font-label-sm tabular-nums bg-surface-container-low px-2 py-1 rounded border border-outline-variant/60 font-semibold text-on-surface">
+<span class="text-primary font-bold">8.0</span>
+<span class="text-outline">/ 10</span>
+</div>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface hover:text-primary transition-colors mb-2">
+<a href="#">Aider CLI: Precision Git-Paired Refactoring Engine</a>
+</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-space-sm">
+            ...exceptional scriptable multi-file <mark class="bg-secondary-container text-on-secondary-container px-1 py-0.5 rounded font-medium">code refactoring</mark> directly against git history with zero IDE lock-in. Commits each refactored file unit with atomic diffs and automated syntax verification passes...
+          </p>
+<div class="flex flex-wrap items-center justify-between gap-4 pt-3 border-t border-outline-variant/40 text-label-sm font-label-sm">
+<div class="flex items-center gap-2 text-outline">
+<span class="material-symbols-outlined text-sm" data-icon="calendar_today">calendar_today</span>
+<span>Audited: Feb 14, 2025</span>
+<span>•</span>
+<span>BYOK API Testing Suite</span>
+</div>
+<a class="text-primary hover:text-primary-container font-medium flex items-center gap-1" href="#">
+              Read Lab Evaluation
+              <span class="material-symbols-outlined text-xs" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</article>
+<!-- Result 4 (Developer Platform Comparison) -->
+<article class="bg-surface-container-lowest border border-outline-variant rounded p-space-md hover:border-primary/50 transition-all shadow-xs">
+<div class="flex flex-wrap items-center justify-between gap-2 mb-space-xs">
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded text-label-sm font-label-sm bg-surface-container text-on-surface-variant font-semibold border border-outline-variant/60">
+                Model Evaluation
+              </span>
+<span class="text-outline">•</span>
+<span class="text-label-sm font-label-sm text-secondary font-semibold">Highest SWE Score</span>
+</div>
+<div class="flex items-center gap-1 text-label-sm font-label-sm tabular-nums bg-surface-container-low px-2 py-1 rounded border border-outline-variant/60 font-semibold text-on-surface">
+<span class="text-secondary font-bold">9.3</span>
+<span class="text-outline">/ 10</span>
+</div>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface hover:text-primary transition-colors mb-2">
+<a href="#">Claude 3.7 Sonnet &amp; Hybrid Reasoning: Real-World Developer Benchmarks</a>
+</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-space-sm">
+            ...evaluated on complex SWE-bench <mark class="bg-secondary-container text-on-secondary-container px-1 py-0.5 rounded font-medium">refactoring subsets</mark> and architectural migrations. The dynamic thinking mode demonstrated a 34% reduction in syntax regression errors across 12 legacy code bases...
+          </p>
+<div class="flex flex-wrap items-center justify-between gap-4 pt-3 border-t border-outline-variant/40 text-label-sm font-label-sm">
+<div class="flex items-center gap-2 text-outline">
+<span class="material-symbols-outlined text-sm" data-icon="calendar_today">calendar_today</span>
+<span>Audited: Feb 20, 2025</span>
+<span>•</span>
+<span>Extended Token Protocol</span>
+</div>
+<a class="text-primary hover:text-primary-container font-medium flex items-center gap-1" href="#">
+              Read Benchmark Report
+              <span class="material-symbols-outlined text-xs" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</article>
+<!-- Result 5 (Comparative Analysis) -->
+<article class="bg-surface-container-lowest border border-outline-variant rounded p-space-md hover:border-primary/50 transition-all shadow-xs">
+<div class="flex flex-wrap items-center justify-between gap-2 mb-space-xs">
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded text-label-sm font-label-sm bg-surface-container text-on-surface-variant font-semibold border border-outline-variant/60">
+                Comparative Analysis
+              </span>
+<span class="text-outline">•</span>
+<span class="text-label-sm font-label-sm text-secondary font-semibold">Winner: Cursor</span>
+</div>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface hover:text-primary transition-colors mb-2">
+<a href="#">Cursor vs GitHub Copilot: Which Handles Large Codebase Refactoring Better?</a>
+</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-space-sm">
+            ...Copilot struggles with cross-file AST dependencies during large scale rename <mark class="bg-secondary-container text-on-secondary-container px-1 py-0.5 rounded font-medium">refactors</mark>, while Cursor's local vector index correctly maintained type safety across 42 dependent components...
+          </p>
+<div class="flex flex-wrap items-center justify-between gap-4 pt-3 border-t border-outline-variant/40 text-label-sm font-label-sm">
+<div class="flex items-center gap-2 text-outline">
+<span class="material-symbols-outlined text-sm" data-icon="calendar_today">calendar_today</span>
+<span>Audited: Jan 30, 2025</span>
+</div>
+<a class="text-primary hover:text-primary-container font-medium flex items-center gap-1" href="#">
+              Read Analysis
+              <span class="material-symbols-outlined text-xs" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</article>
+<!-- Result 6 (Raw Benchmark Dataset) -->
+<article class="bg-surface-container-low border border-outline-variant rounded p-space-md hover:border-primary/50 transition-all shadow-xs">
+<div class="flex flex-wrap items-center justify-between gap-2 mb-space-xs">
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded text-label-sm font-label-sm bg-primary-fixed text-on-primary-fixed font-semibold">
+                Open Benchmark Dataset
+              </span>
+<span class="text-outline">•</span>
+<span class="text-label-sm font-label-sm text-outline tabular-nums">4,200 Validated Data Points</span>
+</div>
+<span class="text-label-sm font-label-sm font-mono text-outline">#CS-2025</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface hover:text-primary transition-colors mb-2">
+<a href="#">ToolScope Benchmark Dataset #CS-2025: 50-File Monorepo Refactoring Latency &amp; Accuracy (CSV / JSON)</a>
+</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-space-sm">
+            Full empirical dataset measuring AST round-trip compilation, token consumption, and regression percentages across 12 AI coding assistants performing standard Fowler refactorings.
+          </p>
+<div class="flex flex-wrap items-center justify-between gap-4 pt-3 border-t border-outline-variant/40 text-label-sm font-label-sm">
+<span class="text-outline">CC BY-NC 4.0 Academic License</span>
+<div class="flex items-center gap-3">
+<a class="text-primary hover:text-primary-container font-medium flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="download">download</span>
+                Download CSV (14.2 MB)
+              </a>
+<a class="text-primary hover:text-primary-container font-medium flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="code">code</span>
+                API Access
+              </a>
+</div>
+</div>
+</article>
+<!-- 4. "Didn't find what you're evaluating?" Submission Card -->
+<div class="bg-surface-container-lowest border-2 border-dashed border-outline-variant rounded p-space-lg text-center mt-space-xl">
+<div class="max-w-xl mx-auto space-y-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-high mx-auto flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="science">science</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Didn't find what you're evaluating?</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant">
+              Request a Software Benchmark: Suggest a developer tool or AI model for our next 140-hour testing cycle. We prioritize proposals supported by community testing requests.
+            </p>
+<form class="flex flex-col sm:flex-row items-center gap-2 pt-2 max-w-md mx-auto" onsubmit="event.preventDefault();">
+<input class="w-full px-3 py-2 bg-surface border border-outline-variant rounded text-body-sm font-body-sm focus:outline-none focus:border-primary text-on-surface" placeholder="Tool name or GitHub repo URL..." type="text"/>
+<button class="w-full sm:w-auto px-4 py-2 bg-primary text-on-primary hover:bg-primary-container text-label-md font-label-md font-medium rounded transition-colors whitespace-nowrap" type="submit">
+                Submit Tool
+              </button>
+</form>
+<span class="text-label-sm font-label-sm text-outline block">Cycle 2025-Q2 proposal deadline: April 15.</span>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer (Shared Component Anchor) -->
+<footer class="bg-surface-container-low dark:bg-surface-container-high border-t border-outline-variant/60 dark:border-outline-variant/30 full-width mt-space-xl">
+<div class="w-full max-w-7xl mx-auto px-gutter py-space-xl flex flex-col gap-space-lg">
+<!-- Top Row: Logo & Mission -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 pb-space-md border-b border-outline-variant/40">
+<div>
+<span class="text-headline-md font-headline-md font-bold text-on-surface dark:text-inverse-on-surface">ToolScope</span>
+<p class="text-body-sm font-body-sm text-on-surface-variant dark:text-outline mt-1">
+            Empirical benchmarks, source-code analysis, and zero-compromise developer tool evaluations.
+          </p>
+</div>
+<div class="flex items-center gap-3">
+<span class="px-2.5 py-1 rounded bg-surface-container border border-outline-variant/60 text-label-sm font-label-sm text-on-surface font-mono">
+            STATUS: ALL SYSTEMS NOMINAL
+          </span>
+</div>
+</div>
+<!-- Middle Row: Editorial Standards Links -->
+<div class="flex flex-wrap gap-x-6 gap-y-2 text-label-sm font-label-sm">
+<a class="text-on-surface-variant dark:text-outline hover:text-on-surface dark:hover:text-inverse-on-surface transition-colors hover:text-primary dark:hover:text-inverse-primary underline underline-offset-4" href="#">Testing Methodology</a>
+<a class="text-on-surface-variant dark:text-outline hover:text-on-surface dark:hover:text-inverse-on-surface transition-colors hover:text-primary dark:hover:text-inverse-primary underline underline-offset-4" href="#">Editorial Standards</a>
+<a class="text-on-surface-variant dark:text-outline hover:text-on-surface dark:hover:text-inverse-on-surface transition-colors hover:text-primary dark:hover:text-inverse-primary underline underline-offset-4" href="#" id="disclosure">Affiliate Disclosure</a>
+<a class="text-on-surface-variant dark:text-outline hover:text-on-surface dark:hover:text-inverse-on-surface transition-colors hover:text-primary dark:hover:text-inverse-primary underline underline-offset-4" href="#">Ethics Statement</a>
+<a class="text-on-surface-variant dark:text-outline hover:text-on-surface dark:hover:text-inverse-on-surface transition-colors hover:text-primary dark:hover:text-inverse-primary underline underline-offset-4" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant dark:text-outline hover:text-on-surface dark:hover:text-inverse-on-surface transition-colors hover:text-primary dark:hover:text-inverse-primary underline underline-offset-4" href="#">Terms of Service</a>
+</div>
+<!-- Bottom Row: Copyright -->
+<div class="text-body-sm font-body-sm text-outline pt-2">
+        © 2025 ToolScope Media Inc. Rigorously researched, independent technology journalism.
+      </div>
+</div>
+</footer>
+</body></html>

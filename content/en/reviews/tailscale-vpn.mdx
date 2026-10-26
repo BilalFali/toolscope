@@ -1,0 +1,59 @@
+---
+id: tailscale-review
+title: "Tailscale Review: A Practical Look at Zero-Config VPNs for Small Teams"
+description: "How Tailscale's identity-based mesh model compares to traditional VPN setups for small development teams — and what to verify before adopting it. Demonstration content."
+author: "The Editor"
+publishedAt: "2026-10-21"
+tags: ["networking", "VPN", "developer tools", "infrastructure"]
+demo: true
+category: "developer-tools"
+product:
+  name: "Tailscale"
+  website: "https://tailscale.com"
+  developer: "Tailscale Inc."
+verdict: "Pending full testing — early structure suggests it removes most of the friction that makes traditional VPNs painful for small teams."
+bestFor:
+  - "Small teams that need private access to internal services"
+  - "Distributed teams without a dedicated network engineer"
+notFor:
+  - "Organizations that must route all traffic through a corporate datacenter"
+  - "Environments where external identity providers are prohibited"
+pros:
+  - "Identity-based access model instead of certificates and subnets"
+  - "No hardware or central gateway to maintain for basic use"
+  - "Works across devices and platforms with the same configuration"
+cons:
+  - "Depends on an external coordination service (self-hosting is a separate product)"
+  - "Advanced routing scenarios still require real networking knowledge"
+pricing: []
+alternatives: []
+testingNotes: "Demonstration entry: a real cycle would document actual setup time, connection stability over two weeks, throughput on a representative link, and the ACL configuration experience."
+---
+
+<Callout title="Demonstration content">
+This review shows the structure and the honest "pending" states — no score, no pricing table — that appear when testing is not complete. Real findings will replace the placeholders.
+</Callout>
+
+## The problem Tailscale exists to solve
+
+Traditional VPNs ask you to think like a network administrator: subnets, gateways, certificate lifetimes. For a five-person team with three cloud servers and a home lab, that overhead is disproportionate to the actual need — which is simply "our services should be reachable only by us, from anywhere."
+
+Tailscale's model flips the setup: devices authenticate with an identity provider, and the mesh handles addressing and encryption. You express policy as rules about identities, not firewall arcs.
+
+## What we intend to test
+
+A full review under our [testing methodology](/en/testing-methodology) would cover:
+
+1. **Time-to-first-connection** on a clean machine, per platform.
+2. **Stability** across two weeks of daily use, including sleep/wake cycles and network switches.
+3. **Throughput** between two representative nodes, measured, with hardware stated.
+4. **Access control experience**: writing and revising ACLs as a non-network-engineer.
+5. **Exit paths**: what happens when the coordination service is unreachable, and what self-hosting actually requires.
+
+## Why no score yet
+
+Each of those tests takes time, and some — stability especially — cannot be compressed. We would rather publish a review late than invent a number. When testing completes, the verdict and score appear here with the evidence described.
+
+## Pricing note
+
+Pricing tiers for this product were not verified at the time of writing, so this review intentionally shows no pricing table. Always confirm plans on the provider's official site.

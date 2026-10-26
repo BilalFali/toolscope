@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AI Tools &amp; Autonomous Engineering Software | ToolScope Category Report</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration verbatim as specified -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-tertiary-fixed": "#410000",
+            "on-secondary-container": "#00734d",
+            "surface": "#fbf8fe",
+            "tertiary-fixed-dim": "#ffb4a8",
+            "surface-bright": "#fbf8fe",
+            "on-primary-fixed": "#001159",
+            "on-error": "#ffffff",
+            "primary-fixed": "#dee1ff",
+            "secondary-container": "#98f6c5",
+            "inverse-on-surface": "#f3f0f5",
+            "surface-tint": "#3b53c6",
+            "primary-container": "#2d46b9",
+            "primary-fixed-dim": "#bac3ff",
+            "surface-container": "#f0edf2",
+            "on-secondary": "#ffffff",
+            "on-surface-variant": "#444653",
+            "surface-container-low": "#f6f2f8",
+            "on-secondary-fixed-variant": "#005236",
+            "on-primary": "#ffffff",
+            "primary": "#092ba2",
+            "surface-variant": "#e4e1e7",
+            "on-tertiary-fixed-variant": "#930303",
+            "error-container": "#ffdad6",
+            "tertiary": "#7d0001",
+            "on-tertiary-container": "#ffb3a7",
+            "on-surface": "#1b1b1f",
+            "inverse-primary": "#bac3ff",
+            "on-background": "#1b1b1f",
+            "outline": "#757685",
+            "error": "#ba1a1a",
+            "surface-container-high": "#eae7ed",
+            "surface-container-highest": "#e4e1e7",
+            "outline-variant": "#c5c5d6",
+            "tertiary-fixed": "#ffdad5",
+            "on-primary-container": "#b9c2ff",
+            "surface-container-lowest": "#ffffff",
+            "secondary": "#006c48",
+            "on-primary-fixed-variant": "#1e39ad",
+            "inverse-surface": "#303034",
+            "surface-dim": "#dcd9de",
+            "on-error-container": "#93000a",
+            "secondary-fixed-dim": "#7cd9aa",
+            "secondary-fixed": "#98f6c5",
+            "on-secondary-fixed": "#002113",
+            "on-tertiary": "#ffffff",
+            "tertiary-container": "#a4160e",
+            "background": "#fbf8fe"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "margin": "2rem",
+            "space-md": "1rem",
+            "gutter-mobile": "1rem",
+            "space-lg": "1.5rem",
+            "gutter": "1.5rem",
+            "margin-mobile": "1rem",
+            "space-xl": "2.5rem",
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem"
+          },
+          "fontFamily": {
+            "label-sm": ["Inter"],
+            "headline-lg": ["Newsreader"],
+            "display-hero": ["Newsreader"],
+            "label-md": ["Inter"],
+            "body-sm": ["Inter"],
+            "data-tabular": ["Inter"],
+            "body-lg": ["Newsreader"],
+            "headline-sm": ["Inter"],
+            "display-hero-mobile": ["Newsreader"],
+            "headline-md": ["Newsreader"],
+            "body-md": ["Inter"],
+            "headline-lg-mobile": ["Newsreader"]
+          },
+          "fontSize": {
+            "label-sm": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.04em", "fontWeight": "600" }],
+            "headline-lg": ["2.25rem", { "lineHeight": "2.75rem", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "display-hero": ["3.5rem", { "lineHeight": "4rem", "letterSpacing": "-0.025em", "fontWeight": "500" }],
+            "label-md": ["0.875rem", { "lineHeight": "1.25rem", "letterSpacing": "0.01em", "fontWeight": "500" }],
+            "body-sm": ["0.875rem", { "lineHeight": "1.375rem", "fontWeight": "400" }],
+            "data-tabular": ["0.875rem", { "lineHeight": "1.25rem", "fontWeight": "500" }],
+            "body-lg": ["1.25rem", { "lineHeight": "2rem", "fontWeight": "400" }],
+            "headline-sm": ["1.125rem", { "lineHeight": "1.5rem", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "display-hero-mobile": ["2.25rem", { "lineHeight": "2.75rem", "letterSpacing": "-0.02em", "fontWeight": "500" }],
+            "headline-md": ["1.5rem", { "lineHeight": "2rem", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-md": ["1rem", { "lineHeight": "1.625rem", "fontWeight": "400" }],
+            "headline-lg-mobile": ["1.75rem", { "lineHeight": "2.25rem", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .tabular-nums {
+      font-feature-settings: "tnum" 1;
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface antialiased min-h-screen flex flex-col font-body-md text-body-md selection:bg-secondary-container selection:text-on-secondary-fixed-variant">
+<!-- Editorial Transparency Utility Rail -->
+<aside class="w-full bg-surface-container-high border-b border-outline-variant/40 py-1.5 px-gutter text-on-surface-variant font-label-sm text-label-sm">
+<div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+<div class="flex items-center gap-2">
+<span class="inline-block w-2 h-2 rounded-full bg-secondary"></span>
+<span>Independent, reader-supported technology journalism. Zero paid placements or vendor-sponsored benchmarks.</span>
+</div>
+<div class="flex items-center gap-4">
+<a class="hover:text-primary transition-colors flex items-center gap-1" href="#methodology">
+<span class="material-symbols-outlined text-[14px]">science</span>
+<span>Testing Protocol v4.2</span>
+</a>
+<span class="text-outline-variant">|</span>
+<span class="text-on-surface-variant">Last Indexed: Today, 08:30 UTC</span>
+</div>
+</div>
+</aside>
+<!-- TopNavBar (Shared Component JSON Source of Truth) -->
+<header class="bg-surface/90 backdrop-blur-md text-primary border-b border-outline-variant/60 docked full-width top-0 sticky z-50 transition-all duration-200 ease-in-out">
+<div class="w-full max-w-7xl mx-auto px-gutter flex items-center justify-between h-16">
+<!-- Logo Anchor -->
+<div class="flex items-center gap-8">
+<a class="text-headline-md font-headline-md font-bold tracking-tight text-on-surface flex items-center gap-2" href="/">
+<span class="text-primary font-headline-lg font-bold">ToolScope</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container font-label-sm text-label-sm text-on-surface-variant font-medium">LABS</span>
+</a>
+<!-- Desktop Navigation Links from JSON -->
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-primary border-b-2 border-primary pb-1 font-semibold text-label-md font-label-md" href="#">AI Tools</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors pb-1 text-label-md font-label-md" href="#">Developer Software</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors pb-1 text-label-md font-label-md" href="#">General Software</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors pb-1 text-label-md font-label-md" href="#">Comparisons</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors pb-1 text-label-md font-label-md" href="#">About &amp; Standards</a>
+</nav>
+</div>
+<!-- Trailing Actions from JSON -->
+<div class="flex items-center gap-4">
+<!-- Search bar on right -->
+<div class="relative hidden sm:block">
+<div class="absolute inset-y-0 left-0 pl-2.5 flex items-center pointer-events-none text-outline">
+<span class="material-symbols-outlined text-[18px]">search</span>
+</div>
+<input class="pl-9 pr-3 py-1.5 text-label-md font-label-md bg-surface-container-lowest border border-outline-variant rounded-lg text-on-surface placeholder:text-outline focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary w-64 transition-all" placeholder="Search 48 AI tools, scores, tests..." type="search"/>
+</div>
+<button aria-label="Search" class="sm:hidden text-on-surface-variant hover:text-primary p-1.5 rounded" type="button">
+<span class="material-symbols-outlined">search</span>
+</button>
+<span class="hidden md:inline-block font-label-sm text-label-sm text-outline-variant">|</span>
+<!-- Trailing secondary action from JSON: EN / AR -->
+<button class="text-label-sm font-label-sm text-on-surface-variant hover:text-primary font-medium px-2 py-1 rounded bg-surface-container hover:bg-surface-container-high transition-colors" type="button">
+          EN / AR
+        </button>
+</div>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="flex-1 w-full max-w-7xl mx-auto px-gutter py-space-lg">
+<!-- 1. Category Header & Meta Section -->
+<header class="border-b border-outline-variant/60 pb-space-lg mb-space-lg">
+<!-- Breadcrumbs -->
+<nav aria-label="Breadcrumb" class="mb-4">
+<ol class="flex items-center gap-2 font-label-sm text-label-sm text-outline">
+<li><a class="hover:text-primary transition-colors" href="/">Home</a></li>
+<li><span class="material-symbols-outlined text-[14px]">chevron_right</span></li>
+<li aria-current="page" class="text-primary font-semibold">AI Tools</li>
+</ol>
+</nav>
+<!-- Category Title & Analytical Framing -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-end">
+<div class="lg:col-span-8">
+<div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-semibold mb-3">
+<span class="material-symbols-outlined text-[14px]">verified</span>
+<span>Independent Lab Evaluation Index • 2025 Cycle</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight mb-3">
+            AI Coding Tools, IDEs &amp; Reasoning Engines
+          </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-3xl leading-relaxed">
+            Empirical evaluations and reproducible benchmarks for AI developer tools, agentic editors, and model APIs. Tested across real monorepos with zero marketing influence.
+          </p>
+</div>
+<!-- Quick Category Stats Bar -->
+<div class="lg:col-span-4 bg-surface-container-lowest border border-outline-variant rounded-xl p-4">
+<h2 class="font-label-sm text-label-sm uppercase tracking-wider text-outline mb-2 flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary">analytics</span>
+<span>Category Audit Scope</span>
+</h2>
+<div class="grid grid-cols-2 gap-3 text-left">
+<div class="border-l-2 border-primary pl-2">
+<span class="block font-data-tabular text-headline-sm font-bold text-on-surface tabular-nums">48</span>
+<span class="font-label-sm text-label-sm text-outline">Audited Tools</span>
+</div>
+<div class="border-l-2 border-secondary pl-2">
+<span class="block font-data-tabular text-headline-sm font-bold text-on-surface tabular-nums">1,240 hrs</span>
+<span class="font-label-sm text-label-sm text-outline">Lab Testing Logged</span>
+</div>
+<div class="border-l-2 border-outline-variant pl-2">
+<span class="block font-data-tabular text-headline-sm font-bold text-on-surface tabular-nums">14</span>
+<span class="font-label-sm text-label-sm text-outline">Head-to-Head Dockets</span>
+</div>
+<div class="border-l-2 border-outline-variant pl-2">
+<span class="block font-data-tabular text-headline-sm font-bold text-secondary tabular-nums">Weekly</span>
+<span class="font-label-sm text-label-sm text-outline">Live Re-Benchmarking</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Subcategory Filter Pills / Tabs -->
+<nav aria-label="Subcategories" class="flex items-center gap-2 overflow-x-auto pt-6 pb-2 no-scrollbar">
+<a class="px-3.5 py-1.5 rounded-full font-label-md text-label-md border border-outline-variant text-on-surface-variant hover:border-primary hover:text-primary whitespace-nowrap transition-colors bg-surface-container-lowest" href="#">
+          All AI Tools
+        </a>
+<a class="px-3.5 py-1.5 rounded-full font-label-md text-label-md bg-primary text-on-primary font-semibold whitespace-nowrap shadow-sm" href="#">
+          AI Coding Assistants &amp; IDEs
+        </a>
+<a class="px-3.5 py-1.5 rounded-full font-label-md text-label-md border border-outline-variant text-on-surface-variant hover:border-primary hover:text-primary whitespace-nowrap transition-colors bg-surface-container-lowest" href="#">
+          Terminal &amp; CLI Agents
+        </a>
+<a class="px-3.5 py-1.5 rounded-full font-label-md text-label-md border border-outline-variant text-on-surface-variant hover:border-primary hover:text-primary whitespace-nowrap transition-colors bg-surface-container-lowest" href="#">
+          Reasoning &amp; Coding APIs
+        </a>
+<a class="px-3.5 py-1.5 rounded-full font-label-md text-label-md border border-outline-variant text-on-surface-variant hover:border-primary hover:text-primary whitespace-nowrap transition-colors bg-surface-container-lowest" href="#">
+          Local LLM Runners (Ollama/vLLM)
+        </a>
+</nav>
+</header>
+<!-- 2. Interactive Filter & Sort Toolbar -->
+<section aria-labelledby="filter-heading" class="bg-surface-container-low border border-outline-variant rounded-xl p-4 mb-space-lg">
+<h2 class="sr-only" id="filter-heading">Category Filters and Sorting</h2>
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<!-- Filter chips group -->
+<div class="flex flex-wrap items-center gap-2">
+<span class="font-label-sm text-label-sm font-semibold uppercase text-outline mr-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">tune</span> Filter:
+          </span>
+<!-- Pricing Model -->
+<div class="relative inline-block text-left">
+<select aria-label="Filter by Pricing Model" class="bg-surface-container-lowest border border-outline-variant rounded-lg px-3 py-1.5 font-label-sm text-label-sm text-on-surface pr-8 focus:ring-1 focus:ring-primary focus:border-primary">
+<option value="">Pricing Model: All</option>
+<option value="open-source">Open Source</option>
+<option value="flat-saas">Flat SaaS ($10-$20/mo)</option>
+<option value="byok">BYOK API</option>
+<option value="enterprise">Enterprise Tier</option>
+</select>
+</div>
+<!-- Target Language -->
+<div class="relative inline-block text-left">
+<select aria-label="Filter by Target Language" class="bg-surface-container-lowest border border-outline-variant rounded-lg px-3 py-1.5 font-label-sm text-label-sm text-on-surface pr-8 focus:ring-1 focus:ring-primary focus:border-primary">
+<option value="">Language: All Monorepos</option>
+<option value="ts">TypeScript / React</option>
+<option value="py">Python / PyTorch</option>
+<option value="rust">Rust / Tokio</option>
+<option value="go">Go / Microservices</option>
+</select>
+</div>
+<!-- Hosting -->
+<div class="relative inline-block text-left">
+<select aria-label="Filter by Hosting Architecture" class="bg-surface-container-lowest border border-outline-variant rounded-lg px-3 py-1.5 font-label-sm text-label-sm text-on-surface pr-8 focus:ring-1 focus:ring-primary focus:border-primary">
+<option value="">Deployment: Cloud &amp; Local</option>
+<option value="cloud">Cloud / Hosted Agent</option>
+<option value="local">Local / Air-gapped Only</option>
+</select>
+</div>
+<button class="text-label-sm font-label-sm text-outline hover:text-primary underline px-2 py-1" type="button">
+            Reset Filters
+          </button>
+</div>
+<!-- Sort dropdown -->
+<div class="flex items-center gap-2 self-end md:self-auto">
+<label class="font-label-sm text-label-sm text-outline whitespace-nowrap" for="sort-dropdown">Sort by:</label>
+<select class="bg-surface-container-lowest border border-outline-variant rounded-lg px-3 py-1.5 font-label-sm text-label-sm text-on-surface font-semibold focus:ring-1 focus:ring-primary focus:border-primary" id="sort-dropdown">
+<option selected="">Highest Lab Score</option>
+<option>Recently Audited</option>
+<option>Most Tested (Hours Logged)</option>
+<option>Lowest Estimated Cost</option>
+</select>
+</div>
+</div>
+</section>
+<!-- 3. Featured Flagship Review Hero (Bento / Spec Rail Hybrid) -->
+<section aria-labelledby="featured-review-heading" class="mb-space-xl">
+<div class="flex items-center justify-between mb-3">
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface flex items-center gap-2" id="featured-review-heading">
+<span class="material-symbols-outlined text-primary text-[20px]">award_star</span>
+<span>Category Flagship Recommendation</span>
+</h2>
+<span class="font-label-sm text-label-sm text-outline">Audited under Protocol v4.2</span>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden hover:shadow-sm transition-shadow">
+<div class="grid grid-cols-1 lg:grid-cols-12 divide-y lg:divide-y-0 lg:divide-x divide-outline-variant/60">
+<!-- Flagship Main Column -->
+<div class="lg:col-span-8 p-6 md:p-8 flex flex-col justify-between">
+<div>
+<div class="flex flex-wrap items-center gap-2.5 mb-4">
+<span class="px-2.5 py-1 rounded bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-bold uppercase tracking-wider">
+                  Editor's Choice 2025
+                </span>
+<span class="px-2.5 py-1 rounded bg-surface-container font-label-sm text-label-sm text-on-surface-variant font-medium">
+                  v0.45.8 Verified
+                </span>
+<span class="flex items-center gap-1 font-label-sm text-label-sm text-outline ml-auto">
+<span class="material-symbols-outlined text-[15px]">timer</span> 140 Lab Hours Logged
+                </span>
+</div>
+<h3 class="font-headline-md text-headline-md font-bold text-on-surface mb-2">
+<a class="hover:text-primary transition-colors" href="#cursor-full-review">
+                  Cursor Review: The Benchmark for Context-Aware Agentic Coding
+                </a>
+</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 leading-relaxed">
+                Cursor retains the industry’s highest syntactic accuracy when executing cross-file refactors across multi-thousand-file repositories. Its semantic indexer, custom AST parser, and multi-model routing (Claude 3.7 + GPT-4o) consistently outperform legacy code completions while maintaining sub-120ms first-token latency in shadow mode.
+              </p>
+<!-- Best For / Not Ideal For Zones (Design System Guidance) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+<div class="bg-[#ebf7f2] border border-[#0d7a53]/20 rounded-lg p-3.5">
+<span class="font-label-sm text-label-sm font-bold text-[#0d7a53] flex items-center gap-1 mb-1.5 uppercase">
+<span class="material-symbols-outlined text-[16px]">check_circle</span> Best for
+                  </span>
+<p class="font-body-sm text-body-sm text-on-surface">
+                    Full-stack engineers navigating monorepos requiring precise multi-file edits, spec-driven scaffolding, and deep Git branch contextual awareness.
+                  </p>
+</div>
+<div class="bg-[#f0efeb] border border-outline-variant/50 rounded-lg p-3.5">
+<span class="font-label-sm text-label-sm font-bold text-on-surface-variant flex items-center gap-1 mb-1.5 uppercase">
+<span class="material-symbols-outlined text-[16px]">cancel</span> Not ideal for
+                  </span>
+<p class="font-body-sm text-body-sm text-on-surface">
+                    Strictly air-gapped defense or healthcare setups unable to route codebase embeddings through SOC-2 certified remote indexing pipelines.
+                  </p>
+</div>
+</div>
+</div>
+<!-- Footer Action Bar -->
+<div class="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-outline-variant/40">
+<div class="flex items-center gap-3">
+<a class="bg-primary hover:bg-[#1e339a] text-on-primary font-label-md text-label-md font-semibold px-5 py-2.5 rounded-lg transition-colors inline-flex items-center gap-1.5 shadow-sm" href="#cursor-full-review">
+<span>Read In-Depth Lab Review</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+<a class="bg-surface-container-lowest border border-outline-variant hover:bg-surface-container-low text-on-surface font-label-md text-label-md px-4 py-2.5 rounded-lg transition-colors inline-flex items-center gap-1.5" href="https://cursor.com" rel="noopener noreferrer" target="_blank">
+<span>Visit Cursor</span>
+<span class="material-symbols-outlined text-[14px] text-outline">open_in_new</span>
+</a>
+</div>
+<span class="font-label-sm text-label-sm text-outline">Tested by Lead Lab Auditor: M. Vance, Ph.D.</span>
+</div>
+</div>
+<!-- Score Card Rail -->
+<div class="lg:col-span-4 p-6 bg-surface-container-low/50 flex flex-col justify-between">
+<div>
+<div class="text-center py-4 border-b border-outline-variant/60">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline font-semibold">ToolScope Lab Score</span>
+<div class="my-2 flex items-baseline justify-center gap-1">
+<span class="font-data-tabular text-5xl font-extrabold text-on-surface tabular-nums">8.9</span>
+<span class="text-headline-sm font-label-sm text-outline">/ 10</span>
+</div>
+<span class="inline-block px-2.5 py-0.5 rounded-full bg-secondary text-on-secondary font-label-sm text-label-sm font-semibold">
+                  Superior Grade (Tier 1)
+                </span>
+</div>
+<!-- Metric Breakdown -->
+<div class="py-4 space-y-3 font-label-sm text-label-sm">
+<div>
+<div class="flex justify-between text-on-surface mb-1">
+<span>Multi-File Repository Indexing</span>
+<span class="font-bold tabular-nums">9.4</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 94%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-on-surface mb-1">
+<span>Agent Autonomy &amp; Bug Fixing</span>
+<span class="font-bold tabular-nums">8.8</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 88%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-on-surface mb-1">
+<span>Inline Latency (Sub-200ms)</span>
+<span class="font-bold tabular-nums">8.2</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 82%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-on-surface mb-1">
+<span>Privacy &amp; Telemetry Isolation</span>
+<span class="font-bold tabular-nums">8.5</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 85%"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-3 text-body-sm font-body-sm">
+<span class="font-label-sm text-label-sm text-outline block mb-1">Lab Testing Specimen</span>
+<p class="text-on-surface-variant font-label-sm text-label-sm">
+                Evaluated against the Next.js monorepo (1.2M LoC) and a multi-package Rust microservice backend across macOS Sonoma &amp; Ubuntu 24.04 LTS.
+              </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. Category Benchmark Leaderboard / Scorecard Table -->
+<section aria-labelledby="leaderboard-heading" class="mb-space-xl">
+<div class="flex flex-col sm:flex-row sm:items-end justify-between mb-4 gap-2">
+<div>
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface flex items-center gap-2" id="leaderboard-heading">
+<span class="material-symbols-outlined text-primary text-[20px]">table_rows</span>
+<span>Category Benchmark Leaderboard</span>
+</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Ranked by overall composite score across syntactic correctness, contextual index recall, and latency.
+          </p>
+</div>
+<span class="font-label-sm text-label-sm text-outline">Scores normalized out of 10.0</span>
+</div>
+<div class="border border-outline-variant rounded-xl overflow-hidden bg-surface-container-lowest shadow-sm">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-high border-b-2 border-outline-variant font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">
+<th class="py-3.5 px-4 w-16 text-center" scope="col">Rank</th>
+<th class="py-3.5 px-4" scope="col">Tool &amp; Release</th>
+<th class="py-3.5 px-4 text-center" scope="col">Overall</th>
+<th class="py-3.5 px-4 text-center hidden md:table-cell" scope="col">Multi-File Indexing</th>
+<th class="py-3.5 px-4 text-center hidden sm:table-cell" scope="col">Latency</th>
+<th class="py-3.5 px-4" scope="col">Pricing</th>
+<th class="py-3.5 px-4 hidden lg:table-cell" scope="col">Editorial Takeaway</th>
+<th class="py-3.5 px-4 text-right" scope="col">Lab Sheet</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/60 font-body-sm text-body-sm">
+<!-- Rank 1: Cursor -->
+<tr class="hover:bg-surface-container-low transition-colors bg-surface-container-lowest">
+<td class="py-4 px-4 text-center font-data-tabular font-bold text-primary">#1</td>
+<td class="py-4 px-4 font-semibold text-on-surface">
+<div class="flex items-center gap-2">
+<span class="hover:text-primary transition-colors">Cursor</span>
+<span class="text-xs px-1.5 py-0.5 rounded bg-secondary-container text-on-secondary-container font-medium">Top Pick</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline font-normal">v0.45.8 (VS Code Fork)</span>
+</td>
+<td class="py-4 px-4 text-center">
+<span class="inline-block px-2.5 py-1 rounded bg-primary/10 text-primary font-data-tabular font-bold tabular-nums">
+                    8.9
+                  </span>
+</td>
+<td class="py-4 px-4 text-center font-data-tabular tabular-nums font-semibold text-secondary hidden md:table-cell">
+                  9.4
+                </td>
+<td class="py-4 px-4 text-center font-data-tabular tabular-nums hidden sm:table-cell">
+                  8.2
+                </td>
+<td class="py-4 px-4 font-data-tabular tabular-nums text-on-surface">
+                  $20/mo
+                </td>
+<td class="py-4 px-4 text-on-surface-variant hidden lg:table-cell">
+                  Best for complex monorepos requiring precise multi-file refactoring.
+                </td>
+<td class="py-4 px-4 text-right">
+<a class="font-label-sm text-label-sm font-semibold text-primary hover:underline inline-flex items-center gap-0.5" href="#">
+                    Audit <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+</a>
+</td>
+</tr>
+<!-- Rank 2: Windsurf -->
+<tr class="hover:bg-surface-container-low transition-colors bg-surface/50">
+<td class="py-4 px-4 text-center font-data-tabular font-bold text-on-surface">#2</td>
+<td class="py-4 px-4 font-semibold text-on-surface">
+<div class="flex items-center gap-2">
+<span>Windsurf</span>
+<span class="text-xs px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-medium">Cascade</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline font-normal">v1.4 (Codeium Engine)</span>
+</td>
+<td class="py-4 px-4 text-center">
+<span class="inline-block px-2.5 py-1 rounded bg-primary/10 text-primary font-data-tabular font-bold tabular-nums">
+                    8.7
+                  </span>
+</td>
+<td class="py-4 px-4 text-center font-data-tabular tabular-nums hidden md:table-cell">
+                  8.6
+                </td>
+<td class="py-4 px-4 text-center font-data-tabular tabular-nums font-semibold text-secondary hidden sm:table-cell">
+                  8.9
+                </td>
+<td class="py-4 px-4 font-data-tabular tabular-nums text-on-surface">
+                  $15/mo
+                </td>
+<td class="py-4 px-4 text-on-surface-variant hidden lg:table-cell">
+                  Best agent autonomy with superior multi-step command-line flows.
+                </td>
+<td class="py-4 px-4 text-right">
+<a class="font-label-sm text-label-sm font-semibold text-primary hover:underline inline-flex items-center gap-0.5" href="#">
+                    Audit <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+</a>
+</td>
+</tr>
+<!-- Rank 3: Claude Code CLI -->
+<tr class="hover:bg-surface-container-low transition-colors bg-surface-container-lowest">
+<td class="py-4 px-4 text-center font-data-tabular font-bold text-on-surface">#3</td>
+<td class="py-4 px-4 font-semibold text-on-surface">
+<div class="flex items-center gap-2">
+<span>Claude Code CLI</span>
+<span class="text-xs px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-medium">Terminal</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline font-normal">Anthropic CLI Engine</span>
+</td>
+<td class="py-4 px-4 text-center">
+<span class="inline-block px-2.5 py-1 rounded bg-primary/10 text-primary font-data-tabular font-bold tabular-nums">
+                    8.6
+                  </span>
+</td>
+<td class="py-4 px-4 text-center font-data-tabular tabular-nums hidden md:table-cell">
+                  9.1
+                </td>
+<td class="py-4 px-4 text-center font-data-tabular tabular-nums hidden sm:table-cell">
+                  7.8
+                </td>
+<td class="py-4 px-4 font-data-tabular tabular-nums text-on-surface">
+                  BYOK API
+                </td>
+<td class="py-4 px-4 text-on-surface-variant hidden lg:table-cell">
+                  Best terminal agent with exceptional Claude 3.7 reasoning power.
+                </td>
+<td class="py-4 px-4 text-right">
+<a class="font-label-sm text-label-sm font-semibold text-primary hover:underline inline-flex items-center gap-0.5" href="#">
+                    Audit <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+</a>
+</td>
+</tr>
+<!-- Rank 4: GitHub Copilot Workspace -->
+<tr class="hover:bg-surface-container-low transition-colors bg-surface/50">
+<td class="py-4 px-4 text-center font-data-tabular font-bold text-on-surface">#4</td>
+<td class="py-4 px-4 font-semibold text-on-surface">
+<div class="flex items-center gap-2">
+<span>GitHub Copilot Workspace</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline font-normal">Enterprise Tier Integration</span>
+</td>
+<td class="py-4 px-4 text-center">
+<span class="inline-block px-2.5 py-1 rounded bg-surface-container-high text-on-surface font-data-tabular font-bold tabular-nums">
+                    8.1
+                  </span>
+</td>
+<td class="py-4 px-4 text-center font-data-tabular tabular-nums hidden md:table-cell">
+                  7.9
+                </td>
+<td class="py-4 px-4 text-center font-data-tabular tabular-nums hidden sm:table-cell">
+                  8.4
+                </td>
+<td class="py-4 px-4 font-data-tabular tabular-nums text-on-surface">
+                  $10-19/mo
+                </td>
+<td class="py-4 px-4 text-on-surface-variant hidden lg:table-cell">
+                  Best enterprise governance, SAML compliance, and GitHub PR integration.
+                </td>
+<td class="py-4 px-4 text-right">
+<a class="font-label-sm text-label-sm font-semibold text-primary hover:underline inline-flex items-center gap-0.5" href="#">
+                    Audit <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+</a>
+</td>
+</tr>
+<!-- Rank 5: Aider -->
+<tr class="hover:bg-surface-container-low transition-colors bg-surface-container-lowest">
+<td class="py-4 px-4 text-center font-data-tabular font-bold text-on-surface">#5</td>
+<td class="py-4 px-4 font-semibold text-on-surface">
+<div class="flex items-center gap-2">
+<span>Aider</span>
+<span class="text-xs px-1.5 py-0.5 rounded bg-surface-container text-outline font-medium">OSS</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline font-normal">v0.72 Git-Paired CLI</span>
+</td>
+<td class="py-4 px-4 text-center">
+<span class="inline-block px-2.5 py-1 rounded bg-surface-container-high text-on-surface font-data-tabular font-bold tabular-nums">
+                    8.0
+                  </span>
+</td>
+<td class="py-4 px-4 text-center font-data-tabular tabular-nums hidden md:table-cell">
+                  8.4
+                </td>
+<td class="py-4 px-4 text-center font-data-tabular tabular-nums hidden sm:table-cell">
+                  8.5
+                </td>
+<td class="py-4 px-4 font-data-tabular tabular-nums text-on-surface">
+                  Free OSS + API
+                </td>
+<td class="py-4 px-4 text-on-surface-variant hidden lg:table-cell">
+                  Best open-source scriptable CLI with Git auto-commit history tracking.
+                </td>
+<td class="py-4 px-4 text-right">
+<a class="font-label-sm text-label-sm font-semibold text-primary hover:underline inline-flex items-center gap-0.5" href="#">
+                    Audit <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+</a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-3 bg-surface-container-low text-center border-t border-outline-variant font-label-sm text-label-sm text-outline">
+          Showing top 5 tools of 48. <a class="text-primary font-semibold hover:underline" href="#">Download full CSV raw benchmark dataset (v4.2.1)</a>
+</div>
+</div>
+</section>
+<!-- 5. Grid of In-Depth Category Reviews (6 Editorial Cards) -->
+<section aria-labelledby="grid-reviews-heading" class="mb-space-xl">
+<div class="flex items-center justify-between mb-6">
+<div>
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface" id="grid-reviews-heading">
+            Lab Reviews &amp; Benchmarks
+          </h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Full-length empirical investigations published by our engineering testing team.
+          </p>
+</div>
+<a class="font-label-sm text-label-sm font-semibold text-primary hover:underline flex items-center gap-1" href="#">
+<span>View Archive</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Card 1: Claude 3.7 Sonnet Coding Benchmarks -->
+<article class="bg-surface-container-lowest border border-outline-variant rounded-xl p-5 flex flex-col justify-between hover:border-primary/50 transition-colors">
+<div>
+<div class="flex items-center justify-between gap-2 mb-3">
+<span class="font-label-sm text-label-sm font-semibold uppercase text-secondary">
+                Model Benchmark
+              </span>
+<span class="px-2 py-0.5 rounded bg-primary/10 text-primary font-data-tabular font-bold tabular-nums text-xs">
+                9.1 / 10
+              </span>
+</div>
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface mb-2 leading-snug">
+<a class="hover:text-primary transition-colors" href="#">
+                Claude 3.7 Sonnet: Hybrid Thinking Architecture in Real Repos
+              </a>
+</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4 leading-relaxed">
+              Extended reasoning tokens eliminated 84% of hallucinated package imports in our Rust suite, though token costs spiked 3.4x over standard inference.
+            </p>
+</div>
+<div class="pt-4 border-t border-outline-variant/40 flex items-center justify-between font-label-sm text-label-sm text-outline">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span> 14 min read
+            </span>
+<span>Mar 2, 2025</span>
+</div>
+</article>
+<!-- Card 2: Supabase AI Assistant vs Firebase Genkit -->
+<article class="bg-surface-container-lowest border border-outline-variant rounded-xl p-5 flex flex-col justify-between hover:border-primary/50 transition-colors">
+<div>
+<div class="flex items-center justify-between gap-2 mb-3">
+<span class="font-label-sm text-label-sm font-semibold uppercase text-outline">
+                Backend AI
+              </span>
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-on-surface font-data-tabular font-bold tabular-nums text-xs">
+                7.9 / 10
+              </span>
+</div>
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface mb-2 leading-snug">
+<a class="hover:text-primary transition-colors" href="#">
+                Supabase AI Assistant vs Firebase Genkit: SQL Generation Audited
+              </a>
+</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4 leading-relaxed">
+              Supabase generates valid pgvector migrations with zero syntax errors, while Firebase offers cleaner client SDK streaming abstractions.
+            </p>
+</div>
+<div class="pt-4 border-t border-outline-variant/40 flex items-center justify-between font-label-sm text-label-sm text-outline">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span> 10 min read
+            </span>
+<span>Feb 28, 2025</span>
+</div>
+</article>
+<!-- Card 3: Devin vs SWE-bench Reality Check -->
+<article class="bg-surface-container-lowest border border-outline-variant rounded-xl p-5 flex flex-col justify-between hover:border-primary/50 transition-colors">
+<div>
+<div class="flex items-center justify-between gap-2 mb-3">
+<span class="font-label-sm text-label-sm font-semibold uppercase text-tertiary">
+                Investigation
+              </span>
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-on-surface font-data-tabular font-bold tabular-nums text-xs">
+                6.8 / 10
+              </span>
+</div>
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface mb-2 leading-snug">
+<a class="hover:text-primary transition-colors" href="#">
+                Devin vs SWE-bench: Reproducing Autonomous Software Engineers
+              </a>
+</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4 leading-relaxed">
+              On un-prompted end-to-end issues, pass rates dropped to 22.4% when runtime build errors demanded multi-layered Docker environment adjustments.
+            </p>
+</div>
+<div class="pt-4 border-t border-outline-variant/40 flex items-center justify-between font-label-sm text-label-sm text-outline">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span> 18 min read
+            </span>
+<span>Feb 25, 2025</span>
+</div>
+</article>
+<!-- Card 4: Ollama Local Hosting Guide -->
+<article class="bg-surface-container-lowest border border-outline-variant rounded-xl p-5 flex flex-col justify-between hover:border-primary/50 transition-colors">
+<div>
+<div class="flex items-center justify-between gap-2 mb-3">
+<span class="font-label-sm text-label-sm font-semibold uppercase text-secondary">
+                Local Hardware
+              </span>
+<span class="px-2 py-0.5 rounded bg-primary/10 text-primary font-data-tabular font-bold tabular-nums text-xs">
+                8.8 / 10
+              </span>
+</div>
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface mb-2 leading-snug">
+<a class="hover:text-primary transition-colors" href="#">
+                Ollama 0.5+ Architecture: Memory Paging &amp; DeepSeek-R1 Local Setup
+              </a>
+</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4 leading-relaxed">
+              Quantized 4-bit 32B models achieve 42 tokens/sec on unified Apple Silicon, delivering complete data sovereignty with zero latency penalties.
+            </p>
+</div>
+<div class="pt-4 border-t border-outline-variant/40 flex items-center justify-between font-label-sm text-label-sm text-outline">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span> 12 min read
+            </span>
+<span>Feb 21, 2025</span>
+</div>
+</article>
+<!-- Card 5: Raycast AI Extension Hub -->
+<article class="bg-surface-container-lowest border border-outline-variant rounded-xl p-5 flex flex-col justify-between hover:border-primary/50 transition-colors">
+<div>
+<div class="flex items-center justify-between gap-2 mb-3">
+<span class="font-label-sm text-label-sm font-semibold uppercase text-outline">
+                Workflow Utility
+              </span>
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-on-surface font-data-tabular font-bold tabular-nums text-xs">
+                8.3 / 10
+              </span>
+</div>
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface mb-2 leading-snug">
+<a class="hover:text-primary transition-colors" href="#">
+                Raycast AI for Developers: Prompt Snippets &amp; Context Shifting Audit
+              </a>
+</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4 leading-relaxed">
+              Global hotkey availability saves 45 seconds per query compared to web interfaces, but lacks codebase semantic grounding.
+            </p>
+</div>
+<div class="pt-4 border-t border-outline-variant/40 flex items-center justify-between font-label-sm text-label-sm text-outline">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span> 8 min read
+            </span>
+<span>Feb 17, 2025</span>
+</div>
+</article>
+<!-- Card 6: vLLM Production Latency -->
+<article class="bg-surface-container-lowest border border-outline-variant rounded-xl p-5 flex flex-col justify-between hover:border-primary/50 transition-colors">
+<div>
+<div class="flex items-center justify-between gap-2 mb-3">
+<span class="font-label-sm text-label-sm font-semibold uppercase text-secondary">
+                Infrastructure
+              </span>
+<span class="px-2 py-0.5 rounded bg-primary/10 text-primary font-data-tabular font-bold tabular-nums text-xs">
+                9.0 / 10
+              </span>
+</div>
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface mb-2 leading-snug">
+<a class="hover:text-primary transition-colors" href="#">
+                vLLM Production Benchmarks: PagedAttention Throughput on H100
+              </a>
+</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4 leading-relaxed">
+              Continuous batching increases concurrency 6.2x with zero VRAM fragmentation over naive HuggingFace Transformers pipelines.
+            </p>
+</div>
+<div class="pt-4 border-t border-outline-variant/40 flex items-center justify-between font-label-sm text-label-sm text-outline">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span> 16 min read
+            </span>
+<span>Feb 11, 2025</span>
+</div>
+</article>
+</div>
+</section>
+<!-- 6. Essential Head-to-Head Comparisons in this Category -->
+<section aria-labelledby="comparisons-heading" class="mb-space-xl">
+<div class="flex items-center justify-between mb-4">
+<div>
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface flex items-center gap-2" id="comparisons-heading">
+<span class="material-symbols-outlined text-primary text-[20px]">compare_arrows</span>
+<span>Essential Head-to-Head Comparisons</span>
+</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Side-by-side empirical evaluations on identical test suites and developer workflows.
+          </p>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Comparison 1: Cursor vs Windsurf -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-5 hover:border-primary transition-colors flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between font-label-sm text-label-sm text-outline mb-3">
+<span>Direct IDE Face-Off</span>
+<span class="text-secondary font-semibold">Decisive Verdict</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface mb-2">
+              Cursor vs Windsurf
+            </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4">
+              Cursor wins on deep monorepo indexing and AST accuracy; Windsurf takes terminal execution loops and budget pricing ($15 vs $20).
+            </p>
+</div>
+<a class="font-label-sm text-label-sm font-semibold text-primary inline-flex items-center gap-1 hover:underline pt-3 border-t border-outline-variant/40" href="#">
+<span>Read 32-point Comparison</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</div>
+<!-- Comparison 2: Cursor vs Copilot -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-5 hover:border-primary transition-colors flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between font-label-sm text-label-sm text-outline mb-3">
+<span>Market Leader vs Challenger</span>
+<span class="text-secondary font-semibold">Decisive Verdict</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface mb-2">
+              Cursor vs GitHub Copilot
+            </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4">
+              Copilot holds corporate compliance security clearance, but Cursor delivers 2.8x higher multi-file refactoring accuracy in our tests.
+            </p>
+</div>
+<a class="font-label-sm text-label-sm font-semibold text-primary inline-flex items-center gap-1 hover:underline pt-3 border-t border-outline-variant/40" href="#">
+<span>Read 28-point Comparison</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</div>
+<!-- Comparison 3: Claude CLI vs Aider -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-5 hover:border-primary transition-colors flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between font-label-sm text-label-sm text-outline mb-3">
+<span>Terminal &amp; CLI Agents</span>
+<span class="text-outline font-semibold">Tied Result</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface mb-2">
+              Claude Code CLI vs Aider
+            </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4">
+              Claude Code features deeper autonomous reasoning cycles, while Aider provides complete model-agnostic freedom and zero lock-in.
+            </p>
+</div>
+<a class="font-label-sm text-label-sm font-semibold text-primary inline-flex items-center gap-1 hover:underline pt-3 border-t border-outline-variant/40" href="#">
+<span>Read 24-point Comparison</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</section>
+<!-- 7. Category Testing Methodology Box -->
+<section aria-labelledby="methodology-heading" class="bg-surface-container-low border border-outline-variant rounded-xl p-6 md:p-8 mb-space-xl" id="methodology">
+<div class="max-w-4xl">
+<div class="flex items-center gap-2 mb-3">
+<span class="p-1 rounded bg-primary text-on-primary">
+<span class="material-symbols-outlined text-[18px]">biotech</span>
+</span>
+<span class="font-label-sm text-label-sm font-bold uppercase tracking-wider text-primary">ToolScope Lab Standards</span>
+</div>
+<h2 class="font-headline-md text-headline-md font-bold text-on-surface mb-3" id="methodology-heading">
+          How ToolScope Evaluates AI Coding Tools &amp; Agents
+        </h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 leading-relaxed">
+          Unlike synthetic benchmarks that evaluate isolated single-function completions, ToolScope evaluates AI coding agents on four cloned production repositories across distinct architectural paradigms. Every test is executed on identical isolated hardware without prior local caching.
+        </p>
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-3.5">
+<span class="font-label-sm text-label-sm font-bold text-primary block mb-1">TypeScript / React</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Next.js 15 monorepo with 40+ nested server actions, strict Turborepo boundaries, and complex Zod schemas.
+            </p>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-3.5">
+<span class="font-label-sm text-label-sm font-bold text-primary block mb-1">Rust / Tokio</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Asynchronous event broker with strict ownership constraints, custom lifetimes, and multi-crate workspace.
+            </p>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-3.5">
+<span class="font-label-sm text-label-sm font-bold text-primary block mb-1">Python / PyTorch</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Distributed tensor pipeline testing matrix manipulations, Poetry dependencies, and CUDA kernel bindings.
+            </p>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-3.5">
+<span class="font-label-sm text-label-sm font-bold text-primary block mb-1">Go / Microservices</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              gRPC service layer testing concurrency primitives, channel buffer handling, and strict error wrapping.
+            </p>
+</div>
+</div>
+<div class="border-t border-outline-variant/60 pt-4 flex flex-wrap items-center justify-between gap-4 font-label-sm text-label-sm text-on-surface-variant">
+<div class="flex items-center gap-4">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-secondary">check_circle</span>
+              Raw Telemetry Logged
+            </span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-secondary">check_circle</span>
+              Air-Gapped Privacy Checked
+            </span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-secondary">check_circle</span>
+              Token Cost Audited
+            </span>
+</div>
+<a class="font-semibold text-primary hover:underline flex items-center gap-1" href="#">
+<span>Read Complete 14-page Protocol Specification</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer (Shared Component JSON Source of Truth) -->
+<footer class="bg-surface-container-low text-primary border-t border-outline-variant/60 full-width">
+<div class="w-full max-w-7xl mx-auto px-gutter py-space-xl flex flex-col gap-space-lg">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-6 border-b border-outline-variant/40">
+<div>
+<span class="text-headline-md font-headline-md font-bold text-on-surface">ToolScope</span>
+<p class="text-body-sm font-body-sm text-on-surface-variant max-w-md mt-1">
+            Empirical evaluations and reproducible benchmarks for professional engineering teams.
+          </p>
+</div>
+<div class="flex flex-wrap items-center gap-x-6 gap-y-2">
+<a class="text-on-surface-variant hover:text-on-surface transition-colors hover:text-primary underline-offset-4 text-label-sm font-label-sm" href="#">Testing Methodology</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors hover:text-primary underline-offset-4 text-label-sm font-label-sm" href="#">Editorial Standards</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors hover:text-primary underline-offset-4 text-label-sm font-label-sm" href="#">Affiliate Disclosure</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors hover:text-primary underline-offset-4 text-label-sm font-label-sm" href="#">Ethics Statement</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors hover:text-primary underline-offset-4 text-label-sm font-label-sm" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors hover:text-primary underline-offset-4 text-label-sm font-label-sm" href="#">Terms of Service</a>
+</div>
+</div>
+<div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-label-sm font-label-sm text-outline">
+<p>© 2025 ToolScope Media Inc. Rigorously researched, independent technology journalism.</p>
+<p class="text-xs">All benchmark datasets licensed under CC BY-ND 4.0 for non-commercial reproduction.</p>
+</div>
+</div>
+</footer>
+</body></html>

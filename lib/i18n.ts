@@ -1,0 +1,308 @@
+import { defaultLocale, type Locale } from "@/config/site";
+
+export type { Locale };
+
+/**
+ * UI dictionary. English is the source; Arabic is a complete translation.
+ * Content (articles) is NOT translated through this file — articles are
+ * separate MDX files per language with independent slugs and schedules.
+ */
+
+const en = {
+  skipToContent: "Skip to content",
+  siteTagline: "Independent software reviews, tested and explained",
+  utilityDisclosure: "Independent and reader-supported. Some links may earn us an affiliate commission.",
+  searchPlaceholder: "Search reviews, comparisons, guides…",
+  search: "Search",
+  searchSubmit: "Search",
+  searchResultsFor: "Search results for",
+  searchNoResults: "No results found.",
+  searchNoResultsHint: "Try different keywords, a product name, or browse a category.",
+  searchSuggested: "Suggested searches",
+  searchPageTitle: "Search",
+  searchIndexNote: "Search covers article titles, descriptions, and tags across both languages.",
+  menu: "Menu",
+  close: "Close",
+  home: "Home",
+  sections: "Sections",
+  language: "Language",
+  switchTo: "Read in Arabic",
+  switchToEn: "Read in English",
+  breadcrumbHome: "Home",
+  featuredReview: "Featured review",
+  latestReviews: "Latest reviews",
+  viewAll: "View all",
+  comparisonsTitle: "Head-to-head comparisons",
+  comparisonsSubtitle: "Side-by-side breakdowns to help you choose between popular tools.",
+  categoriesTitle: "Browse by category",
+  categoriesSubtitle: "Focused coverage across the software you actually use.",
+  articlesCount: (n: number) => `${n} ${n === 1 ? "article" : "articles"}`,
+  reviewsLabel: "Reviews",
+  compareLabel: "Comparisons",
+  alternativesLabel: "Alternatives",
+  guidesLabel: "Guides",
+  inThisCategory: "In this category",
+  filterByTag: "Filter by topic",
+  allTopics: "All topics",
+  readingTime: (n: number) => `${n} min read`,
+  published: "Published",
+  updated: "Updated",
+  lastUpdated: "Last updated",
+  reviewedBy: "Reviewed by",
+  writtenBy: "By",
+  onThisPage: "On this page",
+  backToTop: "Back to top",
+  tableOfContents: "Table of contents",
+  verdictTitle: "Verdict",
+  verdictPending: "Verdict pending",
+  verdictPendingNote: "This article has not been finalized with an editorial verdict yet.",
+  scoreOutOf: (score: number) => `${score} / 10`,
+  scoreSample: "Sample",
+  sampleScoreNote: "Score shown for layout demonstration only — not an editorial rating.",
+  noScoreYet: "Rating pending",
+  noScoreNote: "We only publish a score once testing is complete and documented.",
+  bestFor: "Best for",
+  notIdealFor: "Not ideal for",
+  pros: "Pros",
+  cons: "Cons",
+  prosPending: "Pros and cons will be published once hands-on testing is complete.",
+  pricingTitle: "Pricing",
+  pricingChecked: "Pricing checked",
+  pricingNotVerified: "Pricing not verified yet — always confirm on the provider's site.",
+  pricingPlaceholder: "Confirm current pricing on the provider's website.",
+  plan: "Plan",
+  price: "Price",
+  notes: "Notes",
+  visitProvider: "Visit provider",
+  visitSite: "Visit website",
+  affiliateDisclosureShort: "Affiliate link — we may earn a commission.",
+  affiliateDisclosureLong:
+    "Some outbound links are affiliate links. If you buy through them, we may earn a commission at no extra cost to you. This never affects our editorial judgments. Read our full affiliate disclosure.",
+  affiliateNoneConfigured: "No affiliate program is configured for this product yet.",
+  learnMore: "Learn more",
+  readFullReview: "Read the full review",
+  readArticle: "Read article",
+  alternativesTitle: "Alternatives to consider",
+  alternativeTo: "Alternative to",
+  relatedArticles: "Related reading",
+  testingNotesTitle: "Testing notes",
+  testingNotesPending: "Hands-on testing notes will be published here once testing is complete.",
+  methodologyTitle: "How we tested",
+  methodologyReadMore: "Read our testing methodology",
+  evidenceTitle: "Evidence & observations",
+  featuresTitle: "Features & limitations",
+  demoBannerTitle: "Demonstration content",
+  demoBannerBody:
+    "This article is sample content created to demonstrate the platform's layout and components. Product details, pricing, and assessments are illustrative and have not been verified by our editorial process.",
+  draftBannerTitle: "Draft — not published",
+  draftBannerBody: "This article is a work in progress and excluded from search engines and site listings.",
+  translationUnavailable: "This article hasn't been translated yet.",
+  translationAvailable: "Also available in",
+  newsletterTitle: "One careful review in your inbox",
+  newsletterBody:
+    "Get new reviews and comparisons by email. No spam, no sold data — unsubscribe any time.",
+  newsletterConsent: "I agree to receive the newsletter and accept the privacy policy.",
+  newsletterEmailLabel: "Email address",
+  newsletterEmailPlaceholder: "you@example.com",
+  newsletterSubscribe: "Subscribe",
+  newsletterUnavailable:
+    "Email delivery is not configured yet. Subscription will open before launch — no addresses are collected in the meantime.",
+  newsletterSubscribed: "Thanks — please check your inbox to confirm.",
+  newsletterError: "Something went wrong. Please try again later.",
+  footerSectionsTitle: "Sections",
+  footerAboutTitle: "Publication",
+  footerLegalTitle: "Legal",
+  footerRights: (year: number, name: string) => `© ${year} ${name}. All rights reserved.`,
+  footerDisclosure:
+    "ToolScope is an independent publication. It is reader-supported and may earn affiliate commissions — this never influences our reviews.",
+  howWeTestTitle: "How we test",
+  howWeTestBody:
+    "Every score we publish is backed by a documented, repeatable testing process — described in full on our methodology page.",
+  howWeTestCta: "See the methodology",
+  pageNotFoundTitle: "Page not found",
+  pageNotFoundBody: "The page you're looking for doesn't exist or may have moved.",
+  pageNotFoundCta: "Back to the homepage",
+  contactTitle: "Get in touch",
+  adLabel: "Advertisement",
+  adPlaceholderNote: "Ad placements are disabled. This space is reserved and clearly labeled for future partners.",
+  analyticsConsentTitle: "We value your privacy",
+  analyticsConsentBody:
+    "We'd like to use analytics cookies to understand how the site is used, and advertising cookies if ads are enabled. You can accept or decline — the site works either way.",
+  consentAccept: "Accept",
+  consentDecline: "Decline",
+  consentPolicyLink: "Privacy policy",
+  editingNote: "Editorial governance",
+  category: "Category",
+  topics: "Topics",
+  share: "Share",
+  alsoAvailableIn: "Also available in",
+  minutes: "min",
+} as const;
+
+const ar: Record<keyof typeof en, unknown> = {
+  skipToContent: "تخطَّ إلى المحتوى",
+  siteTagline: "مراجعات مستقلة للبرمجيات، مُختبَرة ومُفسَّرة",
+  utilityDisclosure: "منشور مستقل يدعمه القرّاء. قد تدرّ علينا بعض الروابط عمولة تسويق بالعمولة.",
+  searchPlaceholder: "ابحث في المراجعات والمقارنات والأدلة…",
+  search: "بحث",
+  searchSubmit: "ابحث",
+  searchResultsFor: "نتائج البحث عن",
+  searchNoResults: "لا توجد نتائج.",
+  searchNoResultsHint: "جرّب كلمات مختلفة أو اسم منتج، أو تصفّح أحد الأقسام.",
+  searchSuggested: "بحث مقترح",
+  searchPageTitle: "البحث",
+  searchIndexNote: "يشمل البحث عناوين المقالات ووصفها ووسومها في اللغتين.",
+  menu: "القائمة",
+  close: "إغلاق",
+  home: "الرئيسية",
+  sections: "الأقسام",
+  language: "اللغة",
+  switchTo: "اقرأ بالعربية",
+  switchToEn: "اقرأ بالإنجليزية",
+  breadcrumbHome: "الرئيسية",
+  featuredReview: "مراجعة مميزة",
+  latestReviews: "أحدث المراجعات",
+  viewAll: "عرض الكل",
+  comparisonsTitle: "مقارنات مباشرة",
+  comparisonsSubtitle: "تحليلات جنباً إلى جنب تساعدك على الاختيار بين الأدوات الشائعة.",
+  categoriesTitle: "تصفّح حسب القسم",
+  categoriesSubtitle: "تغطية مركّزة للبرمجيات التي تستخدمها فعلاً.",
+  articlesCount: (n: number) => `${n === 1 ? "مقال واحد" : n === 2 ? "مقالان" : `${n} مقالات`}`,
+  reviewsLabel: "المراجعات",
+  compareLabel: "المقارنات",
+  alternativesLabel: "البدائل",
+  guidesLabel: "الأدلة",
+  inThisCategory: "في هذا القسم",
+  filterByTag: "تصفية حسب الموضوع",
+  allTopics: "كل المواضيع",
+  readingTime: (n: number) => `${n} دقيقة قراءة`,
+  published: "نُشر",
+  updated: "حُدِّث",
+  lastUpdated: "آخر تحديث",
+  reviewedBy: "راجعه",
+  writtenBy: "بقلم",
+  onThisPage: "في هذه الصفحة",
+  backToTop: "العودة إلى الأعلى",
+  tableOfContents: "جدول المحتويات",
+  verdictTitle: "الحكم النهائي",
+  verdictPending: "الحكم النهائي قادم",
+  verdictPendingNote: "لم تُستكمل هذه المقالة بحكم تحريري نهائي بعد.",
+  scoreOutOf: (score: number) => `${score} / 10`,
+  scoreSample: "نموذج",
+  sampleScoreNote: "الدرجة معروضة لتوضيح التصميم فقط — وليست تقييماً تحريرياً.",
+  noScoreYet: "التقييم قادم",
+  noScoreNote: "لا ننشر درجة إلا بعد اكتمال الاختبار وتوثيقه.",
+  bestFor: "الأفضل لـ",
+  notIdealFor: "غير مناسب لـ",
+  pros: "الإيجابيات",
+  cons: "السلبيات",
+  prosPending: "ستُنشر الإيجابيات والسلبيات بعد اكتمال الاختبار العملي.",
+  pricingTitle: "الأسعار",
+  pricingChecked: "تم التحقق من الأسعار",
+  pricingNotVerified: "الأسعار غير مُتحقَّقة بعد — تأكّد دائماً من موقع المزوّد.",
+  pricingPlaceholder: "أكِّد الأسعار الحالية من موقع المزوّد.",
+  plan: "الخطة",
+  price: "السعر",
+  notes: "ملاحظات",
+  visitProvider: "زيارة المزوّد",
+  visitSite: "زيارة الموقع",
+  affiliateDisclosureShort: "رابط تسويق بالعمولة — قد نربح عمولة.",
+  affiliateDisclosureLong:
+    "بعض الروابط الخارجية روابط تسويق بالعمولة. إذا اشتريت عبرها فقد نربح عمولة دون أي تكلفة إضافية عليك، وهذا لا يؤثر أبداً على أحكامنا التحريرية. اطّلع على إفصاح العمولة الكامل.",
+  affiliateNoneConfigured: "لم يُضبَط أي برنامج تسويق بالعمولة لهذا المنتج بعد.",
+  learnMore: "اعرف المزيد",
+  readFullReview: "اقرأ المراجعة الكاملة",
+  readArticle: "اقرأ المقال",
+  alternativesTitle: "بدائل تستحق النظر",
+  alternativeTo: "بديل لـ",
+  relatedArticles: "قراءات ذات صلة",
+  testingNotesTitle: "ملاحظات الاختبار",
+  testingNotesPending: "ستُنشر ملاحظات الاختبار العملي هنا بعد اكتماله.",
+  methodologyTitle: "كيف اختبرنا",
+  methodologyReadMore: "اقرأ منهجية الاختبار",
+  evidenceTitle: "الأدلة والملاحظات",
+  featuresTitle: "الميزات والقيود",
+  demoBannerTitle: "محتوى تجريبي",
+  demoBannerBody:
+    "هذه المقالة محتوى نموذجي أُنشئ لعرض تصميم المنصة ومكوّناتها. تفاصيل المنتج والأسعار والتقييمات توضيحية ولم يتحقق منها تحريرياً.",
+  draftBannerTitle: "مسودة — غير منشورة",
+  draftBannerBody: "هذه المقالة قيد الإعداد ومستثناة من محركات البحث وقوائم الموقع.",
+  translationUnavailable: "لم تُترجَم هذه المقالة بعد.",
+  translationAvailable: "متوفرة أيضاً بـ",
+  newsletterTitle: "مراجعة مُتقنة في بريدك",
+  newsletterBody: "تصلك المراجعات والمقارنات الجديدة بالبريد. لا رسائل مزعجة ولا بيانات مباعة — يمكنك إلغاء الاشتراك في أي وقت.",
+  newsletterConsent: "أوافق على استلام النشرة البريدية وأقبل سياسة الخصوصية.",
+  newsletterEmailLabel: "البريد الإلكتروني",
+  newsletterEmailPlaceholder: "you@example.com",
+  newsletterSubscribe: "اشترك",
+  newsletterUnavailable: "لم يُضبَط إرسال البريد بعد. سيُفتح الاشتراك قبل الإطلاق — ولا تُجمع أي عناوين حتى ذلك الحين.",
+  newsletterSubscribed: "شكراً — تفقد بريدك لتأكيد الاشتراك.",
+  newsletterError: "حدث خطأ ما. حاول مرة أخرى لاحقاً.",
+  footerSectionsTitle: "الأقسام",
+  footerAboutTitle: "عن المنشور",
+  footerLegalTitle: "قانوني",
+  footerRights: (year: number, name: string) => `© ${year} ${name}. جميع الحقوق محفوظة.`,
+  footerDisclosure: "منشور مستقل يدعمه القرّاء وقد يربح عمولات تسويق بالعمولة — وهذا لا يؤثر أبداً على مراجعاتنا.",
+  howWeTestTitle: "كيف نختبر",
+  howWeTestBody: "كل درجة ننشرها مدعومة بعملية اختبار موثقة وقابلة للتكرار — موصوفة بالكامل في صفحة المنهجية.",
+  howWeTestCta: "اطّلع على المنهجية",
+  pageNotFoundTitle: "الصفحة غير موجودة",
+  pageNotFoundBody: "الصفحة التي تبحث عنها غير موجودة أو ربما انتقلت.",
+  pageNotFoundCta: "العودة إلى الرئيسية",
+  contactTitle: "تواصل معنا",
+  adLabel: "إعلان",
+  adPlaceholderNote: "مساحات الإعلانات معطّلة. هذه المساحة محجوزة ومُعلَّمة بوضوح للشركاء المستقبليين.",
+  analyticsConsentTitle: "نحن نحترم خصوصيتك",
+  analyticsConsentBody:
+    "نود استخدام ملفات تعريف الارتباط للتحليلات لفهم كيفية استخدام الموقع، وللإعلانات إذا مُكِّنت. يمكنك القبول أو الرفض — الموقع يعمل في الحالتين.",
+  consentAccept: "أوافق",
+  consentDecline: "أرفض",
+  consentPolicyLink: "سياسة الخصوصية",
+  editingNote: "الحوكمة التحريرية",
+  category: "القسم",
+  topics: "المواضيع",
+  share: "شارك",
+  alsoAvailableIn: "متوفرة أيضاً بـ",
+  minutes: "دقيقة",
+};
+
+export type Dictionary = typeof en;
+
+const dictionaries: Record<Locale, Dictionary> = {
+  en,
+  ar: ar as Dictionary,
+};
+
+export function getDictionary(locale: Locale): Dictionary {
+  return dictionaries[locale] ?? dictionaries[defaultLocale];
+}
+
+export type Translator = (
+  key: keyof Dictionary,
+) => Dictionary[keyof Dictionary];
+
+export function getTranslator(locale: Locale): Translator {
+  const dict = getDictionary(locale);
+  return (key) => dict[key];
+}
+
+/** Build a locale-prefixed href, e.g. path("en", "/reviews/x") → "/en/reviews/x". */
+export function localePath(locale: Locale, path: string): string {
+  const clean = path.startsWith("/") ? path : `/${path}`;
+  return `/${locale}${clean === "/" ? "" : clean}`;
+}
+
+const dateLocale: Record<Locale, string> = { en: "en-US", ar: "ar" };
+
+export function formatDate(date: Date | string, locale: Locale): string {
+  const d = typeof date === "string" ? new Date(date) : date;
+  return new Intl.DateTimeFormat(dateLocale[locale], {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  }).format(d);
+}
+
+export function dir(locale: Locale): "ltr" | "rtl" {
+  return locale === "ar" ? "rtl" : "ltr";
+}

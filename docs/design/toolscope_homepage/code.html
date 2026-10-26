@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ToolScope — Independent Software Journalism &amp; Rigorous Benchmarks</title>
+<!-- Material Symbols & Typography -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface": "#fbf8fe",
+            "tertiary-fixed": "#ffdad5",
+            "on-secondary-container": "#00734d",
+            "on-tertiary": "#ffffff",
+            "inverse-primary": "#bac3ff",
+            "outline": "#757685",
+            "secondary": "#006c48",
+            "on-error": "#ffffff",
+            "primary-fixed": "#dee1ff",
+            "on-error-container": "#93000a",
+            "surface-container": "#f0edf2",
+            "on-tertiary-fixed-variant": "#930303",
+            "inverse-surface": "#303034",
+            "error": "#ba1a1a",
+            "on-background": "#1b1b1f",
+            "surface-bright": "#fbf8fe",
+            "on-tertiary-container": "#ffb3a7",
+            "on-primary": "#ffffff",
+            "surface-container-high": "#eae7ed",
+            "surface-container-highest": "#e4e1e7",
+            "secondary-fixed-dim": "#7cd9aa",
+            "surface-container-low": "#f6f2f8",
+            "tertiary-container": "#a4160e",
+            "surface-container-lowest": "#ffffff",
+            "on-secondary": "#ffffff",
+            "on-primary-fixed": "#001159",
+            "on-primary-container": "#b9c2ff",
+            "on-primary-fixed-variant": "#1e39ad",
+            "primary-fixed-dim": "#bac3ff",
+            "on-surface": "#1b1b1f",
+            "surface-variant": "#e4e1e7",
+            "primary": "#092ba2",
+            "primary-container": "#2d46b9",
+            "surface-tint": "#3b53c6",
+            "inverse-on-surface": "#f3f0f5",
+            "background": "#fbf8fe",
+            "outline-variant": "#c5c5d6",
+            "surface-dim": "#dcd9de",
+            "on-tertiary-fixed": "#410000",
+            "on-secondary-fixed-variant": "#005236",
+            "tertiary": "#7d0001",
+            "error-container": "#ffdad6",
+            "on-secondary-fixed": "#002113",
+            "tertiary-fixed-dim": "#ffb4a8",
+            "secondary-fixed": "#98f6c5",
+            "secondary-container": "#98f6c5",
+            "on-surface-variant": "#444653"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "margin": "2rem",
+            "space-xs": "0.25rem",
+            "gutter-mobile": "1rem",
+            "space-lg": "1.5rem",
+            "gutter": "1.5rem",
+            "margin-mobile": "1rem",
+            "space-xl": "2.5rem",
+            "space-md": "1rem",
+            "space-sm": "0.5rem"
+          },
+          "fontFamily": {
+            "body-md": ["Inter"],
+            "display-hero-mobile": ["Newsreader"],
+            "display-hero": ["Newsreader"],
+            "label-sm": ["Inter"],
+            "data-tabular": ["Inter"],
+            "headline-lg": ["Newsreader"],
+            "headline-sm": ["Inter"],
+            "body-lg": ["Newsreader"],
+            "body-sm": ["Inter"],
+            "label-md": ["Inter"],
+            "headline-lg-mobile": ["Newsreader"],
+            "headline-md": ["Newsreader"]
+          },
+          "fontSize": {
+            "body-md": ["1rem", { "lineHeight": "1.625rem", "fontWeight": "400" }],
+            "display-hero-mobile": ["2.25rem", { "lineHeight": "2.75rem", "letterSpacing": "-0.02em", "fontWeight": "500" }],
+            "display-hero": ["3.5rem", { "lineHeight": "4rem", "letterSpacing": "-0.025em", "fontWeight": "500" }],
+            "label-sm": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.04em", "fontWeight": "600" }],
+            "data-tabular": ["0.875rem", { "lineHeight": "1.25rem", "fontWeight": "500" }],
+            "headline-lg": ["2.25rem", { "lineHeight": "2.75rem", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "headline-sm": ["1.125rem", { "lineHeight": "1.5rem", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-lg": ["1.25rem", { "lineHeight": "2rem", "fontWeight": "400" }],
+            "body-sm": ["0.875rem", { "lineHeight": "1.375rem", "fontWeight": "400" }],
+            "label-md": ["0.875rem", { "lineHeight": "1.25rem", "letterSpacing": "0.01em", "fontWeight": "500" }],
+            "headline-lg-mobile": ["1.75rem", { "lineHeight": "2.25rem", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-md": ["1.5rem", { "lineHeight": "2rem", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+      vertical-align: middle;
+    }
+    .tabular-nums {
+      font-feature-settings: "tnum";
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface antialiased selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- 1. Editorial Standards Notice Bar -->
+<aside class="w-full bg-surface-container-low border-b border-outline-variant/60 py-1.5 px-gutter">
+<div class="max-w-7xl mx-auto flex items-center justify-between font-label-sm text-label-sm text-on-surface-variant">
+<div class="flex items-center gap-space-sm">
+<span class="inline-block w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span>100% Independent Testing • Zero Sponsored Verdicts • Transparent Methodology • Updated Weekly</span>
+</div>
+<div class="hidden md:flex items-center gap-space-md text-outline">
+<span>Lab Verification Cycle 2025.2</span>
+<span>•</span>
+<a class="hover:text-primary transition-colors duration-150" href="#standards">Audited Disclosure</a>
+</div>
+</div>
+</aside>
+<!-- 2. Shared Component: TopNavBar -->
+<header class="docked full-width top-0 sticky z-50 bg-surface/90 backdrop-blur-md border-b border-outline-variant/60 transition-all duration-200 ease-in-out">
+<div class="w-full max-w-7xl mx-auto px-gutter flex items-center justify-between h-16">
+<!-- Brand & Subtitle -->
+<div class="flex items-center gap-space-md">
+<a class="flex flex-col group" href="#">
+<span class="text-headline-md font-headline-md font-bold tracking-tight text-on-surface group-hover:text-primary transition-colors">ToolScope</span>
+<span class="text-label-sm font-label-sm text-outline -mt-1 tracking-normal">Independent Software Journalism</span>
+</a>
+</div>
+<!-- Navigation Links -->
+<nav class="hidden lg:flex items-center space-x-6">
+<a class="text-on-surface-variant hover:text-on-surface transition-colors pb-1 text-label-md font-label-md" href="#ai-tools">AI Tools</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors pb-1 text-label-md font-label-md" href="#dev-software">Developer Software</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors pb-1 text-label-md font-label-md" href="#general-software">General Software</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors pb-1 text-label-md font-label-md" href="#comparisons">Comparisons</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors pb-1 text-label-md font-label-md" href="#standards">About &amp; Standards</a>
+</nav>
+<!-- Trailing Actions: Search & Lang -->
+<div class="flex items-center gap-space-md">
+<!-- Quick Search Bar -->
+<button class="flex items-center gap-space-sm bg-surface-container-lowest border border-outline-variant/60 rounded px-3 py-1.5 text-on-surface-variant hover:border-outline text-label-md font-label-md transition-all" type="button">
+<span class="material-symbols-outlined text-outline text-lg">search</span>
+<span class="hidden sm:inline text-on-surface-variant">Search evaluations...</span>
+<kbd class="hidden sm:inline-block ml-3 px-1.5 py-0.5 text-label-sm font-label-sm bg-surface-container text-outline rounded border border-outline-variant/40">⌘K</kbd>
+</button>
+<!-- Secondary Language Indicator -->
+<div class="text-label-md font-label-md text-on-surface-variant border-l border-outline-variant/60 pl-space-md flex items-center gap-1">
+<span class="font-semibold text-primary">EN</span>
+<span class="text-outline">/</span>
+<a class="hover:text-on-surface transition-colors text-outline" href="#">AR</a>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Editorial Canvas -->
+<main class="w-full max-w-7xl mx-auto px-gutter py-space-xl space-y-space-xl">
+<!-- 3. Compact Editorial Hero Section -->
+<section class="border-b border-outline-variant/60 pb-space-xl">
+<div class="max-w-4xl space-y-space-md">
+<div class="inline-flex items-center gap-2 px-2.5 py-1 bg-surface-container-high rounded border border-outline-variant/60 text-label-sm font-label-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-base">verified</span>
+<span>EMPIRICAL BENCHMARKS • ZERO ACCELERATED PROMOTIONS</span>
+</div>
+<h1 class="text-display-hero font-display-hero text-on-surface tracking-tight">
+          Software decisions, made clearer.
+        </h1>
+<p class="text-body-lg font-body-lg text-on-surface-variant max-w-3xl">
+          We rigorously test AI coding assistants, developer platforms, and productivity software with repeatable benchmarks to help engineering and product teams choose with confidence.
+        </p>
+<!-- CTAs -->
+<div class="flex flex-wrap items-center gap-space-md pt-space-sm">
+<a class="inline-flex items-center gap-2 bg-primary-container text-on-primary px-space-lg py-2.5 rounded text-label-md font-label-md hover:bg-primary transition-colors" href="#reviews">
+<span>Explore In-Depth Reviews</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+<a class="inline-flex items-center gap-2 bg-surface-container-lowest text-on-surface border border-outline-variant/80 px-space-lg py-2.5 rounded text-label-md font-label-md hover:bg-surface-container-low transition-colors" href="#comparisons">
+<span>Compare Software Head-to-Head</span>
+</a>
+</div>
+<!-- Quick Trending Filter Pills -->
+<div class="pt-space-md flex flex-wrap items-center gap-2 text-label-sm font-label-sm text-on-surface-variant">
+<span class="text-outline font-medium">Trending:</span>
+<a class="px-2.5 py-1 bg-surface-container rounded hover:bg-surface-container-high transition-colors" href="#featured">Claude 3.7 vs Cursor</a>
+<a class="px-2.5 py-1 bg-surface-container rounded hover:bg-surface-container-high transition-colors" href="#">Local LLM Runners</a>
+<a class="px-2.5 py-1 bg-surface-container rounded hover:bg-surface-container-high transition-colors" href="#">PostgreSQL Hosting</a>
+<a class="px-2.5 py-1 bg-surface-container rounded hover:bg-surface-container-high transition-colors" href="#">Issue Trackers</a>
+</div>
+</div>
+</section>
+<!-- 4. Featured In-Depth Review (AI Coding Assistant) -->
+<section class="space-y-space-md" id="featured">
+<div class="flex items-center justify-between border-b border-outline-variant/60 pb-2">
+<div class="flex items-center gap-2 text-label-sm font-label-sm text-outline">
+<span class="text-primary font-bold tracking-wider">FLAGSHIP ASSESSMENT</span>
+<span>•</span>
+<span>TESTED FEBRUARY 2025</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline">140 Lab Hours Logged</span>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg bg-surface-container-lowest border border-outline-variant/80 rounded-lg p-space-lg">
+<!-- Review Summary & Verdict Column (7 Cols) -->
+<div class="lg:col-span-7 flex flex-col justify-between space-y-space-md">
+<div class="space-y-space-sm">
+<div class="flex items-center gap-space-sm text-label-sm font-label-sm text-secondary font-medium">
+<span class="px-2 py-0.5 bg-secondary-container text-on-secondary-container rounded">Editor's Choice</span>
+<span class="text-outline">•</span>
+<span>AI Coding Assistant &amp; IDE</span>
+</div>
+<h2 class="text-headline-lg font-headline-lg text-on-surface">
+              Cursor In-Depth Review: The Benchmark for Agentic Code Editors
+            </h2>
+<p class="text-body-md font-body-md text-on-surface-variant">
+              After 140 hours across full-stack TypeScript and Python codebases, Cursor demonstrates measurable speed gains in multi-file refactoring, though context indexing overhead and pricing tiers require scrutiny.
+            </p>
+</div>
+<!-- Two Explicit Recommendation Zones -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md pt-2">
+<div class="bg-[#ebf7f2] p-space-md rounded border border-secondary/20">
+<div class="flex items-center gap-1.5 text-secondary font-label-sm text-label-sm mb-1">
+<span class="material-symbols-outlined text-base">check_circle</span>
+<span>Best for:</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface">
+                Full-stack developers wanting deep codebase indexing and rapid multi-file diff resolution.
+              </p>
+</div>
+<div class="bg-[#f0efeb] p-space-md rounded border border-outline-variant/40">
+<div class="flex items-center gap-1.5 text-on-surface-variant font-label-sm text-label-sm mb-1">
+<span class="material-symbols-outlined text-base text-outline">cancel</span>
+<span>Not ideal for:</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface">
+                Strict offline-only air-gapped enterprise compliance setups and ultra-constrained local RAM.
+              </p>
+</div>
+</div>
+<!-- Metrics Footer & Action -->
+<div class="flex flex-wrap items-center justify-between pt-space-md border-t border-outline-variant/40 gap-space-md">
+<div class="flex items-center gap-space-md">
+<div class="flex items-baseline gap-1">
+<span class="text-headline-md font-headline-md font-bold text-on-surface tabular-nums">8.9</span>
+<span class="font-label-sm text-label-sm text-outline">/ 10</span>
+</div>
+<span class="text-outline text-sm">|</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-primary text-base">fact_check</span>
+                Audited Version 0.45
+              </span>
+</div>
+<a class="inline-flex items-center gap-2 text-primary font-label-md text-label-md font-semibold hover:underline" href="#">
+<span>Read Full Lab Review</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Wireframe UI Mockup & Spec Snapshot Column (5 Cols) -->
+<div class="lg:col-span-5 bg-surface-container-low border border-outline-variant/60 rounded p-space-md flex flex-col justify-between">
+<div class="space-y-space-sm">
+<div class="flex items-center justify-between pb-2 border-b border-outline-variant/40 text-label-sm font-label-sm text-outline">
+<span>INTERFACE ANALYSIS &amp; LATENCY</span>
+<span class="font-mono text-xs">BENCHMARK v4.2</span>
+</div>
+<!-- Conceptual Interface Wireframe Diagram -->
+<div class="bg-surface-container-lowest border border-outline-variant/40 rounded p-3 space-y-2.5 font-mono text-xs text-on-surface-variant">
+<div class="flex items-center justify-between pb-1.5 border-b border-outline-variant/30">
+<span class="text-primary font-medium">workspace.ts (Multi-file Agent)</span>
+<span class="text-secondary font-semibold">Indexed: 100%</span>
+</div>
+<div class="space-y-1 text-[11px] text-outline">
+<div class="flex items-center justify-between">
+<span>Context window efficiency:</span>
+<span class="text-on-surface font-semibold tabular-nums">94.2%</span>
+</div>
+<div class="w-full bg-surface-container h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[94%]"></div>
+</div>
+</div>
+<div class="space-y-1 text-[11px] text-outline">
+<div class="flex items-center justify-between">
+<span>First-token time (Claude 3.5 Sonnet):</span>
+<span class="text-on-surface font-semibold tabular-nums">420ms</span>
+</div>
+<div class="w-full bg-surface-container h-1.5 rounded-full overflow-hidden">
+<div class="bg-secondary h-full w-[78%]"></div>
+</div>
+</div>
+<div class="space-y-1 text-[11px] text-outline">
+<div class="flex items-center justify-between">
+<span>Refactoring accuracy (50 files):</span>
+<span class="text-on-surface font-semibold tabular-nums">88.0%</span>
+</div>
+<div class="w-full bg-surface-container h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[88%]"></div>
+</div>
+</div>
+</div>
+<!-- Callout Note -->
+<div class="p-2.5 bg-surface-container-lowest border-l-2 border-primary text-body-sm font-body-sm text-on-surface-variant">
+              "Composer mode completed full REST route scaffolding in 3.4 minutes vs 7.8 minutes manual baseline."
+            </div>
+</div>
+<div class="pt-space-md border-t border-outline-variant/40 flex items-center justify-between text-label-sm font-label-sm text-outline">
+<span>Price: $20/mo Pro</span>
+<span class="text-secondary font-medium">Verified Flat Billing</span>
+</div>
+</div>
+</div>
+</section>
+<!-- 5. Latest Independent Reviews (Grid) -->
+<section class="space-y-space-lg" id="reviews">
+<div class="flex items-baseline justify-between border-b border-outline-variant/60 pb-space-sm">
+<div>
+<h2 class="text-headline-md font-headline-md text-on-surface">Latest Independent Reviews</h2>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Unbiased hands-on evaluations logged across developer workflows and software infra.</p>
+</div>
+<a class="text-label-md font-label-md text-primary hover:underline font-semibold flex items-center gap-1" href="#">
+<span>View Archive</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-space-lg">
+<!-- Card 1 -->
+<article class="bg-surface-container-lowest border border-outline-variant/60 rounded hover:border-outline transition-all duration-150 p-space-lg flex flex-col justify-between">
+<div class="space-y-space-sm">
+<div class="flex items-center justify-between text-label-sm font-label-sm">
+<span class="text-primary font-semibold">Developer Software</span>
+<span class="text-outline">Checked Feb 18</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-on-surface hover:text-primary transition-colors cursor-pointer">
+              Supabase vs. Firebase: 2025 Architecture &amp; Cost Analysis
+            </h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant">
+              We simulated 100k active users on both platforms. How open Postgres tooling matches Google's managed NoSQL at enterprise scale.
+            </p>
+</div>
+<div class="pt-space-md border-t border-outline-variant/40 mt-space-md flex items-center justify-between text-label-sm font-label-sm text-outline">
+<span>12 min read</span>
+<span class="text-on-surface font-semibold tabular-nums">Score: 8.8 / 10</span>
+</div>
+</article>
+<!-- Card 2 -->
+<article class="bg-surface-container-lowest border border-outline-variant/60 rounded hover:border-outline transition-all duration-150 p-space-lg flex flex-col justify-between">
+<div class="space-y-space-sm">
+<div class="flex items-center justify-between text-label-sm font-label-sm">
+<span class="text-primary font-semibold">AI Tools</span>
+<span class="text-outline">Checked Feb 20</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-on-surface hover:text-primary transition-colors cursor-pointer">
+              Claude 3.7 Sonnet &amp; Hybrid Reasoning: Real-World Developer Benchmarks
+            </h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant">
+              Evaluating Anthropic's dual reasoning-token architecture against standard code synthesis benchmarks and SWE-bench subsets.
+            </p>
+</div>
+<div class="pt-space-md border-t border-outline-variant/40 mt-space-md flex items-center justify-between text-label-sm font-label-sm text-outline">
+<span>9 min read</span>
+<span class="text-on-surface font-semibold tabular-nums">Score: 9.3 / 10</span>
+</div>
+</article>
+<!-- Card 3 -->
+<article class="bg-surface-container-lowest border border-outline-variant/60 rounded hover:border-outline transition-all duration-150 p-space-lg flex flex-col justify-between">
+<div class="space-y-space-sm">
+<div class="flex items-center justify-between text-label-sm font-label-sm">
+<span class="text-primary font-semibold">Productivity</span>
+<span class="text-outline">Checked Feb 14</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-on-surface hover:text-primary transition-colors cursor-pointer">
+              Linear vs Jira: Which Workflow System Scales Without Administrative Bloat?
+            </h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant">
+              An operational audit of cycle-time acceleration, keyboard shortcut velocity, and enterprise governance constraints.
+            </p>
+</div>
+<div class="pt-space-md border-t border-outline-variant/40 mt-space-md flex items-center justify-between text-label-sm font-label-sm text-outline">
+<span>11 min read</span>
+<span class="text-on-surface font-semibold tabular-nums">Score: 8.7 / 10</span>
+</div>
+</article>
+<!-- Card 4 -->
+<article class="bg-surface-container-lowest border border-outline-variant/60 rounded hover:border-outline transition-all duration-150 p-space-lg flex flex-col justify-between">
+<div class="space-y-space-sm">
+<div class="flex items-center justify-between text-label-sm font-label-sm">
+<span class="text-primary font-semibold">Developer Software</span>
+<span class="text-outline">Checked Feb 10</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-on-surface hover:text-primary transition-colors cursor-pointer">
+              Railway vs Render: Cloud Hosting for Modern Web Services
+            </h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant">
+              Comparing build times, preview environment ergonomics, persistent volume mounts, and real egress bandwidth cost traps.
+            </p>
+</div>
+<div class="pt-space-md border-t border-outline-variant/40 mt-space-md flex items-center justify-between text-label-sm font-label-sm text-outline">
+<span>8 min read</span>
+<span class="text-on-surface font-semibold tabular-nums">Score: 8.4 / 10</span>
+</div>
+</article>
+<!-- Card 5 -->
+<article class="bg-surface-container-lowest border border-outline-variant/60 rounded hover:border-outline transition-all duration-150 p-space-lg flex flex-col justify-between">
+<div class="space-y-space-sm">
+<div class="flex items-center justify-between text-label-sm font-label-sm">
+<span class="text-primary font-semibold">AI Tools</span>
+<span class="text-outline">Checked Feb 08</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-on-surface hover:text-primary transition-colors cursor-pointer">
+              GitHub Copilot Workspace: Hands-on with Spec-to-PR Workflows
+            </h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant">
+              Testing GitHub's end-to-end task execution inside realistic monorepos. When human intervention remains strictly mandatory.
+            </p>
+</div>
+<div class="pt-space-md border-t border-outline-variant/40 mt-space-md flex items-center justify-between text-label-sm font-label-sm text-outline">
+<span>10 min read</span>
+<span class="text-on-surface font-semibold tabular-nums">Score: 8.1 / 10</span>
+</div>
+</article>
+<!-- Card 6 -->
+<article class="bg-surface-container-lowest border border-outline-variant/60 rounded hover:border-outline transition-all duration-150 p-space-lg flex flex-col justify-between">
+<div class="space-y-space-sm">
+<div class="flex items-center justify-between text-label-sm font-label-sm">
+<span class="text-primary font-semibold">Productivity</span>
+<span class="text-outline">Checked Feb 04</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-on-surface hover:text-primary transition-colors cursor-pointer">
+              Raycast Pro: AI Extensions and Daily Utility Value Assessment
+            </h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant">
+              Is replacing Spotlight with a paid recurring subscription justified? Measuring context-switching friction and custom scripts.
+            </p>
+</div>
+<div class="pt-space-md border-t border-outline-variant/40 mt-space-md flex items-center justify-between text-label-sm font-label-sm text-outline">
+<span>7 min read</span>
+<span class="text-on-surface font-semibold tabular-nums">Score: 9.1 / 10</span>
+</div>
+</article>
+</div>
+</section>
+<!-- 6. Head-to-Head Comparisons Section -->
+<section class="space-y-space-lg bg-surface-container-low border border-outline-variant/60 rounded-lg p-space-lg" id="comparisons">
+<div class="flex flex-col sm:flex-row items-start sm:items-baseline justify-between border-b border-outline-variant/40 pb-space-sm gap-2">
+<div>
+<span class="text-label-sm font-label-sm text-primary font-bold">SIDE-BY-SIDE RIGOR</span>
+<h2 class="text-headline-md font-headline-md text-on-surface">Head-to-Head Comparisons</h2>
+</div>
+<a class="text-label-md font-label-md text-primary hover:underline font-semibold flex items-center gap-1" href="#">
+<span>Browse all 32 Head-to-Head Comparisons</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-space-lg">
+<!-- Comparison Card A -->
+<div class="bg-surface-container-lowest border border-outline-variant/60 rounded p-space-lg space-y-space-md">
+<div class="space-y-1">
+<div class="flex items-center gap-2 font-label-sm text-label-sm text-outline">
+<span>IDE ECOSYSTEMS</span>
+<span>•</span>
+<span class="text-secondary font-medium">Verdict: Cursor leads for agentic tasks</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-on-surface">
+              Cursor vs GitHub Copilot vs Windsurf: Which AI IDE Should You Standardize On?
+            </h3>
+</div>
+<!-- Spec Table Snippet -->
+<div class="border border-outline-variant/40 rounded overflow-hidden">
+<table class="w-full text-left font-data-tabular text-data-tabular">
+<thead class="bg-surface-container text-outline font-label-sm text-label-sm border-b border-outline-variant/40">
+<tr>
+<th class="py-2 px-3">Metric / Feature</th>
+<th class="py-2 px-3">Cursor</th>
+<th class="py-2 px-3">Copilot</th>
+<th class="py-2 px-3">Windsurf</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/30 text-on-surface-variant">
+<tr class="bg-surface-container-lowest">
+<td class="py-2 px-3 font-medium text-on-surface">Multi-file Refactor</td>
+<td class="py-2 px-3 text-secondary font-semibold">Native Flow</td>
+<td class="py-2 px-3 text-outline">Chat Only</td>
+<td class="py-2 px-3 text-secondary">Cascade Flow</td>
+</tr>
+<tr class="bg-surface-container-low/40">
+<td class="py-2 px-3 font-medium text-on-surface">Local Privacy Option</td>
+<td class="py-2 px-3 text-outline">API Keys</td>
+<td class="py-2 px-3 text-on-surface">Enterprise Org</td>
+<td class="py-2 px-3 text-outline">Cloud Sync</td>
+</tr>
+<tr class="bg-surface-container-lowest">
+<td class="py-2 px-3 font-medium text-on-surface">Base Monthly Cost</td>
+<td class="py-2 px-3 tabular-nums">$20 / user</td>
+<td class="py-2 px-3 tabular-nums">$10 / user</td>
+<td class="py-2 px-3 tabular-nums">$15 / user</td>
+</tr>
+</tbody>
+</table>
+</div>
+<a class="inline-flex items-center gap-1.5 text-label-md font-label-md text-primary font-semibold hover:underline" href="#">
+<span>Read Complete 3-Way Comparison Spec</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+<!-- Comparison Card B -->
+<div class="bg-surface-container-lowest border border-outline-variant/60 rounded p-space-lg space-y-space-md">
+<div class="space-y-1">
+<div class="flex items-center gap-2 font-label-sm text-label-sm text-outline">
+<span>BACKEND-AS-A-SERVICE</span>
+<span>•</span>
+<span class="text-secondary font-medium">Verdict: Supabase for Relational Workloads</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-on-surface">
+              Firebase vs Supabase: Migration Complexity, Cold Starts &amp; Real Pricing Scenarios
+            </h3>
+</div>
+<!-- Spec Table Snippet -->
+<div class="border border-outline-variant/40 rounded overflow-hidden">
+<table class="w-full text-left font-data-tabular text-data-tabular">
+<thead class="bg-surface-container text-outline font-label-sm text-label-sm border-b border-outline-variant/40">
+<tr>
+<th class="py-2 px-3">Evaluation Pillar</th>
+<th class="py-2 px-3">Supabase (Postgres)</th>
+<th class="py-2 px-3">Firebase (Firestore)</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/30 text-on-surface-variant">
+<tr class="bg-surface-container-lowest">
+<td class="py-2 px-3 font-medium text-on-surface">Complex Joins / SQL</td>
+<td class="py-2 px-3 text-secondary font-semibold">Standard PostgreSQL</td>
+<td class="py-2 px-3 text-outline">Denormalization required</td>
+</tr>
+<tr class="bg-surface-container-low/40">
+<td class="py-2 px-3 font-medium text-on-surface">Realtime Scalability</td>
+<td class="py-2 px-3 tabular-nums">Elixir-powered WebSockets</td>
+<td class="py-2 px-3 text-secondary font-semibold">Native Google Pipeline</td>
+</tr>
+<tr class="bg-surface-container-lowest">
+<td class="py-2 px-3 font-medium text-on-surface">Self-Host Portability</td>
+<td class="py-2 px-3 text-secondary font-semibold">Full Docker Support</td>
+<td class="py-2 px-3 text-error">Proprietary Lock-in</td>
+</tr>
+</tbody>
+</table>
+</div>
+<a class="inline-flex items-center gap-1.5 text-label-md font-label-md text-primary font-semibold hover:underline" href="#">
+<span>Read 100k MAU Financial Breakdown</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+</section>
+<!-- 7. Browse By Core Categories -->
+<section class="space-y-space-md" id="categories">
+<div class="border-b border-outline-variant/60 pb-2">
+<h2 class="text-headline-md font-headline-md text-on-surface">Browse by Software Domain</h2>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Categorized indexes with verified testing records and benchmark historical sheets.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-lg">
+<!-- Category Card 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant/60 rounded p-space-lg space-y-space-md hover:border-outline transition-colors">
+<div class="flex items-center justify-between">
+<span class="material-symbols-outlined text-primary text-2xl">memory</span>
+<span class="font-label-sm text-label-sm px-2 py-0.5 bg-surface-container text-outline rounded tabular-nums">28 Reviews</span>
+</div>
+<div class="space-y-1">
+<h3 class="text-headline-sm font-headline-sm text-on-surface">AI Tools</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Generative coding, reasoning APIs, and local inference models.</p>
+</div>
+<ul class="space-y-2 pt-2 border-t border-outline-variant/40 text-label-md font-label-md">
+<li><a class="text-on-surface-variant hover:text-primary flex items-center justify-between" href="#"><span>Coding Assistants &amp; IDEs</span><span class="material-symbols-outlined text-sm">chevron_right</span></a></li>
+<li><a class="text-on-surface-variant hover:text-primary flex items-center justify-between" href="#"><span>Reasoning &amp; Foundation Engines</span><span class="material-symbols-outlined text-sm">chevron_right</span></a></li>
+<li><a class="text-on-surface-variant hover:text-primary flex items-center justify-between" href="#"><span>Local LLM Tooling (Ollama, vLLM)</span><span class="material-symbols-outlined text-sm">chevron_right</span></a></li>
+</ul>
+</div>
+<!-- Category Card 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant/60 rounded p-space-lg space-y-space-md hover:border-outline transition-colors">
+<div class="flex items-center justify-between">
+<span class="material-symbols-outlined text-primary text-2xl">terminal</span>
+<span class="font-label-sm text-label-sm px-2 py-0.5 bg-surface-container text-outline rounded tabular-nums">46 Reviews</span>
+</div>
+<div class="space-y-1">
+<h3 class="text-headline-sm font-headline-sm text-on-surface">Developer Software</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Database infrastructure, hosting backends, and deployment pipelines.</p>
+</div>
+<ul class="space-y-2 pt-2 border-t border-outline-variant/40 text-label-md font-label-md">
+<li><a class="text-on-surface-variant hover:text-primary flex items-center justify-between" href="#"><span>BaaS &amp; Managed Databases</span><span class="material-symbols-outlined text-sm">chevron_right</span></a></li>
+<li><a class="text-on-surface-variant hover:text-primary flex items-center justify-between" href="#"><span>CI/CD &amp; Deployment Runners</span><span class="material-symbols-outlined text-sm">chevron_right</span></a></li>
+<li><a class="text-on-surface-variant hover:text-primary flex items-center justify-between" href="#"><span>Cloud Hosting &amp; Serverless</span><span class="material-symbols-outlined text-sm">chevron_right</span></a></li>
+</ul>
+</div>
+<!-- Category Card 3 -->
+<div class="bg-surface-container-lowest border border-outline-variant/60 rounded p-space-lg space-y-space-md hover:border-outline transition-colors">
+<div class="flex items-center justify-between">
+<span class="material-symbols-outlined text-primary text-2xl">dashboard</span>
+<span class="font-label-sm text-label-sm px-2 py-0.5 bg-surface-container text-outline rounded tabular-nums">39 Reviews</span>
+</div>
+<div class="space-y-1">
+<h3 class="text-headline-sm font-headline-sm text-on-surface">Everyday Work</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Tools that shape engineering communication, task velocity, and knowledge.</p>
+</div>
+<ul class="space-y-2 pt-2 border-t border-outline-variant/40 text-label-md font-label-md">
+<li><a class="text-on-surface-variant hover:text-primary flex items-center justify-between" href="#"><span>Issue Trackers &amp; Sprint Boards</span><span class="material-symbols-outlined text-sm">chevron_right</span></a></li>
+<li><a class="text-on-surface-variant hover:text-primary flex items-center justify-between" href="#"><span>Engineering Knowledge Bases</span><span class="material-symbols-outlined text-sm">chevron_right</span></a></li>
+<li><a class="text-on-surface-variant hover:text-primary flex items-center justify-between" href="#"><span>Modern Terminals &amp; Launchers</span><span class="material-symbols-outlined text-sm">chevron_right</span></a></li>
+</ul>
+</div>
+</div>
+</section>
+<!-- 8. Transparent Testing Methodology Section -->
+<section class="border border-outline-variant/80 rounded-lg p-space-lg sm:p-space-xl bg-surface-container-lowest space-y-space-lg" id="standards">
+<div class="max-w-3xl space-y-space-sm">
+<div class="inline-flex items-center gap-2 text-label-sm font-label-sm text-primary font-bold tracking-wider">
+<span class="material-symbols-outlined text-base">policy</span>
+<span>EDITORIAL GOVERNANCE</span>
+</div>
+<h2 class="text-headline-lg font-headline-lg text-on-surface">
+          How We Test: No Sponsored Verdicts, Ever.
+        </h2>
+<p class="text-body-md font-body-md text-on-surface-variant">
+          ToolScope does not accept sponsored reviews, expedited placement fees, or vendor-edited copy. Every assessment follows a standard 4-pillar evaluation protocol implemented in our testing environment.
+        </p>
+</div>
+<!-- 4 Pillars Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<div class="p-space-md border border-outline-variant/40 rounded bg-surface-container-low/50 space-y-2">
+<span class="font-mono text-xs font-semibold text-primary">01 / WORKLOADS</span>
+<h4 class="font-headline-sm text-headline-sm text-on-surface">Practical Hands-On Tests</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Zero reliance on vendor marketing decks. We run real repositories, test edge cases, and log runtime failures over at least 40 labor hours.
+          </p>
+</div>
+<div class="p-space-md border border-outline-variant/40 rounded bg-surface-container-low/50 space-y-2">
+<span class="font-mono text-xs font-semibold text-primary">02 / BILLING</span>
+<h4 class="font-headline-sm text-headline-sm text-on-surface">Pricing Verification</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            We record snapshot dates for all pricing models, tracking hidden seat minimums, egress surprise fees, and renewal price step-ups.
+          </p>
+</div>
+<div class="p-space-md border border-outline-variant/40 rounded bg-surface-container-low/50 space-y-2">
+<span class="font-mono text-xs font-semibold text-primary">03 / PRIVACY</span>
+<h4 class="font-headline-sm text-headline-sm text-on-surface">Security Auditing</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            We review terms for customer telemetry, model training exemptions, SOC2 Type II certifications, and local sandbox boundaries.
+          </p>
+</div>
+<div class="p-space-md border border-outline-variant/40 rounded bg-surface-container-low/50 space-y-2">
+<span class="font-mono text-xs font-semibold text-primary">04 / BOUNDARIES</span>
+<h4 class="font-headline-sm text-headline-sm text-on-surface">Real Limitations</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Every review highlights failure modes where a tool falls flat. Knowing when NOT to use a tool is as critical as knowing when to buy.
+          </p>
+</div>
+</div>
+<div class="pt-space-md border-t border-outline-variant/40 flex flex-wrap items-center justify-between gap-space-md">
+<p class="text-body-sm font-body-sm text-outline">
+          Our testing protocols are publicly open-sourced and refreshed bi-annually.
+        </p>
+<a class="inline-flex items-center gap-2 text-primary font-label-md text-label-md font-semibold hover:underline" href="#">
+<span>Read Our Full Testing Framework &amp; Lab Standards</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</section>
+<!-- 9. Editorial Newsletter Section -->
+<section class="bg-surface-container-high border border-outline-variant/60 rounded-lg p-space-lg sm:p-space-xl">
+<div class="max-w-2xl mx-auto text-center space-y-space-md">
+<div class="inline-block px-2.5 py-1 bg-surface-container-lowest rounded border border-outline-variant/60 text-label-sm font-label-sm text-primary font-semibold">
+          THE WEEKLY SOFTWARE BRIEFING
+        </div>
+<h2 class="text-headline-lg font-headline-lg text-on-surface">
+          Direct, empirical software analysis in your inbox.
+        </h2>
+<p class="text-body-md font-body-md text-on-surface-variant">
+          One email every Thursday. Zero marketing fluff. Only empirical benchmarks, verified price shifts, and candid software assessments.
+        </p>
+<!-- Form -->
+<form class="flex flex-col sm:flex-row items-center gap-space-sm max-w-md mx-auto pt-2" onsubmit="event.preventDefault();">
+<input class="w-full bg-surface-container-lowest border border-outline-variant/80 rounded px-3.5 py-2.5 text-on-surface font-body-sm text-body-sm placeholder:text-outline focus:outline-none focus:border-primary" placeholder="engineer@company.com" required="" type="email"/>
+<button class="w-full sm:w-auto shrink-0 bg-primary-container text-on-primary px-space-lg py-2.5 rounded font-label-md text-label-md font-semibold hover:bg-primary transition-colors" type="submit">
+            Subscribe Free
+          </button>
+</form>
+<p class="text-label-sm font-label-sm text-outline">
+          No spam, unsubscribe anytime. Read our <a class="underline hover:text-on-surface" href="#">Privacy Policy</a>.
+        </p>
+</div>
+</section>
+</main>
+<!-- 10. Shared Component: Footer -->
+<footer class="full-width bg-surface-container-low border-t border-outline-variant/60 transition-colors duration-150 ease-in-out mt-space-xl">
+<div class="w-full max-w-7xl mx-auto px-gutter py-space-xl flex flex-col gap-space-lg">
+<!-- Top Grid: Brand & Link Columns -->
+<div class="grid grid-cols-1 md:grid-cols-5 gap-space-lg">
+<!-- Brand & Disclosure Column -->
+<div class="md:col-span-2 space-y-space-md">
+<div class="space-y-1">
+<span class="text-headline-md font-headline-md font-bold text-on-surface">ToolScope</span>
+<p class="text-body-sm font-body-sm text-on-surface-variant max-w-sm">
+              Rigorously researched, independent technology journalism. Testing AI code generation, cloud platforms, and engineering software with open, repeatable methodology.
+            </p>
+</div>
+<div class="p-3 bg-surface-container border border-outline-variant/40 rounded text-label-sm font-label-sm text-outline max-w-sm space-y-1">
+<div class="font-semibold text-on-surface-variant">Independent Funding Notice</div>
+<p>We may earn an affiliate commission when you purchase through links on our site. This never dictates our testing scoreboards or editorial conclusions.</p>
+</div>
+</div>
+<!-- Links Column 1: Editorial -->
+<div class="space-y-space-sm font-label-sm text-label-sm">
+<div class="font-semibold text-on-surface uppercase tracking-wider">Methodology</div>
+<ul class="space-y-2 text-on-surface-variant">
+<li><a class="hover:text-primary underline underline-offset-4 transition-colors" href="#">Testing Methodology</a></li>
+<li><a class="hover:text-primary underline underline-offset-4 transition-colors" href="#">Editorial Standards</a></li>
+<li><a class="hover:text-primary underline underline-offset-4 transition-colors" href="#">Ethics Statement</a></li>
+<li><a class="hover:text-primary underline underline-offset-4 transition-colors" href="#">Lab Benchmarks Archive</a></li>
+</ul>
+</div>
+<!-- Links Column 2: Domains -->
+<div class="space-y-space-sm font-label-sm text-label-sm">
+<div class="font-semibold text-on-surface uppercase tracking-wider">Categories</div>
+<ul class="space-y-2 text-on-surface-variant">
+<li><a class="hover:text-primary underline underline-offset-4 transition-colors" href="#">AI Coding Assistants</a></li>
+<li><a class="hover:text-primary underline underline-offset-4 transition-colors" href="#">Developer Software</a></li>
+<li><a class="hover:text-primary underline underline-offset-4 transition-colors" href="#">Cloud &amp; Databases</a></li>
+<li><a class="hover:text-primary underline underline-offset-4 transition-colors" href="#">Software Comparisons</a></li>
+</ul>
+</div>
+<!-- Links Column 3: Legal & Language -->
+<div class="space-y-space-sm font-label-sm text-label-sm">
+<div class="font-semibold text-on-surface uppercase tracking-wider">Organization</div>
+<ul class="space-y-2 text-on-surface-variant">
+<li><a class="hover:text-primary underline underline-offset-4 transition-colors" href="#">Affiliate Disclosure</a></li>
+<li><a class="hover:text-primary underline underline-offset-4 transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="hover:text-primary underline underline-offset-4 transition-colors" href="#">Terms of Service</a></li>
+<li><a class="hover:text-primary underline underline-offset-4 transition-colors" href="#">Contact Editorial Desk</a></li>
+</ul>
+<div class="pt-space-sm">
+<span class="text-outline text-xs block mb-1">Edition Language:</span>
+<div class="inline-flex rounded border border-outline-variant/60 bg-surface-container-lowest p-0.5 text-xs">
+<button class="px-2 py-0.5 rounded bg-surface-container font-medium text-primary">English</button>
+<button class="px-2 py-0.5 rounded text-outline hover:text-on-surface">العربية</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Bar: Exact Copyright & Timestamp -->
+<div class="pt-space-lg border-t border-outline-variant/60 flex flex-col sm:flex-row items-center justify-between text-body-sm font-body-sm text-outline gap-space-sm">
+<div>
+          © 2025 ToolScope Media Inc. Rigorously researched, independent technology journalism.
+        </div>
+<div class="flex items-center gap-space-md text-label-sm font-label-sm">
+<span>ISSN 2984-1104</span>
+<span>•</span>
+<span>All tests reproducible under CC BY-NC 4.0</span>
+</div>
+</div>
+</div>
+</footer>
+</body></html>
