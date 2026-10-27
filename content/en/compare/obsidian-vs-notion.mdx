@@ -1,0 +1,77 @@
+---
+id: obsidian-vs-notion
+title: "Obsidian vs Notion: Local Markdown Files or a Hosted Workspace?"
+description: "A research-based, pricing-verified comparison of Obsidian and Notion for personal knowledge management — local-first files versus a hosted collaborative workspace."
+author: "The Editor"
+publishedAt: "2026-10-27"
+tags: ["note-taking", "productivity", "markdown", "general software", "comparison"]
+category: "software"
+items:
+  - name: "Obsidian"
+    url: "https://obsidian.md"
+    reviewSlug: "obsidian-notes"
+    tagline: "Local-first notes stored as plain Markdown files you own outright"
+    bestFor:
+      - "Individuals building a long-lived personal knowledge base"
+      - "Anyone who wants their notes as portable files, not a hosted database"
+    pricing: "Free core app / Sync $4–5/user/mo / Publish $8–10/site/mo / Commercial $50/user/yr"
+    pros:
+      - "Core app is free with no feature gating"
+      - "Notes are plain .md files on your own disk — exportable, grep-able, future-proof"
+      - "Large plugin ecosystem built on a stable local-file foundation"
+    cons:
+      - "No built-in real-time collaboration — co-editing requires the paid Sync add-on"
+      - "Mobile and desktop plugin behavior can diverge; curation takes judgment"
+  - name: "Notion"
+    url: "https://www.notion.com"
+    tagline: "Hosted, block-based workspace built for teams and structured databases"
+    bestFor:
+      - "Teams that need shared docs, databases, and permissions out of the box"
+      - "Users who want AI features and integrations built into the same tool"
+    pricing: "Free / Plus $10/member/mo / Business $20/member/mo / Enterprise custom"
+    pros:
+      - "Real-time collaboration and permissions are native, not an add-on"
+      - "Databases with properties, relations, and views go beyond plain note-taking"
+      - "Business tier adds SAML SSO and granular permissions for organizations"
+    cons:
+      - "Your content lives in Notion's hosted database — exporting a large workspace cleanly takes real effort"
+      - "Per-member pricing scales with team size; AI features are gated or metered on top of seat cost"
+---
+
+<Callout title="How to read this comparison">
+This is a research-based comparison, not a hands-on test. Pricing was checked directly against [obsidian.md/pricing](https://obsidian.md/pricing) and [notion.com/pricing](https://www.notion.com/pricing) on 2026-10-27. We have not measured sync reliability, vault performance at scale, or collaboration friction for either product — see our [Obsidian review](/en/reviews/obsidian-notes) for what testing is still pending there.
+</Callout>
+
+## Two different answers to "where do my notes live"
+
+Obsidian and Notion both help you write, link, and organize notes, but they start from opposite premises. Obsidian's unit is a plain-text file on your own disk; Notion's unit is a block in a hosted, shared workspace. That one decision — file vs. database, local vs. hosted — explains most of the practical differences below.
+
+## Pricing, compared directly
+
+| | Obsidian | Notion |
+|---|---|---|
+| Core product | Free, unlimited, no sign-up required | Free plan with limits (e.g. capped AI trial, basic forms) |
+| First paid tier | Sync: $4/user/month (annual) | Plus: $10/member/month |
+| Collaboration | Requires Sync add-on; co-editing is a paid feature | Native at every tier, including Free |
+| Top individual-relevant tier | Publish: $8/site/month, for sharing notes on the web | Business: $20/member/month, adds SSO and private teamspaces |
+| Commercial use | $50/user/year, separate from Sync/Publish | Included in per-member pricing |
+
+Source: [Obsidian pricing](https://obsidian.md/pricing) and [Notion pricing](https://www.notion.com/pricing) as published on 2026-10-27.
+
+The structural point: Obsidian unbundles storage (free, local) from sync and collaboration (paid add-ons). Notion bundles storage, sync, and collaboration into one per-member price from the start — you're never choosing "do I pay for sync," because hosting is the product.
+
+## Ownership and portability
+
+Obsidian notes are Markdown files in a folder; you can open, grep, or migrate them with any text editor, with or without Obsidian installed. Notion's content lives in a hosted database; exporting is supported, but a large workspace with nested databases and relations does not reduce to plain files as cleanly. If long-term data portability is a hard requirement, this is the most consequential difference in this comparison — more than any single pricing line.
+
+## Collaboration
+
+This is Notion's clearest structural advantage: shared, permissioned, real-time editing is native at every tier, including Free. Obsidian can approximate collaboration through its paid Sync add-on or third-party sync tools, but co-editing is not the product's design center — it was built for an individual's local vault first.
+
+## Who should pick which
+
+If your priority is owning your notes as portable files for a decade-plus horizon, and you're comfortable choosing your own sync method, Obsidian's model is built around exactly that. If you need a team to share, structure, and collaborate on content today — databases, permissions, shared workspaces — Notion's hosted model removes setup work Obsidian would otherwise require you to assemble yourself (sync, publishing, access control).
+
+## What would make this comparison more useful
+
+A hands-on follow-up would test sync reliability across devices for both tools, measure how each performs with a large note/database count (10,000+ items), and document actual export fidelity when migrating a real workspace out of Notion. Until that cycle runs, treat this as a pricing and structural comparison, not a performance verdict.

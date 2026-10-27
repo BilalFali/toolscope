@@ -1,0 +1,74 @@
+---
+id: choosing-mesh-vpn
+title: "How to Choose a Mesh VPN for a Small Team in 2026"
+description: "A practical framework for evaluating mesh VPNs like Tailscale, ZeroTier, and NetBird — what actually matters, what's marketing, and the questions to answer before committing."
+author: "The Editor"
+publishedAt: "2026-10-27"
+tags: ["networking", "VPN", "developer tools", "infrastructure", "buying guide"]
+category: "developer-tools"
+level: "beginner"
+---
+
+<Callout title="How to read this guide">
+This is a research-based guide, not a hands-on test report. The framework and the questions are the point; where specific tools are named, their pricing was checked against official vendor pages on 2026-10-27. No throughput, latency, or stability claims are made — we haven't run that testing yet.
+</Callout>
+
+## The problem this category solves
+
+A mesh VPN exists to answer one question: how do a handful of devices — laptops, servers, a home lab — reach each other privately, without exposing services to the public internet or configuring a traditional VPN's subnets and static routes? Tailscale, ZeroTier, NetBird, and Headscale all answer that question, built on WireGuard or a similar encrypted tunnel protocol, but they differ in billing model, self-hosting support, and how much networking knowledge they assume you have.
+
+## Step 1: Decide what you're actually billed on
+
+The single biggest practical difference between these tools is **what counts against your plan**:
+
+- **Per-user billing** (Tailscale): you pay based on how many people connect, regardless of how many devices each person has.
+- **Per-device billing** (ZeroTier): you pay based on how many devices are on the network, regardless of how many people control them.
+
+A five-person team with three laptops each looks very different under these two models. Work out your actual device-to-person ratio before comparing sticker prices — a device-based plan can be cheaper for a small team with many machines, and vice versa.
+
+## Step 2: Decide whether you need to self-host
+
+Ask directly: **does your organization's policy require that the coordination/control server run on infrastructure you own?**
+
+- If yes, look at NetBird (which documents an official self-hosted deployment path) or Headscale (a community-run, open-source reimplementation of Tailscale's server).
+- If no, a hosted service (Tailscale, ZeroTier's hosted tiers) removes an entire category of operational work — someone still has to patch and monitor a self-hosted control plane.
+
+Self-hosting is not free in the time sense even when it's free in the price sense. Budget real engineering hours for it, not just server costs.
+
+## Step 3: Check the free tier against your real numbers
+
+Free tiers in this category are not directly comparable without doing the arithmetic for your specific team:
+
+- Tailscale's free tier: up to 6 users, unlimited devices per user.
+- ZeroTier's free tier: up to 10 devices total, on a single network.
+- NetBird's free tier: up to 5 users and 100 machines.
+
+A team of 8 people doesn't fit Tailscale's free tier at all. A team of 4 people with 15 total devices fits ZeroTier's free tier but not comfortably past it. Map your actual headcount and device count against each tier before assuming "free" covers you — vendors revise these numbers, so check the current pricing page, not this guide, before deciding.
+
+## Step 4: Consider compliance requirements explicitly, don't assume them
+
+If you have a specific, named compliance requirement (FIPS validation, post-quantum cryptography, SOC 2, audit log retention), check which tier of which vendor actually states that requirement is met — these are usually gated to the highest, custom-priced tiers, not the plans most teams compare on price. Don't infer compliance from a vendor's general security marketing copy.
+
+## Step 5: Run a real evaluation before switching
+
+Don't choose based on a product's marketing page alone. A short, concrete test:
+
+1. **Time to first working connection**, on a clean machine, for at least two people on the team.
+2. **One real workflow** — reaching an internal service you actually use daily — not a synthetic ping test.
+3. **What happens when the network changes** — switching from office wifi to a phone hotspot, for instance — since that's when mesh VPNs either recover gracefully or don't.
+
+<Callout title="Our testing approach" tone="neutral">
+When we review networking tools, we use a structured version of this framework. See our [testing methodology](/en/testing-methodology) for the full process — and our [Tailscale review](/en/reviews/tailscale-vpn) for why we haven't published a score for this category yet.
+</Callout>
+
+## Common mistakes
+
+1. **Comparing sticker prices without doing the per-user vs. per-device math for your actual team.**
+2. **Assuming "free self-hosting" means zero ongoing effort** — someone still owns upgrades, backups, and uptime.
+3. **Treating a vendor's security marketing copy as a compliance guarantee** without checking which specific tier includes which specific certification.
+
+## Further reading
+
+- [Tailscale Review](/en/reviews/tailscale-vpn) — our overview of the category leader
+- [Tailscale vs ZeroTier](/en/compare/tailscale-vs-zerotier) — pricing and feature comparison
+- [Best Tailscale Alternatives](/en/alternatives/best-tailscale-alternatives) — the wider field, including self-hosted options

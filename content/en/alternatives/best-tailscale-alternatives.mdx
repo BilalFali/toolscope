@@ -1,0 +1,64 @@
+---
+id: tailscale-alternatives
+title: "Best Tailscale Alternatives for Teams That Need Something Different"
+description: "Research-based alternatives to Tailscale for teams that want official self-hosting, device-based pricing, or a fully open-source control plane — with verified current pricing."
+author: "The Editor"
+publishedAt: "2026-10-27"
+tags: ["networking", "VPN", "developer tools", "infrastructure", "alternatives"]
+category: "developer-tools"
+replaces: "Tailscale"
+picks:
+  - name: "ZeroTier"
+    url: "https://zerotier.com"
+    tagline: "Device-based pricing tiers, with FIPS 140-3 and post-quantum options at the top end"
+    bestFor: "Fixed device counts (servers, a lab) rather than a growing headcount"
+  - name: "NetBird"
+    url: "https://netbird.io"
+    tagline: "Open-source mesh VPN with an officially documented self-hosted deployment path"
+    bestFor: "Teams that want to run the control plane entirely on their own infrastructure"
+  - name: "Headscale"
+    url: "https://github.com/juanfont/headscale"
+    tagline: "Open-source, community-run implementation of Tailscale's coordination server"
+    bestFor: "Technical teams already committed to Tailscale's client and WireGuard model, who want to self-host the server side"
+---
+
+<Callout title="How to read this article">
+This is a research-based overview, not a hands-on comparison. Pricing for ZeroTier and NetBird was checked against each vendor's official pricing page on 2026-10-27. Headscale is a community project without a vendor pricing page; it is free and open source, but running it is a self-hosting commitment, not a one-click swap for Tailscale's hosted service.
+</Callout>
+
+## Why look beyond Tailscale
+
+Tailscale's free tier caps at 6 users, and its official hosted control plane is proprietary — there's no first-party option to run the coordination server yourself. Common reasons to look elsewhere:
+
+- **You need official self-hosting.** Tailscale's own pricing page doesn't offer a self-hosted control plane; the common workaround is the unofficial Headscale project.
+- **Your constraint is devices, not people.** A small number of people managing many servers may fit ZeroTier's device-based tiers more cleanly than Tailscale's per-user billing.
+- **You want a fully open-source stack**, client and server, without relying on a single vendor's hosted service.
+
+## The alternatives
+
+### ZeroTier
+
+ZeroTier's free tier allows up to 10 devices on a single network — no login/user cap, which suits small, device-heavy setups like homelabs or a handful of production servers. Paid tiers (Essential at $18/month for 10 devices, Scale at $179/month for 100) bill per device tier rather than per user. The top tiers (Enterprise, Quantum) add FIPS 140-3 validated cryptography, and Quantum specifically adds post-quantum cryptography — relevant if you have a concrete compliance requirement, not a general recommendation.
+
+**Read our [Tailscale vs ZeroTier comparison](/en/compare/tailscale-vs-zerotier) for the full pricing breakdown.**
+
+### NetBird
+
+NetBird markets itself as open source with an "Open Source" badge linking to its GitHub repository, and its pricing page explicitly describes self-hosting as deploying "within your own infrastructure for full control and flexibility," alongside a Self-Hosted EULA and documentation. Its hosted free tier covers up to 5 users and 100 machines; hosted paid tiers (Team at €6/user/month, Business at €12/user/month) add SSO, SCIM, and device posture checks. The hosted and self-hosted paths are genuinely separate decisions — verify current self-hosting requirements in NetBird's own docs before committing engineering time to it.
+
+### Headscale
+
+Headscale isn't a company or a product with pricing — it's a community-maintained, open-source reimplementation of Tailscale's coordination server, designed to work with Tailscale's own official client software. It's the closest thing to "self-host Tailscale itself," but it is explicitly not an official Tailscale product, and the project's docs are the only authoritative source on its current feature parity and limitations. This fits teams with the engineering capacity to run and maintain their own coordination server, not teams looking for a vendor-supported alternative.
+
+## How to choose
+
+| Priority | Best fit |
+|---|---|
+| Official vendor-supported self-hosting | NetBird |
+| Device-based pricing instead of per-user | ZeroTier |
+| Keep Tailscale's client, self-host the server | Headscale |
+| Simplest hosted setup, fewer than 6 users | Stay with Tailscale |
+
+## What isn't covered here
+
+This article compares pricing structure and stated features only. It does not measure connection stability, NAT traversal success rate, or throughput for any of these tools — that requires the hands-on test cycle described in our [testing methodology](/en/testing-methodology), which has not yet run for this category.

@@ -137,6 +137,20 @@ const en = {
   share: "Share",
   alsoAvailableIn: "Also available in",
   minutes: "min",
+  shareArticle: "Share this article",
+  copyLink: "Copy link",
+  linkCopied: "Link copied",
+  copyCode: "Copy code",
+  codeCopied: "Copied",
+  authorRole: "Editor",
+  authorBio: "Independent software reviewer. Every review follows the published testing methodology.",
+  faqTitle: "Frequently asked questions",
+  rssFeed: "RSS feed",
+  readingProgressBar: "Reading progress",
+  basisHandsOn: "Hands-on review",
+  basisResearch: "Research-based overview",
+  basisResearchNote:
+    "This article is based on official documentation, public sources, and attributed reporting — not on our own hands-on testing. Testing will be documented here before any score is published.",
 } as const;
 
 const ar: Record<keyof typeof en, unknown> = {
@@ -264,6 +278,20 @@ const ar: Record<keyof typeof en, unknown> = {
   share: "شارك",
   alsoAvailableIn: "متوفرة أيضاً بـ",
   minutes: "دقيقة",
+  shareArticle: "شارك هذه المقالة",
+  copyLink: "انسخ الرابط",
+  linkCopied: "تم نسخ الرابط",
+  copyCode: "نسخ الكود",
+  codeCopied: "تم النسخ",
+  authorRole: "المحرر",
+  authorBio: "مراجع برمجيات مستقل. كل مراجعة تتبع منهجية الاختبار المنشورة.",
+  faqTitle: "الأسئلة الشائعة",
+  rssFeed: "خلاصة RSS",
+  readingProgressBar: "تقدم القراءة",
+  basisHandsOn: "مراجعة عملية",
+  basisResearch: "نظرة قائمة على المصادر",
+  basisResearchNote:
+    "هذه المقالة مبنية على التوثيق الرسمي والمصادر العامة المُسنَدة — وليست اختباراً عملياً من فريقنا. سيُوثَّق الاختبار هنا قبل نشر أي درجة.",
 };
 
 export type Dictionary = typeof en;

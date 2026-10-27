@@ -156,6 +156,23 @@ export function breadcrumbJsonLd(items: { name: string; href: string }[]) {
 }
 
 /**
+ * FAQPage schema — only when the article actually renders the same
+ * questions and answers visibly on the page.
+ */
+export function faqJsonLd(faq: { question: string; answer: string }[]) {
+  if (faq.length === 0) return undefined;
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faq.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: { "@type": "Answer", text: item.answer },
+    })),
+  };
+}
+
+/**
  * Article schema — ONLY for non-demo published articles with real editorial
  * content. Demo articles get no Article schema (and never Review/aggregateRating,
  * which would require genuinely tested ratings).

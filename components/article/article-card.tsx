@@ -13,6 +13,12 @@ const typeLabels = {
   guides: "guidesLabel",
 } as const satisfies Record<Article["type"], keyof ReturnType<typeof getDictionary>>;
 
+const categoryAccents: Record<string, string> = {
+  "ai-tools": "#2d46b9",
+  "developer-tools": "#0d7a53",
+  software: "#b45309",
+};
+
 /** Card used across homepage, category pages, and archives. */
 export default function ArticleCard({
   article,
@@ -26,13 +32,21 @@ export default function ArticleCard({
   const dict = getDictionary(locale);
   const href = articleHref(article);
   const typeLabel = dict[typeLabels[article.type]];
+  const accent =
+    ("category" in article && article.category && categoryAccents[article.category]) ||
+    "var(--color-line-strong)";
 
   return (
     <article
-      className={`group relative flex flex-col rounded-lg border border-line bg-card transition-shadow hover:shadow-[0_4px_20px_-2px_rgba(26,26,30,0.08)] ${
+      className={`group relative flex flex-col overflow-hidden rounded-lg border border-line bg-card transition-shadow hover:shadow-[0_4px_20px_-2px_rgba(26,26,30,0.08)] ${
         variant === "compact" ? "p-4" : "p-5"
       }`}
     >
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 top-0 h-[3px]"
+        style={{ backgroundColor: accent }}
+      />
       <div className="flex items-center justify-between gap-2">
         <div className="flex flex-wrap items-center gap-2">
           <Badge tone="outline">{typeLabel}</Badge>

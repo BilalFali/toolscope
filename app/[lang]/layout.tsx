@@ -2,11 +2,11 @@ import type { Metadata, Viewport } from "next";
 import { notFound } from "next/navigation";
 import { integrations, isLocale, locales, siteConfig, type Locale } from "@/config/site";
 import { getDictionary, dir } from "@/lib/i18n";
-import { fontVariables } from "@/lib/fonts";
 import { absoluteUrl } from "@/lib/seo";
 import HeaderClient, { type NavItem } from "@/components/layout/header-client";
 import Footer from "@/components/layout/footer";
 import ConsentAndAnalytics from "@/components/layout/consent-analytics";
+import BackToTop from "@/components/ui/back-to-top";
 import "../globals.css";
 
 export function generateStaticParams() {
@@ -37,6 +37,9 @@ export async function generateMetadata({
       : undefined,
     alternates: {
       canonical: absoluteUrl(`/${locale}`),
+      types: {
+        "application/rss+xml": absoluteUrl(`/${locale}/feed.xml`),
+      },
       languages: { en: absoluteUrl("/en"), ar: absoluteUrl("/ar"), "x-default": absoluteUrl("/en") },
     },
   };
@@ -53,6 +56,15 @@ export default async function RootLayout({
   if (!isLocale(lang)) notFound();
   const locale = lang;
   const dict = getDictionary(locale);
+
+  // Per-locale font bundle: dynamic imports with literal specifiers keep
+  // next/font preloads scoped to the fonts each locale actually renders
+  // (EN never downloads Arabic families and vice versa).
+  const fonts = await (
+    locale === "ar"
+      ? import("@/lib/fonts-arabic")
+      : import("@/lib/fonts-latin")
+  );
 
   const navItems: NavItem[] = [
     {
@@ -78,8 +90,15 @@ export default async function RootLayout({
   ];
 
   return (
-    <html lang={locale} dir={dir(locale)} className={fontVariables}>
+    <html
+      lang={locale}
+      dir={dir(locale)}
+      className={fonts.fontVariables}
+    >
       <body className="flex min-h-screen flex-col">
+        {integrations.logoDevToken ? (
+          <link rel="preconnect" href="https://img.logo.dev" crossOrigin="anonymous" />
+        ) : null}
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:absolute focus:start-4 focus:top-4 focus:z-50 focus:rounded focus:bg-brand focus:px-3 focus:py-2 focus:text-sm focus:text-white"
@@ -105,6 +124,7 @@ export default async function RootLayout({
           {children}
         </main>
         <Footer locale={locale} />
+        <BackToTop dict={{ backToTop: dict.backToTop }} />
         <ConsentAndAnalytics
           locale={locale}
           dict={{

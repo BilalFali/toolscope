@@ -43,6 +43,23 @@ const baseFields = {
   draft: z.boolean().default(false),
   /** Extra guard: exclude a published article from indexing without hiding it. */
   noindex: z.boolean().default(false),
+  /**
+   * Evidence basis. "hands-on" = the claims come from our own documented
+   * testing. "research" = a clearly-labeled research-based overview built
+   * from official documentation and attributed sources — never presented
+   * as a hands-on review. Defaults to "research" so untested content
+   * cannot silently pose as tested.
+   */
+  basis: z.enum(["hands-on", "research"]).default("research"),
+  /** Optional FAQ block — rendered as accordions and emitted as FAQPage schema. */
+  faq: z
+    .array(
+      z.object({
+        question: z.string().min(1),
+        answer: z.string().min(1),
+      }),
+    )
+    .default([]),
 };
 
 const reviewSchema = z.object({
@@ -146,6 +163,9 @@ export interface ArticleBase {
   demo: boolean;
   draft: boolean;
   noindex: boolean;
+  /** Evidence basis: hands-on review or clearly-labeled research overview. */
+  basis: "hands-on" | "research";
+  faq: { question: string; answer: string }[];
   locale: Locale;
   type: ContentType;
   slug: string;

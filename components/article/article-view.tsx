@@ -4,6 +4,9 @@ import Breadcrumbs from "@/components/seo/breadcrumbs";
 import TableOfContents from "@/components/article/toc";
 import MdxContent from "@/components/article/mdx-content";
 import ArticleCard from "@/components/article/article-card";
+import ReadingProgress from "@/components/article/reading-progress";
+import ShareRow from "@/components/article/share-row";
+import AuthorCard from "@/components/article/author-card";
 import {
   DemoBanner,
   DraftBanner,
@@ -15,13 +18,14 @@ import {
 } from "@/components/article/review-modules";
 import { extractToc } from "@/lib/toc";
 import {
+  articleHref,
   getRelatedArticles,
   type Article,
   type CompareArticle,
   type ReviewArticle,
 } from "@/lib/content";
 import { formatDate, getDictionary, localePath, type Locale } from "@/lib/i18n";
-import { articleJsonLd } from "@/lib/seo";
+import { absoluteUrl, articleJsonLd, faqJsonLd } from "@/lib/seo";
 import { categories } from "@/config/site";
 
 const typeLabels: Record<Article["type"], { en: string; ar: string }> = {
@@ -70,13 +74,21 @@ export default async function ArticleView({
   ];
 
   const jsonLd = articleJsonLd(article);
+  const faqLd = faqJsonLd(article.faq);
 
   return (
     <>
+      <ReadingProgress label={dict.readingProgressBar} />
       {jsonLd ? (
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      ) : null}
+      {faqLd ? (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }}
         />
       ) : null}
       <Container className="py-8 sm:py-10">
@@ -86,6 +98,9 @@ export default async function ArticleView({
         <header className="mx-auto max-w-3xl">
           <div className="flex flex-wrap items-center gap-2">
             <Badge tone="brand">{typeLabel}</Badge>
+            <Badge tone={article.basis === "hands-on" ? "pos" : "outline"}>
+              {article.basis === "hands-on" ? dict.basisHandsOn : dict.basisResearch}
+            </Badge>
             {article.demo ? <Badge tone="outline" className="border-dashed">{dict.demoBannerTitle}</Badge> : null}
             {article.updatedAt ? (
               <span className="text-xs text-ink-faint">
@@ -126,10 +141,27 @@ export default async function ArticleView({
               ))}
             </p>
           ) : null}
+
+          <div className="mt-5 border-t border-line pt-4">
+            <ShareRow
+              url={absoluteUrl(articleHref(article))}
+              title={article.title}
+              dict={{
+                shareArticle: dict.shareArticle,
+                copyLink: dict.copyLink,
+                linkCopied: dict.linkCopied,
+              }}
+            />
+          </div>
         </header>
 
         {article.draft ? <div className="mx-auto mt-6 max-w-3xl"><DraftBanner locale={locale} /></div> : null}
         {article.demo ? <div className="mx-auto mt-6 max-w-3xl"><DemoBanner locale={locale} /></div> : null}
+        {article.basis === "research" ? (
+          <div className="mx-auto mt-6 max-w-3xl">
+            <CalloutNote>{dict.basisResearchNote}</CalloutNote>
+          </div>
+        ) : null}
 
         {/* Body + rail */}
         <div className="mt-10 grid gap-10 lg:grid-cols-[minmax(0,1fr)_300px]">
@@ -159,6 +191,27 @@ export default async function ArticleView({
               </div>
             ) : null}
 
+            {article.faq.length > 0 ? (
+              <section aria-labelledby="faq-heading" className="mt-12">
+                <h2 id="faq-heading" className="mb-4 font-serif text-2xl font-semibold tracking-tight">
+                  {dict.faqTitle}
+                </h2>
+                <div className="divide-y divide-line rounded-lg border border-line bg-card">
+                  {article.faq.map((item) => (
+                    <details key={item.question} className="group px-5 py-4">
+                      <summary className="cursor-pointer list-none font-medium text-ink marker:hidden group-open:text-brand-deep">
+                        <span className="me-2 inline-block text-ink-faint transition-transform group-open:rotate-90" aria-hidden="true">
+                          ›
+                        </span>
+                        {item.question}
+                      </summary>
+                      <p className="mt-3 ps-5 text-sm leading-relaxed text-ink-soft">{item.answer}</p>
+                    </details>
+                  ))}
+                </div>
+              </section>
+            ) : null}
+
             {related.length > 0 ? (
               <section aria-labelledby="related-heading" className="mt-12">
                 <h2 id="related-heading" className="mb-4 font-serif text-2xl font-semibold tracking-tight">
@@ -172,7 +225,8 @@ export default async function ArticleView({
               </section>
             ) : null}
 
-            <div className="mt-10">
+            <div className="mt-10 space-y-6">
+              <AuthorCard author={article.author} locale={locale} />
               <DisclosureNotice locale={locale} />
             </div>
           </div>
@@ -214,6 +268,21 @@ export default async function ArticleView({
         </div>
       </Container>
     </>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* Small helpers                                                        */
+/* ------------------------------------------------------------------ */
+
+function CalloutNote({ children }: { children: React.ReactNode }) {
+  return (
+    <div
+      role="note"
+      className="rounded-lg border border-s-4 border-line-strong border-s-ink-soft/60 bg-canvas-dim p-4"
+    >
+      <p className="text-sm leading-relaxed text-ink-soft">{children}</p>
+    </div>
   );
 }
 

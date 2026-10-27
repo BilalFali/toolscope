@@ -3,7 +3,9 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
 import rehypeSlug from "rehype-slug";
 import type { Locale } from "@/config/site";
+import { getDictionary } from "@/lib/i18n";
 import AffiliateLink from "@/components/monetization/affiliate-link";
+import CodeBlock from "@/components/article/code-block";
 
 /**
  * Renders MDX article bodies with the editorial component set:
@@ -46,6 +48,7 @@ export default function MdxContent({
   source: string;
   locale: Locale;
 }) {
+  const dict = getDictionary(locale);
   return (
     <MDXRemote
       source={source}
@@ -60,6 +63,9 @@ export default function MdxContent({
           <div className="table-scroll" role="region" aria-label="table" tabIndex={0}>
             <table {...props} />
           </div>
+        ),
+        pre: (props: ComponentProps<"pre">) => (
+          <CodeBlock dict={{ copyCode: dict.copyCode, codeCopied: dict.codeCopied }} {...props} />
         ),
         AffiliateLink: ({
           product,

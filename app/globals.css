@@ -47,8 +47,9 @@
   font-sans / font-serif utility without duplicating classes.
 */
 html[lang="ar"] {
+  /* Fallbacks matter: Arabic pages don't load --font-newsreader at all. */
   --font-sans: var(--font-plex-arabic), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-amiri), var(--font-newsreader), ui-serif, Georgia, serif;
+  --font-serif: var(--font-amiri), ui-serif, Georgia, serif;
 }
 
 html {
@@ -66,6 +67,53 @@ body {
 ::selection {
   background: var(--color-brand-soft);
   color: var(--color-brand-deep);
+}
+
+/* ------------------------------------------------------------------ */
+/* Print: article-first output                                          */
+/* ------------------------------------------------------------------ */
+
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+
+  /* Site chrome off; editorial content only. */
+  .sticky,
+  footer,
+  aside,
+  [role="progressbar"],
+  [role="dialog"] {
+    display: none !important;
+  }
+
+  main {
+    max-width: 100%;
+  }
+
+  .mdx-body {
+    font-size: 11pt;
+    line-height: 1.55;
+  }
+
+  .mdx-body a {
+    color: #000;
+    text-decoration: none;
+  }
+
+  /* Surface link targets for the printed page. */
+  .mdx-body a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 8.5pt;
+    color: #444;
+  }
+
+  .mdx-body pre {
+    background: #fff;
+    color: #000;
+    border: 1px solid #999;
+  }
 }
 
 /* Tabular numerals for prices, scores, benchmarks (DESIGN.md) */

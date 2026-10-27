@@ -39,6 +39,7 @@ export default async function Footer({ locale }: { locale: Locale }) {
     { href: localePath(locale, "/privacy-policy"), label: locale === "ar" ? "سياسة الخصوصية" : "Privacy Policy" },
     { href: localePath(locale, "/terms"), label: locale === "ar" ? "شروط الاستخدام" : "Terms of Use" },
     { href: localePath(locale, "/affiliate-disclosure"), label: locale === "ar" ? "إفصاح العمولة" : "Affiliate Disclosure" },
+    { href: `/${locale}/feed.xml`, label: dict.rssFeed },
   ];
 
   return (

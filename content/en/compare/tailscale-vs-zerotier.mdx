@@ -1,0 +1,77 @@
+---
+id: tailscale-vs-zerotier
+title: "Tailscale vs ZeroTier: Which Mesh VPN Fits a Small Team?"
+description: "A research-based, pricing-verified comparison of Tailscale and ZeroTier for small teams choosing a zero-config mesh VPN — what each actually costs and where they differ."
+author: "The Editor"
+publishedAt: "2026-10-27"
+tags: ["networking", "VPN", "developer tools", "infrastructure", "comparison"]
+category: "developer-tools"
+items:
+  - name: "Tailscale"
+    url: "https://tailscale.com"
+    reviewSlug: "tailscale-vpn"
+    tagline: "Identity-based mesh VPN built on WireGuard, with a hosted coordination service"
+    bestFor:
+      - "Teams that want the fastest path from zero to a working private network"
+      - "Organizations already using an SSO/identity provider for device auth"
+    pricing: "Free up to 6 users / $8 user/mo (Standard) / $18 user/mo (Premium)"
+    pros:
+      - "Free plan covers up to 6 users with unlimited devices and most features"
+      - "Widely documented, large community, mature client support across platforms"
+      - "Self-hosting the coordination server is possible via the third-party Headscale project"
+    cons:
+      - "Official self-hosted control plane is not offered directly by Tailscale itself"
+      - "Per-user billing on paid tiers can get expensive as a team grows past the free limit"
+  - name: "ZeroTier"
+    url: "https://zerotier.com"
+    tagline: "Software-defined networking with a free tier and officially licensed self-hosted controller"
+    bestFor:
+      - "Teams that want an officially supported self-hosted option from day one"
+      - "Setups needing more than 6 free users but fewer than 10 devices"
+    pricing: "Free up to 10 devices (1 network) / $18/mo for 10 devices (Essential) / $179/mo for 100 devices (Scale)"
+    pros:
+      - "Free tier doesn't cap by user count, only by device count and network count"
+      - "Essential and Scale plans bill flat per device tier, not per user, which can suit small fixed teams"
+      - "Enterprise/Quantum tiers offer FIPS 140-3 and post-quantum cryptography options for regulated environments"
+    cons:
+      - "Free tier is limited to a single network, which constrains multi-project setups"
+      - "Extra devices on paid plans cost $1.80–$2.00/device/month on top of the base price"
+---
+
+<Callout title="How to read this comparison">
+This is a research-based comparison, not a hands-on test. Pricing and feature figures were checked directly against each vendor's official pricing page on 2026-10-27 (linked in the body) — not third-party aggregators, which disagreed with each other and with the vendors in our research. We have not measured connection stability, throughput, or real-world setup friction for either product; that requires the hands-on cycle described in our [testing methodology](/en/testing-methodology).
+</Callout>
+
+## Two paths to the same problem
+
+Both Tailscale and ZeroTier solve the same underlying problem: let a group of devices reach each other privately and encrypted, without a traditional VPN's subnets, static IPs, and gateway boxes. They differ less in what they promise and more in how billing and self-hosting are structured.
+
+## Pricing, compared directly
+
+| | Tailscale | ZeroTier |
+|---|---|---|
+| Free tier | Up to 6 users, unlimited devices | Up to 10 devices, 1 network |
+| First paid tier | $8/user/month (Standard) | $18/month flat for 10 devices (Essential) |
+| Billing model | Per user | Per device, in tiers |
+| Top tier | Premium, $18/user/month | Scale, $179/month for 100 devices |
+| Custom/enterprise | Yes (contact sales) | Yes — two tiers: Enterprise and Quantum (post-quantum crypto) |
+
+Source: [Tailscale pricing](https://tailscale.com/pricing) and [ZeroTier pricing](https://www.zerotier.com/pricing) as published on 2026-10-27.
+
+The practical effect: Tailscale's free tier is more generous for a *small number of people* with many devices each (unlimited devices per user). ZeroTier's free tier is more generous for a *fixed device count* regardless of how many people share it — useful for, say, a homelab or a handful of servers rather than a growing headcount.
+
+## Self-hosting
+
+This is the most-cited structural difference, and it's worth stating precisely: ZeroTier's own pricing page doesn't advertise a specific self-hosting price or plan — it links to a self-hosted EULA and docs, describing deployment "within your own infrastructure." Tailscale does not offer an official self-hosted control plane at all; the common path is the independent, open-source **Headscale** project, which is not a Tailscale product and carries its own maintenance burden. Neither claim should be taken as "fully self-hostable out of the box" without reading each project's current docs.
+
+## Security and compliance tiers
+
+ZeroTier's higher tiers (Enterprise and Quantum) explicitly advertise FIPS 140-3 validated cryptography, and Quantum adds post-quantum cryptography (CNSA 2.0). Tailscale's Enterprise tier is quoted as custom, without a published equivalent claim on the pricing page at the time of writing. Teams with specific compliance requirements should verify current certifications directly with each vendor rather than relying on this summary.
+
+## Who should look at which
+
+If you're a small team (6 or fewer people) who wants the fastest setup with no device-count anxiety, Tailscale's free tier is the more natural starting point. If your constraint is a fixed number of devices — a handful of servers, a lab, a single office — rather than headcount, ZeroTier's device-based free and paid tiers may map onto your actual usage more cleanly. Neither comparison point is a performance claim: this article does not measure latency, throughput, or connection reliability for either product.
+
+## What would make this comparison more useful
+
+A hands-on follow-up would time setup on a clean machine for both tools, measure throughput between two representative nodes, and document what self-hosting Headscale or a ZeroTier controller actually requires in practice. Until that cycle runs, treat this as a pricing and feature map, not a performance verdict.

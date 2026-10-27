@@ -31,11 +31,14 @@ export function ProductLogo({
   website,
   size = 36,
   className = "",
+  eager = false,
 }: {
   name: string;
   website?: string;
   size?: number;
   className?: string;
+  /** Above-the-fold usages only; everything else lazy-loads. */
+  eager?: boolean;
 }) {
   const [failed, setFailed] = useState(false);
   const domain = domainFromUrl(website);
@@ -63,6 +66,8 @@ export function ProductLogo({
       alt={`${name} logo`}
       width={size}
       height={size}
+      loading={eager ? undefined : "lazy"}
+      decoding="async"
       className={`shrink-0 rounded border border-line bg-white object-contain ${className}`}
       style={{ width: size, height: size }}
       onError={() => setFailed(true)}

@@ -125,7 +125,7 @@ export function FeaturedReview({
           <div className="flex flex-col justify-between gap-5 lg:col-span-7">
             <div>
               <div className="flex items-center gap-3">
-                <ProductLogo name={review.product.name} website={review.product.website} size={40} />
+                <ProductLogo name={review.product.name} website={review.product.website} size={40} eager />
                 <div className="flex flex-wrap items-center gap-2 text-xs font-medium text-pos">
                   <span className="rounded bg-pos-soft px-2 py-0.5">{dict.verdictTitle}</span>
                   <span className="text-ink-faint">·</span>
