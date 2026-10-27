@@ -1,0 +1,79 @@
+---
+id: zerotier-review
+title: "ZeroTier Review: Device-Based Pricing for Small, Fixed Networks"
+description: "A research-based look at ZeroTier's free and paid tiers, its device-based billing model, and how it differs structurally from per-user mesh VPNs like Tailscale."
+author: "The Editor"
+publishedAt: "2026-10-27"
+tags: ["networking", "VPN", "developer tools", "infrastructure"]
+featured: false
+demo: true
+basis: research
+category: "developer-tools"
+product:
+  name: "ZeroTier"
+  website: "https://zerotier.com"
+  developer: "ZeroTier, Inc."
+verdict: "A credible mesh-networking option when your constraint is a fixed device count rather than headcount — pending the hands-on cycle that would confirm setup friction and real throughput."
+bestFor:
+  - "Small, fixed device counts — a homelab, a handful of servers — regardless of how many people manage them"
+  - "Teams wanting device-tier billing instead of per-user subscriptions"
+notFor:
+  - "Teams whose free-tier need is driven by user count rather than device count — Tailscale's free tier covers that case differently"
+  - "Anyone needing more than one network on the free tier"
+pros:
+  - "Free tier has no user cap — up to 10 devices on 1 network, regardless of headcount"
+  - "Device-tier billing (not per-user) can suit small teams with many shared machines"
+  - "Top tiers (Enterprise, Quantum) offer FIPS 140-3 validated cryptography, and Quantum adds post-quantum cryptography"
+cons:
+  - "Free tier is capped at a single network, which limits multi-project setups"
+  - "Extra devices on paid tiers cost $1.80–$2.00 per device per month on top of the base price"
+  - "Official pricing page doesn't state a specific self-hosting price or plan — only general infrastructure deployment language"
+pricing:
+  - plan: "Personal"
+    price: "$0"
+    notes: "Up to 10 devices, 1 network — community support"
+  - plan: "Essential"
+    price: "$18/mo"
+    notes: "10 devices included, $2.00/extra device/mo, 10 networks, API and AI agent access"
+  - plan: "Scale"
+    price: "$179/mo"
+    notes: "100 devices included, $1.80/extra device/mo, unlimited networks"
+pricingCheckedAt: "2026-10-27"
+alternatives:
+  - "tailscale-review"
+testingNotes: "Planned hands-on cycle, not yet run: time-to-first-connection on a clean machine, throughput between two representative nodes, and what the device-count-based free tier actually feels like at the 10-device boundary in practice."
+---
+
+<Callout title="How to read this review">
+This is a research-based overview, not a hands-on review. Pricing and tier details were checked directly against [ZeroTier's official pricing page](https://www.zerotier.com/pricing) on 2026-10-27 — not third-party aggregators, which gave conflicting tier names and numbers during our research. We have not measured connection setup time, stability, or throughput — see our [Tailscale vs ZeroTier comparison](/en/compare/tailscale-vs-zerotier) for the full pricing breakdown between the two.
+</Callout>
+
+## A different billing axis, not just a different brand
+
+ZeroTier solves the same core problem as Tailscale — private, encrypted connectivity between devices without traditional VPN gateways and subnets — but structures its pricing around **devices**, not **users**. That single difference determines which tool's free tier actually fits a given team better than any feature comparison does.
+
+## What the free tier actually covers
+
+ZeroTier's Personal tier is free with up to 10 devices on a single network, with no login or user-count limit stated on the official pricing page. That's meaningfully different from a per-user free tier: a single person managing 8 home-lab devices fits comfortably, while a 12-person team sharing 6 total servers also fits — the constraint is the device count, not the headcount.
+
+The trade-off is the single-network cap: if you need to segment traffic across genuinely separate networks (say, a home lab and a side project with different trust boundaries), the free tier doesn't accommodate that without upgrading.
+
+## Paid tiers and what they add
+
+Essential ($18/month) includes 10 devices and adds API access, an AI agent, basic access control, and 30-day audit logs. Scale ($179/month) raises the device allowance to 100 and removes the per-network limit. Both tiers charge for devices beyond the included count — $2.00/device/month on Essential, $1.80/device/month on Scale — which matters for teams whose device count grows past the plan's included allowance.
+
+## Security tiers worth knowing about
+
+ZeroTier's Enterprise and Quantum tiers (both custom-priced) explicitly state FIPS 140-3 validated cryptography, with Quantum adding post-quantum cryptography (CNSA 2.0 compliant) and air-gapped deployment support. These are relevant only if you have a specific, named compliance requirement — not a general recommendation, and not something the lower tiers claim.
+
+## Self-hosting: a real but vague option
+
+ZeroTier's pricing page describes deploying "within your own infrastructure for full control and flexibility" but doesn't publish a specific self-hosted price, device limit, or plan name. If self-hosting is a hard requirement, verify the current terms directly in ZeroTier's own documentation rather than assuming a figure — we could not find one stated plainly on the official pricing page.
+
+## How it compares to Tailscale
+
+See our full [Tailscale vs ZeroTier comparison](/en/compare/tailscale-vs-zerotier) for the side-by-side pricing table. The short version: Tailscale's free tier is more generous for a small number of *people* with many devices each; ZeroTier's is more generous for a fixed *device* count regardless of who manages them.
+
+## What would change our verdict
+
+There is no score on this page because hands-on testing hasn't happened yet. A real evaluation would time setup on a clean machine, measure throughput between two representative nodes, and document what happens at the exact 10-device free-tier boundary — including whether the 11th device fails gracefully or silently.

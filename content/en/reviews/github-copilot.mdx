@@ -1,0 +1,79 @@
+---
+id: copilot-review
+title: "GitHub Copilot Review: The AI-Enhanced Baseline, Not the AI-First Bet"
+description: "A research-based look at GitHub Copilot's credit-based pricing, agent mode, and what it means to keep your existing editor instead of switching to an AI-first one."
+author: "The Editor"
+publishedAt: "2026-10-27"
+tags: ["code editors", "AI coding", "developer tools", "IDE"]
+featured: false
+demo: true
+basis: research
+category: "ai-tools"
+product:
+  name: "GitHub Copilot"
+  website: "https://github.com/features/copilot"
+  developer: "GitHub (Microsoft)"
+verdict: "The lowest-friction way to add AI assistance to an editor you already use — pending hands-on testing of how its credit-based usage model holds up against daily work."
+bestFor:
+  - "Developers who want to keep their current editor, extensions, and keybindings"
+  - "Teams already standardized on GitHub for source control and CI"
+notFor:
+  - "Developers who want an AI-first editor built around repository-wide context from the ground up"
+  - "Anyone who needs a flat, predictable price regardless of usage — the credit model scales with how much you use it"
+pros:
+  - "Works inside your existing editor (VS Code, JetBrains, Eclipse, Xcode) rather than requiring a switch"
+  - "Agent mode and multi-file edits are included even on the $10/month Pro plan, per GitHub's plans page"
+  - "A genuinely free tier exists, with 2,000 inline suggestions/month and limited chat/agent usage"
+cons:
+  - "Pricing is credit-based rather than flat — heavier usage can cost more than a simple per-seat number suggests"
+  - "Third-party model agents (Claude, OpenAI Codex) are gated to the $39/month Pro+ tier and above"
+  - "Enterprise features (SSO, usage metrics, IP indemnity) aren't included on any individual-level plan"
+pricing:
+  - plan: "Free"
+    price: "$0"
+    notes: "2,000 inline suggestions/month, limited chat and agent usage — verify current limits on GitHub's plans page"
+  - plan: "Pro"
+    price: "$10/mo"
+    notes: "Unlimited inline suggestions, $15/mo in AI credits, agent mode and cloud code review included"
+  - plan: "Pro+"
+    price: "$39/mo"
+    notes: "$70/mo in AI credits, adds third-party model agents (Claude, OpenAI Codex)"
+  - plan: "Max"
+    price: "$100/mo"
+    notes: "$200/mo in AI credits — highest individual tier before Business/Enterprise"
+pricingCheckedAt: "2026-10-27"
+alternatives:
+  - "cursor-review"
+  - "windsurf-review"
+testingNotes: "Planned hands-on cycle, not yet run: multi-file agent-mode accuracy on a real repository, how quickly the included AI credits actually deplete under normal daily use, and how suggestion quality compares across the four tiers' stated 'same model list.'"
+---
+
+<Callout title="How to read this review">
+This is a research-based overview, not a hands-on review. Pricing and plan details were checked directly against [GitHub's Copilot plans page](https://github.com/features/copilot/plans) on 2026-10-27. We have not measured agent-mode accuracy, suggestion quality, or how fast the included AI credits actually deplete under real use — that requires the hands-on cycle described in our [testing methodology](/en/testing-methodology).
+</Callout>
+
+## The baseline, not the bet
+
+Where Cursor and Windsurf are built around AI as the core editing experience, GitHub Copilot takes the opposite starting point: it's an AI layer added to the editor you already use. That's the whole pitch — no switching costs, no new keybindings to learn, no new extension ecosystem to rebuild. Whether that's an advantage or a ceiling depends on how much you actually want the AI to restructure your workflow.
+
+## What's included, and what isn't
+
+GitHub's plans page lists agent mode, multi-file edits, CLI support, MCP server integration, and Copilot Spaces as available on **every** paid tier, including the $10/month Pro plan — a notably low floor for agentic features that competitors often reserve for higher tiers. What scales with price is **AI credits**: $15/month worth on Pro, up to $200/month on the $100 Max tier, plus access to third-party model agents (Claude, OpenAI Codex) gated behind the $39/month Pro+ tier.
+
+This billing model is worth understanding before comparing sticker prices: a $10/month plan and a $100/month plan both get "agent mode," but the amount of agent usage they can actually sustain differs by more than 10x in credits. "Which plan is right for me" depends on your usage volume, not just which features are nominally unlocked.
+
+## The free tier is real, not a trial
+
+Unlike many AI coding tools whose "free" tier is a time-limited trial, Copilot's Free plan has no expiration — it's 2,000 inline suggestions per month plus limited chat/agent usage, on an ongoing basis. For developers who want occasional AI assistance without committing to a subscription, this is a genuinely different offer than Cursor's or Windsurf's free tiers, which are usage-capped but not identically structured. We have not tested how far 2,000 suggestions actually stretches in a normal working month.
+
+## Where this differs from Cursor and Windsurf
+
+Both Cursor and our [Windsurf review](/en/reviews/windsurf-ai-code-editor) are editors built from the ground up around an AI-first or flow-first model. Copilot doesn't replace your editor — it runs inside VS Code, JetBrains IDEs, Eclipse, or Xcode. That means no repository-reindexing step, no new file format, and no editor-specific muscle memory to rebuild. The trade-off, per GitHub's own feature list, is less specified about repository-wide context depth than Cursor's stated model — a question our pending test cycle would need to answer directly rather than infer from marketing copy.
+
+## Who should actually consider it
+
+If switching editors isn't something you want to do, or your team already has deep tooling investment in VS Code or JetBrains, Copilot removes that cost entirely while still offering agent mode at a low price floor. If you want an editor built around AI as the primary interaction model rather than an addition to an existing one, [Cursor](/en/reviews/cursor-ai-code-editor) and [Windsurf](/en/reviews/windsurf-ai-code-editor) represent that different bet.
+
+## What would change our verdict
+
+There is no score on this page because hands-on testing hasn't happened yet. A real evaluation would measure agent-mode accuracy on a genuine multi-file task, track how quickly a Pro plan's $15/month credit allowance depletes under normal daily use, and compare suggestion quality across tiers despite GitHub's page listing "the same model list" for all of them — a claim worth verifying directly rather than taking at face value.
