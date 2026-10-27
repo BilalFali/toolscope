@@ -23,7 +23,7 @@ export const siteConfig = {
     en: "Independent reviews of AI tools, developer software, and everyday applications — with clear methodology, honest comparisons, and practical recommendations.",
     ar: "مراجعات مستقلة لأدوات الذكاء الاصطناعي وبرمجيات المطورين والتطبيقات اليومية — بمنهجية واضحة ومقارنات صادقة وتوصيات عملية.",
   },
-  url: process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ?? "https://toolscope.example",
+  url: process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ?? "https://reviews.bidev.dev",
   founder: {
     name: "The Editor", // Placeholder — replace with your real byline
     location: "Algeria",
